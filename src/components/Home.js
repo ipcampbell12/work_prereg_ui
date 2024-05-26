@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Tabs from './Tabs';
-import PreRegModal from './PreRegModal';
+
 
 
 function Home() {
@@ -48,9 +48,10 @@ function Home() {
     return (
         <div>
             <h1> Behold The Data</h1>
-            <Tabs onTab={handleTabClick} tabState={tabState} getData={clientSideGetData} dataState={dataState} openModal={openModal} setDataRow={setDataRow} />
 
-            {modalOpen && <PreRegModal dataRow={dataRow} closeModal={closeModal} />}
+            <Tabs onTab={handleTabClick} tabState={tabState} getData={clientSideGetData} dataState={dataState} openModal={openModal} setDataRow={setDataRow} modalOpen={modalOpen} closeModal={closeModal} dataRow={dataRow} />
+
+
         </div>
     );
 }

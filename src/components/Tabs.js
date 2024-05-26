@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import DataDisplay from './DataDisplay';
+import PreRegModal from './PreRegModal';
 
 const tabNames = ["submitted", "scheduled", "pending", "transferred"];
 
-function Tabs({ onTab, tabState, getData, dataState, openModal, setDataRow }) {
+function Tabs({ onTab, tabState, getData, dataState, openModal, setDataRow, modalOpen, closeModal, dataRow }) {
 
 
     useEffect(() => {
@@ -14,6 +15,7 @@ function Tabs({ onTab, tabState, getData, dataState, openModal, setDataRow }) {
 
     return (
         <div>
+            {modalOpen && <PreRegModal dataRow={dataRow} closeModal={closeModal} modalOpen={modalOpen} getData={getData} />}
             <ul className="nav nav-tabs" role="tablist">
                 {
                     tabNames.map((tab, index) => {

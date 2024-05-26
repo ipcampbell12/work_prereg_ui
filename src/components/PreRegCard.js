@@ -12,7 +12,7 @@ function PreRegCard({ row, openModal, setDataRow }) {
                         <p className='small p-0'>School: {row[5]}</p>
                         <p className='small p-0'>Parent: {row[6]}</p>
                         <p className='small p-0'>Parent Phone: {row[7]}</p>
-                        <p className='small p-0'>Status: {row[7]}</p>
+                        <p className='small p-0'>Status: {row[8]}</p>
                     </div>
                     <button onClick={() => { openModal(); setDataRow(row) }} className="btn btn-primary">Open Pre Registration</button>
                 </div>
