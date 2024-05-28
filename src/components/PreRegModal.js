@@ -67,8 +67,9 @@ function PreRegModal({ dataRow, closeModal, modalOpen, getData }) {
                 </Modal.Body>
             }
             <Modal.Footer>
-                <Button variant="secondary" onClick={closeModal}>Close</Button>
+                <Button variant="warning" onClick={closeModal}>Schedule Appointment</Button>
                 <Button variant={editing ? "primary" : "danger"} onClick={editing ? saveChanges : turnOnEditing}>{editing ? "Save Changes" : "Edit Information"}</Button>
+                <Button variant="secondary" onClick={closeModal}>Close</Button>
             </Modal.Footer>
 
         </Modal>
