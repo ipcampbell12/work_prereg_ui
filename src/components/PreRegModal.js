@@ -2,14 +2,16 @@ import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import UpdatingForm from './UpdatingForm';
+import BasicInfo from './BasicInfo';
 //import DropdownMenu from './DropDown';
 
 
 
-function PreRegModal({ dataRow, closeModal, modalOpen, getData }) {
+function PreRegModal({ dataRow, closeModal, modalOpen, getData, turnOnScheduling }) {
 
     const [editing, setEditing] = useState(false);
     const [arrToSave, setArrToSave] = useState(dataRow.slice(0, 9));
+   
 
     async function clientSideSaveData(row, data) {
         try {
@@ -44,30 +46,26 @@ function PreRegModal({ dataRow, closeModal, modalOpen, getData }) {
     };
 
 
+
     return (
 
         <Modal show={modalOpen} onHide={closeModal} >
             <Modal.Header closeButton>
                 <Modal.Title>{dataRow[2]}, {dataRow[1]}</Modal.Title>
             </Modal.Header>
-            {!editing ?
-                <Modal.Body>
-
-                    <p className='small p-0'>DOB: {new Date(dataRow[3]).toLocaleDateString('en-US')}</p>
-                    <p className='small p-0'>Grade Level: {dataRow[4]}</p>
-                    <p className='small p-0'>School: {dataRow[5]}</p>
-                    <p className='small p-0'>Parent: {dataRow[6]}</p>
-                    <p className='small p-0'>Parent Phone: {dataRow[7]}</p>
-                    <p className='small p-0'>Status: {dataRow[8]}</p>
-
+            
+            
+               {!editing ?
+               <Modal.Body>
+                  <BasicInfo dataRow={dataRow}/>
                 </Modal.Body>
-                :
+                     :   
                 <Modal.Body>
                     <UpdatingForm handleInputChange={handleInputChange} dataRow={dataRow} />
                 </Modal.Body>
-            }
+                }
             <Modal.Footer>
-                <Button variant="warning" onClick={closeModal}>Schedule Appointment</Button>
+                <Button variant="warning" onClick={()=>{turnOnScheduling();closeModal()}}>Schedule Appointment</Button>
                 <Button variant={editing ? "primary" : "danger"} onClick={editing ? saveChanges : turnOnEditing}>{editing ? "Save Changes" : "Edit Information"}</Button>
                 <Button variant="secondary" onClick={closeModal}>Close</Button>
             </Modal.Footer>

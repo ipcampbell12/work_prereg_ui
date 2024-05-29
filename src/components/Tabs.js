@@ -1,21 +1,37 @@
 import React, { useEffect, useState } from 'react';
 import DataDisplay from './DataDisplay';
 import PreRegModal from './PreRegModal';
+import SchedulingForm from './SchedulingForm';
 
 const tabNames = ["submitted", "scheduled", "pending", "transferred"];
 
 function Tabs({ onTab, tabState, getData, dataState, openModal, setDataRow, modalOpen, closeModal, dataRow }) {
 
+    const [scheduling, setScheduling] =useState(false)
+
+    const turnOnScheduling = () =>{
+        console.log("You should see a full screen modal")
+        setScheduling(true)
+    }
+
+    const turnOffScheduling = () =>{
+        setScheduling(false)
+    }
 
     useEffect(() => {
         getData();
         //console.log("The tab state in tabs is: ", tabState)
     }, []);
 
+    useEffect(()=>{
+        console.log("Scheduling is set to: ",scheduling)
+        console.log("ModalOpen is set to: ",modalOpen)
+    },[scheduling])
 
     return (
         <div>
-            {modalOpen && <PreRegModal dataRow={dataRow} closeModal={closeModal} modalOpen={modalOpen} getData={getData} />}
+            {modalOpen && <PreRegModal dataRow={dataRow} closeModal={closeModal} modalOpen={modalOpen} getData={getData} turnOnScheduling={turnOnScheduling} />}
+            {scheduling  && <SchedulingForm dataRow={dataRow} turnOffScheduling={turnOffScheduling} scheduling={scheduling}/>}
             <ul className="nav nav-tabs" role="tablist">
                 {
                     tabNames.map((tab, index) => {

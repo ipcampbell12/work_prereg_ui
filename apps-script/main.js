@@ -6,25 +6,25 @@ function doGet() {
 }
 
 
-function getSheet() {
+function getSsSheet(name) {
     var spreadsheet = SpreadsheetApp.openByUrl("https://docs.google.com/spreadsheets/d/1_Z5LgW3RA_gWWzL8DFBTgdNyJU3fPHo8y1q0cL3lqDQ/edit#gid=0")
-    var sheet = spreadsheet.getActiveSheet();
+    var sheet = spreadsheet.getSheetByName(name);
     return sheet;
 }
 
-function getSheetDataRange() {
-    const sheet = getSheet();
+function getSheetDataRange(name) {
+    const sheet = getSsSheet(name);
     const range = sheet.getRange(2, 1, sheet.getLastRow(), 10);
     return range;
 }
 
-function getAllValues() {
-    const range = getSheetDataRange()
+function getAllValues(name) {
+    const range = getSheetDataRange(name)
     return range.getValues();
 }
 
 function serverSideGetData() {
-    const sheetData = getAllValues();
+    const sheetData = getAllValues("PRe Registrations");
     const data = sheetData.filter(row => row[0] !== '')
     const dataNew = JSON.stringify(data)
     return dataNew;
