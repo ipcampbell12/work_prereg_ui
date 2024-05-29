@@ -29,7 +29,7 @@ function Home() {
             await google.script.run
                 .withSuccessHandler(displaySheetData)
                 .withFailureHandler(errorHandler)
-                .serverSideGetData();
+                .serverSideGetData("Pre Registrations",2,1,10);
 
         } catch (error) {
             console.error("Error fetching data: ", error)

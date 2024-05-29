@@ -12,19 +12,19 @@ function getSsSheet(name) {
     return sheet;
 }
 
-function getSheetDataRange(name) {
+function getSheetDataRange(name,row,col,numCols) {
     const sheet = getSsSheet(name);
-    const range = sheet.getRange(2, 1, sheet.getLastRow(), 10);
+    const range = sheet.getRange(row, col, sheet.getLastRow(), numCols);
     return range;
 }
 
-function getAllValues(name) {
-    const range = getSheetDataRange(name)
+function getAllValues(name,row,col,numCols) {
+    const range = getSheetDataRange(name,row,col,numCols)
     return range.getValues();
 }
 
-function serverSideGetData() {
-    const sheetData = getAllValues("PRe Registrations");
+function serverSideGetData(name,row,col,numCols) {
+    const sheetData = getAllValues(name,row,col,numCols);
     const data = sheetData.filter(row => row[0] !== '')
     const dataNew = JSON.stringify(data)
     return dataNew;
@@ -36,7 +36,7 @@ function serverSideUpdateRow(id, data) {
     const row = id + 1;
     const timeStamp = Utilities.formatDate(new Date(), "PST", "MM/dd/yyyy  'at' HH:mm aaa");
     Logger.log(timeStamp)
-    const range = sheet.getRange(row, 1, 1, 10);
+    const range = sheet.getRange(row, 1, 1, 11);
     const dataArr = [...data, timeStamp]
     range.setValues([dataArr]);
     return dataArr;
