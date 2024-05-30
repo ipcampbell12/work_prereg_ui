@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import DataDisplay from './DataDisplay';
 import PreRegModal from './PreRegModal';
-import SchedulingForm from './SchedulingForm';
+import SchedulingForm from './Scheduling/SchedulingForm';
 
 const tabNames = ["submitted", "scheduled", "pending", "transferred"];
 

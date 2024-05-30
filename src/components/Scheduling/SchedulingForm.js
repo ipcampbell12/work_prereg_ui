@@ -5,6 +5,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import SetTags from './SetTags';
 import BoundarySchool from './BoundarySchool';
+import Appointment from './Appointment';
 
 
 
@@ -14,6 +15,7 @@ import BoundarySchool from './BoundarySchool';
   const [arrToSave, setArrToSave] = useState('')
   const [tagSelect,setTagSelect] = useState(false)
   const [schoolSelect,setSchoolSelect] = useState(false)
+  const [dtSelect,setDtSelect] = useState(false)
 
   const handleTagSelect = () =>{
     setTagSelect(true)
@@ -21,6 +23,10 @@ import BoundarySchool from './BoundarySchool';
 
   const handleSchoolSelect = () =>{
     setSchoolSelect(true)
+  }
+
+  const handleDtSelect = () =>{
+    setDtSelect(true)
   }
 
   async function clientSideGetData() {
@@ -76,7 +82,8 @@ const handleInputChange = (index, value) => {
                 </Form.Group>
       
      {tagSelect ? <SetTags dataRow={dataRow} handleSchoolSelect={handleSchoolSelect}/> :''}
-     {schoolSelect? <BoundarySchool /> :''}
+     {schoolSelect? <BoundarySchool handleDtSelect={handleDtSelect}/> :''}
+     {dtSelect? <Appointment /> :''}
       </ModalBody>
       <Button variant="warning" onClick={turnOffScheduling}>Close</Button>
     </Modal>

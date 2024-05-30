@@ -33848,7 +33848,7 @@ var _dataDisplay = require("./DataDisplay");
 var _dataDisplayDefault = parcelHelpers.interopDefault(_dataDisplay);
 var _preRegModal = require("./PreRegModal");
 var _preRegModalDefault = parcelHelpers.interopDefault(_preRegModal);
-var _schedulingForm = require("./SchedulingForm");
+var _schedulingForm = require("./Scheduling/SchedulingForm");
 var _schedulingFormDefault = parcelHelpers.interopDefault(_schedulingForm);
 var _s = $RefreshSig$();
 const tabNames = [
@@ -34050,7 +34050,7 @@ $RefreshReg$(_c, "Tabs");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./DataDisplay":"gunHM","./PreRegModal":"iwIZV","./SchedulingForm":"3hskh","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"gunHM":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./DataDisplay":"gunHM","./PreRegModal":"iwIZV","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./Scheduling/SchedulingForm":"lLPPX"}],"gunHM":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$78ba = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -39836,11 +39836,11 @@ $RefreshReg$(_c, "BasicInfo");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"3hskh":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$b5fe = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"lLPPX":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$d05b = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$b5fe.prelude(module);
+$parcel$ReactRefreshHelpers$d05b.prelude(module);
 
 try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -39859,6 +39859,8 @@ var _setTags = require("./SetTags");
 var _setTagsDefault = parcelHelpers.interopDefault(_setTags);
 var _boundarySchool = require("./BoundarySchool");
 var _boundarySchoolDefault = parcelHelpers.interopDefault(_boundarySchool);
+var _appointment = require("./Appointment");
+var _appointmentDefault = parcelHelpers.interopDefault(_appointment);
 var _s = $RefreshSig$();
 function SchedulingForm({ dataRow, turnOffScheduling, scheduling }) {
     _s();
@@ -39866,11 +39868,15 @@ function SchedulingForm({ dataRow, turnOffScheduling, scheduling }) {
     const [arrToSave, setArrToSave] = (0, _react.useState)("");
     const [tagSelect, setTagSelect] = (0, _react.useState)(false);
     const [schoolSelect, setSchoolSelect] = (0, _react.useState)(false);
+    const [dtSelect, setDtSelect] = (0, _react.useState)(false);
     const handleTagSelect = ()=>{
         setTagSelect(true);
     };
     const handleSchoolSelect = ()=>{
         setSchoolSelect(true);
+    };
+    const handleDtSelect = ()=>{
+        setDtSelect(true);
     };
     async function clientSideGetData() {
         try {
@@ -39905,13 +39911,13 @@ function SchedulingForm({ dataRow, turnOffScheduling, scheduling }) {
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
                         children: "Scheduling Form"
                     }, void 0, false, {
-                        fileName: "src/components/SchedulingForm.js",
-                        lineNumber: 58,
+                        fileName: "src/components/Scheduling/SchedulingForm.js",
+                        lineNumber: 64,
                         columnNumber: 7
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
-                        fileName: "src/components/SchedulingForm.js",
-                        lineNumber: 59,
+                        fileName: "src/components/Scheduling/SchedulingForm.js",
+                        lineNumber: 65,
                         columnNumber: 7
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h5", {
@@ -39922,14 +39928,14 @@ function SchedulingForm({ dataRow, turnOffScheduling, scheduling }) {
                             dataRow[2]
                         ]
                     }, void 0, true, {
-                        fileName: "src/components/SchedulingForm.js",
-                        lineNumber: 60,
+                        fileName: "src/components/Scheduling/SchedulingForm.js",
+                        lineNumber: 66,
                         columnNumber: 7
                     }, this)
                 ]
             }, void 0, true, {
-                fileName: "src/components/SchedulingForm.js",
-                lineNumber: 57,
+                fileName: "src/components/Scheduling/SchedulingForm.js",
+                lineNumber: 63,
                 columnNumber: 6
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.ModalBody), {
@@ -39937,8 +39943,8 @@ function SchedulingForm({ dataRow, turnOffScheduling, scheduling }) {
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                         children: "This is where the scheduling happens"
                     }, void 0, false, {
-                        fileName: "src/components/SchedulingForm.js",
-                        lineNumber: 64,
+                        fileName: "src/components/Scheduling/SchedulingForm.js",
+                        lineNumber: 70,
                         columnNumber: 7
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Group, {
@@ -39953,8 +39959,8 @@ function SchedulingForm({ dataRow, turnOffScheduling, scheduling }) {
                                     "?"
                                 ]
                             }, void 0, true, {
-                                fileName: "src/components/SchedulingForm.js",
-                                lineNumber: 66,
+                                fileName: "src/components/Scheduling/SchedulingForm.js",
+                                lineNumber: 72,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Select, {
@@ -39963,8 +39969,8 @@ function SchedulingForm({ dataRow, turnOffScheduling, scheduling }) {
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
                                         children: "Select a langauge"
                                     }, void 0, false, {
-                                        fileName: "src/components/SchedulingForm.js",
-                                        lineNumber: 68,
+                                        fileName: "src/components/Scheduling/SchedulingForm.js",
+                                        lineNumber: 74,
                                         columnNumber: 25
                                     }, this),
                                     languages.map((school, idx)=>{
@@ -39972,15 +39978,15 @@ function SchedulingForm({ dataRow, turnOffScheduling, scheduling }) {
                                             value: school,
                                             children: school
                                         }, idx, false, {
-                                            fileName: "src/components/SchedulingForm.js",
-                                            lineNumber: 71,
+                                            fileName: "src/components/Scheduling/SchedulingForm.js",
+                                            lineNumber: 77,
                                             columnNumber: 33
                                         }, this);
                                     })
                                 ]
                             }, void 0, true, {
-                                fileName: "src/components/SchedulingForm.js",
-                                lineNumber: 67,
+                                fileName: "src/components/Scheduling/SchedulingForm.js",
+                                lineNumber: 73,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonDefault.default), {
@@ -39988,33 +39994,40 @@ function SchedulingForm({ dataRow, turnOffScheduling, scheduling }) {
                                 onClick: handleTagSelect,
                                 children: "Next"
                             }, void 0, false, {
-                                fileName: "src/components/SchedulingForm.js",
-                                lineNumber: 75,
+                                fileName: "src/components/Scheduling/SchedulingForm.js",
+                                lineNumber: 81,
                                 columnNumber: 21
                             }, this)
                         ]
                     }, void 0, true, {
-                        fileName: "src/components/SchedulingForm.js",
-                        lineNumber: 65,
+                        fileName: "src/components/Scheduling/SchedulingForm.js",
+                        lineNumber: 71,
                         columnNumber: 15
                     }, this),
                     tagSelect ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _setTagsDefault.default), {
                         dataRow: dataRow,
                         handleSchoolSelect: handleSchoolSelect
                     }, void 0, false, {
-                        fileName: "src/components/SchedulingForm.js",
-                        lineNumber: 78,
+                        fileName: "src/components/Scheduling/SchedulingForm.js",
+                        lineNumber: 84,
                         columnNumber: 19
                     }, this) : "",
-                    schoolSelect ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _boundarySchoolDefault.default), {}, void 0, false, {
-                        fileName: "src/components/SchedulingForm.js",
-                        lineNumber: 79,
+                    schoolSelect ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _boundarySchoolDefault.default), {
+                        handleDtSelect: handleDtSelect
+                    }, void 0, false, {
+                        fileName: "src/components/Scheduling/SchedulingForm.js",
+                        lineNumber: 85,
                         columnNumber: 21
+                    }, this) : "",
+                    dtSelect ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _appointmentDefault.default), {}, void 0, false, {
+                        fileName: "src/components/Scheduling/SchedulingForm.js",
+                        lineNumber: 86,
+                        columnNumber: 17
                     }, this) : ""
                 ]
             }, void 0, true, {
-                fileName: "src/components/SchedulingForm.js",
-                lineNumber: 63,
+                fileName: "src/components/Scheduling/SchedulingForm.js",
+                lineNumber: 69,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonDefault.default), {
@@ -40022,29 +40035,29 @@ function SchedulingForm({ dataRow, turnOffScheduling, scheduling }) {
                 onClick: turnOffScheduling,
                 children: "Close"
             }, void 0, false, {
-                fileName: "src/components/SchedulingForm.js",
-                lineNumber: 81,
+                fileName: "src/components/Scheduling/SchedulingForm.js",
+                lineNumber: 88,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
-        fileName: "src/components/SchedulingForm.js",
-        lineNumber: 56,
+        fileName: "src/components/Scheduling/SchedulingForm.js",
+        lineNumber: 62,
         columnNumber: 5
     }, this);
 }
-_s(SchedulingForm, "md4BfDe08tKYVbX+Ndsqy1ftcvw=");
+_s(SchedulingForm, "YegXRt0HcOnxvTJw+WUN1PbC5no=");
 _c = SchedulingForm;
 exports.default = SchedulingForm;
 var _c;
 $RefreshReg$(_c, "SchedulingForm");
 
-  $parcel$ReactRefreshHelpers$b5fe.postlude(module);
+  $parcel$ReactRefreshHelpers$d05b.postlude(module);
 } finally {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-bootstrap":"3AD9A","react-bootstrap/Form":"iBZ80","react-bootstrap/Button":"aPzUt","react-bootstrap/Modal":"aNVmp","./SetTags":"1TYKP","./BoundarySchool":"iYSng","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"3AD9A":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-bootstrap":"3AD9A","react-bootstrap/Form":"iBZ80","react-bootstrap/Button":"aPzUt","react-bootstrap/Modal":"aNVmp","./SetTags":"l7RjO","./BoundarySchool":"hSzVK","./Appointment":"Kz3JN","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"3AD9A":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "Accordion", ()=>(0, _accordionDefault.default));
@@ -40382,11 +40395,11 @@ var _toggleButtonGroupDefault = parcelHelpers.interopDefault(_toggleButtonGroup)
 var _tooltip = require("./Tooltip");
 var _tooltipDefault = parcelHelpers.interopDefault(_tooltip);
 
-},{"./Accordion":false,"./AccordionContext":false,"./AccordionCollapse":false,"./AccordionButton":false,"./AccordionBody":false,"./AccordionHeader":false,"./AccordionItem":false,"./Alert":false,"./AlertHeading":false,"./AlertLink":false,"./Anchor":false,"./Badge":false,"./Breadcrumb":false,"./BreadcrumbItem":false,"./Button":"aPzUt","./ButtonGroup":false,"./ButtonToolbar":false,"./Card":false,"./CardBody":false,"./CardFooter":false,"./CardGroup":false,"./CardHeader":false,"./CardImg":false,"./CardImgOverlay":false,"./CardLink":false,"./CardSubtitle":false,"./CardText":false,"./CardTitle":false,"./Carousel":false,"./CarouselCaption":false,"./CarouselItem":false,"./CloseButton":false,"./Col":false,"./Collapse":false,"./Container":false,"./Dropdown":false,"./DropdownButton":false,"./DropdownDivider":false,"./DropdownHeader":false,"./DropdownItem":false,"./DropdownItemText":false,"./DropdownMenu":false,"./DropdownToggle":false,"./Fade":false,"./Figure":false,"./FigureCaption":false,"./FigureImage":false,"./Form":false,"./FormControl":false,"./FormCheck":false,"./FormFloating":false,"./FloatingLabel":false,"./FormGroup":false,"./FormLabel":false,"./FormText":false,"./FormSelect":false,"./Image":false,"./InputGroup":false,"./ListGroup":false,"./ListGroupItem":false,"./Modal":false,"./ModalBody":"e0aNG","./ModalDialog":false,"./ModalFooter":false,"./ModalHeader":false,"./ModalTitle":false,"./Nav":false,"./Navbar":false,"./NavbarBrand":false,"./NavbarCollapse":false,"./NavbarOffcanvas":false,"./NavbarText":false,"./NavbarToggle":false,"./NavDropdown":false,"./NavItem":false,"./NavLink":false,"./Offcanvas":false,"./OffcanvasBody":false,"./OffcanvasHeader":false,"./OffcanvasTitle":false,"./OffcanvasToggling":false,"./Overlay":false,"./OverlayTrigger":false,"./PageItem":false,"./Pagination":false,"./Placeholder":false,"./PlaceholderButton":false,"./Popover":false,"./PopoverBody":false,"./PopoverHeader":false,"./ProgressBar":false,"./Ratio":false,"./Row":false,"./Spinner":false,"./SplitButton":false,"./SSRProvider":false,"./Stack":false,"./Tab":false,"./TabContainer":false,"./TabContent":false,"./Table":false,"./TabPane":false,"./Tabs":false,"./ThemeProvider":false,"./Toast":false,"./ToastBody":false,"./ToastContainer":false,"./ToastHeader":false,"./ToggleButton":false,"./ToggleButtonGroup":false,"./Tooltip":false,"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1TYKP":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$a869 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+},{"./Accordion":false,"./AccordionContext":false,"./AccordionCollapse":false,"./AccordionButton":false,"./AccordionBody":false,"./AccordionHeader":false,"./AccordionItem":false,"./Alert":false,"./AlertHeading":false,"./AlertLink":false,"./Anchor":false,"./Badge":false,"./Breadcrumb":false,"./BreadcrumbItem":false,"./Button":"aPzUt","./ButtonGroup":false,"./ButtonToolbar":false,"./Card":false,"./CardBody":false,"./CardFooter":false,"./CardGroup":false,"./CardHeader":false,"./CardImg":false,"./CardImgOverlay":false,"./CardLink":false,"./CardSubtitle":false,"./CardText":false,"./CardTitle":false,"./Carousel":false,"./CarouselCaption":false,"./CarouselItem":false,"./CloseButton":false,"./Col":false,"./Collapse":false,"./Container":false,"./Dropdown":false,"./DropdownButton":false,"./DropdownDivider":false,"./DropdownHeader":false,"./DropdownItem":false,"./DropdownItemText":false,"./DropdownMenu":false,"./DropdownToggle":false,"./Fade":false,"./Figure":false,"./FigureCaption":false,"./FigureImage":false,"./Form":false,"./FormControl":false,"./FormCheck":false,"./FormFloating":false,"./FloatingLabel":false,"./FormGroup":false,"./FormLabel":false,"./FormText":false,"./FormSelect":false,"./Image":false,"./InputGroup":false,"./ListGroup":false,"./ListGroupItem":false,"./Modal":false,"./ModalBody":"e0aNG","./ModalDialog":false,"./ModalFooter":false,"./ModalHeader":false,"./ModalTitle":false,"./Nav":false,"./Navbar":false,"./NavbarBrand":false,"./NavbarCollapse":false,"./NavbarOffcanvas":false,"./NavbarText":false,"./NavbarToggle":false,"./NavDropdown":false,"./NavItem":false,"./NavLink":false,"./Offcanvas":false,"./OffcanvasBody":false,"./OffcanvasHeader":false,"./OffcanvasTitle":false,"./OffcanvasToggling":false,"./Overlay":false,"./OverlayTrigger":false,"./PageItem":false,"./Pagination":false,"./Placeholder":false,"./PlaceholderButton":false,"./Popover":false,"./PopoverBody":false,"./PopoverHeader":false,"./ProgressBar":false,"./Ratio":false,"./Row":false,"./Spinner":false,"./SplitButton":false,"./SSRProvider":false,"./Stack":false,"./Tab":false,"./TabContainer":false,"./TabContent":false,"./Table":false,"./TabPane":false,"./Tabs":false,"./ThemeProvider":false,"./Toast":false,"./ToastBody":false,"./ToastContainer":false,"./ToastHeader":false,"./ToggleButton":false,"./ToggleButtonGroup":false,"./Tooltip":false,"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"l7RjO":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$a3a7 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$a869.prelude(module);
+$parcel$ReactRefreshHelpers$a3a7.prelude(module);
 
 try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -40427,7 +40440,7 @@ function SetTags({ dataRow, handleSchoolSelect }) {
                     dataRow[2]
                 ]
             }, void 0, true, {
-                fileName: "src/components/SetTags.js",
+                fileName: "src/components/Scheduling/SetTags.js",
                 lineNumber: 33,
                 columnNumber: 6
             }, this),
@@ -40438,7 +40451,7 @@ function SetTags({ dataRow, handleSchoolSelect }) {
                     label: tag[1],
                     value: tag[1]
                 }, idx, false, {
-                    fileName: "src/components/SetTags.js",
+                    fileName: "src/components/Scheduling/SetTags.js",
                     lineNumber: 36,
                     columnNumber: 16
                 }, this);
@@ -40448,13 +40461,13 @@ function SetTags({ dataRow, handleSchoolSelect }) {
                 onClick: handleSchoolSelect,
                 children: "Next"
             }, void 0, false, {
-                fileName: "src/components/SetTags.js",
+                fileName: "src/components/Scheduling/SetTags.js",
                 lineNumber: 45,
                 columnNumber: 23
             }, this) : ""
         ]
     }, void 0, true, {
-        fileName: "src/components/SetTags.js",
+        fileName: "src/components/Scheduling/SetTags.js",
         lineNumber: 32,
         columnNumber: 6
     }, this);
@@ -40465,16 +40478,16 @@ exports.default = SetTags;
 var _c;
 $RefreshReg$(_c, "SetTags");
 
-  $parcel$ReactRefreshHelpers$a869.postlude(module);
+  $parcel$ReactRefreshHelpers$a3a7.postlude(module);
 } finally {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react-bootstrap/Form":"iBZ80","react":"21dqq","react-bootstrap":"3AD9A","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"iYSng":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$9f25 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+},{"react/jsx-dev-runtime":"iTorj","react-bootstrap/Form":"iBZ80","react":"21dqq","react-bootstrap":"3AD9A","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"hSzVK":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$d173 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$9f25.prelude(module);
+$parcel$ReactRefreshHelpers$d173.prelude(module);
 
 try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -40484,14 +40497,15 @@ var _form = require("react-bootstrap/Form");
 var _formDefault = parcelHelpers.interopDefault(_form);
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
-const BoundarySchool = ()=>{
+var _reactBootstrap = require("react-bootstrap");
+const BoundarySchool = ({ handleDtSelect })=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Group, {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Label, {
                 children: "BoundarySchool"
             }, void 0, false, {
-                fileName: "src/components/BoundarySchool.js",
-                lineNumber: 7,
+                fileName: "src/components/Scheduling/BoundarySchool.js",
+                lineNumber: 8,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("iframe", {
@@ -40499,14 +40513,23 @@ const BoundarySchool = ()=>{
                 width: 1000,
                 height: 500
             }, void 0, false, {
-                fileName: "src/components/BoundarySchool.js",
-                lineNumber: 8,
+                fileName: "src/components/Scheduling/BoundarySchool.js",
+                lineNumber: 9,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
+                variant: "primary",
+                onClick: handleDtSelect,
+                children: "Next"
+            }, void 0, false, {
+                fileName: "src/components/Scheduling/BoundarySchool.js",
+                lineNumber: 10,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
-        fileName: "src/components/BoundarySchool.js",
-        lineNumber: 6,
+        fileName: "src/components/Scheduling/BoundarySchool.js",
+        lineNumber: 7,
         columnNumber: 6
     }, undefined);
 };
@@ -40515,7 +40538,66 @@ exports.default = BoundarySchool;
 var _c;
 $RefreshReg$(_c, "BoundarySchool");
 
-  $parcel$ReactRefreshHelpers$9f25.postlude(module);
+  $parcel$ReactRefreshHelpers$d173.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react-bootstrap/Form":"iBZ80","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react-bootstrap":"3AD9A"}],"Kz3JN":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$c24b = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$c24b.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _form = require("react-bootstrap/Form");
+var _formDefault = parcelHelpers.interopDefault(_form);
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+const Appointment = ()=>{
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Group, {
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Label, {
+                children: "Appointment"
+            }, void 0, false, {
+                fileName: "src/components/Scheduling/Appointment.js",
+                lineNumber: 7,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                type: "date",
+                id: "apt-date",
+                name: "date"
+            }, void 0, false, {
+                fileName: "src/components/Scheduling/Appointment.js",
+                lineNumber: 8,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                type: "time",
+                id: "apt-time",
+                name: "time"
+            }, void 0, false, {
+                fileName: "src/components/Scheduling/Appointment.js",
+                lineNumber: 9,
+                columnNumber: 7
+            }, undefined)
+        ]
+    }, void 0, true, {
+        fileName: "src/components/Scheduling/Appointment.js",
+        lineNumber: 6,
+        columnNumber: 6
+    }, undefined);
+};
+_c = Appointment;
+exports.default = Appointment;
+var _c;
+$RefreshReg$(_c, "Appointment");
+
+  $parcel$ReactRefreshHelpers$c24b.postlude(module);
 } finally {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
