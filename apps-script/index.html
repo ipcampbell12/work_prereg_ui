@@ -34050,7 +34050,7 @@ $RefreshReg$(_c, "Tabs");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./DataDisplay":"gunHM","./PreRegModal":"iwIZV","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./Scheduling/SchedulingForm":"lLPPX"}],"gunHM":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./DataDisplay":"gunHM","./PreRegModal":"iwIZV","./Scheduling/SchedulingForm":"lLPPX","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"gunHM":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$78ba = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -39861,6 +39861,8 @@ var _boundarySchool = require("./BoundarySchool");
 var _boundarySchoolDefault = parcelHelpers.interopDefault(_boundarySchool);
 var _appointment = require("./Appointment");
 var _appointmentDefault = parcelHelpers.interopDefault(_appointment);
+var _headerComponent = require("./HeaderComponent");
+var _headerComponentDefault = parcelHelpers.interopDefault(_headerComponent);
 var _s = $RefreshSig$();
 function SchedulingForm({ dataRow, turnOffScheduling, scheduling }) {
     _s();
@@ -39906,37 +39908,12 @@ function SchedulingForm({ dataRow, turnOffScheduling, scheduling }) {
         onHide: turnOffScheduling,
         fullscreen: true,
         children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _modalDefault.default).Header, {
-                children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
-                        children: "Scheduling Form"
-                    }, void 0, false, {
-                        fileName: "src/components/Scheduling/SchedulingForm.js",
-                        lineNumber: 64,
-                        columnNumber: 7
-                    }, this),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
-                        fileName: "src/components/Scheduling/SchedulingForm.js",
-                        lineNumber: 65,
-                        columnNumber: 7
-                    }, this),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h5", {
-                        children: [
-                            "Schedule Appointment for: ",
-                            dataRow[1],
-                            " ",
-                            dataRow[2]
-                        ]
-                    }, void 0, true, {
-                        fileName: "src/components/Scheduling/SchedulingForm.js",
-                        lineNumber: 66,
-                        columnNumber: 7
-                    }, this)
-                ]
-            }, void 0, true, {
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _headerComponentDefault.default), {
+                dataRow: dataRow
+            }, void 0, false, {
                 fileName: "src/components/Scheduling/SchedulingForm.js",
-                lineNumber: 63,
-                columnNumber: 6
+                lineNumber: 64,
+                columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.ModalBody), {
                 children: [
@@ -39944,8 +39921,8 @@ function SchedulingForm({ dataRow, turnOffScheduling, scheduling }) {
                         children: "This is where the scheduling happens"
                     }, void 0, false, {
                         fileName: "src/components/Scheduling/SchedulingForm.js",
-                        lineNumber: 70,
-                        columnNumber: 7
+                        lineNumber: 66,
+                        columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Group, {
                         children: [
@@ -39960,8 +39937,13 @@ function SchedulingForm({ dataRow, turnOffScheduling, scheduling }) {
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/Scheduling/SchedulingForm.js",
-                                lineNumber: 72,
-                                columnNumber: 21
+                                lineNumber: 68,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
+                                fileName: "src/components/Scheduling/SchedulingForm.js",
+                                lineNumber: 69,
+                                columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Select, {
                                 onChange: (e)=>handleInputChange(10, e.target.value),
@@ -39970,8 +39952,8 @@ function SchedulingForm({ dataRow, turnOffScheduling, scheduling }) {
                                         children: "Select a langauge"
                                     }, void 0, false, {
                                         fileName: "src/components/Scheduling/SchedulingForm.js",
-                                        lineNumber: 74,
-                                        columnNumber: 25
+                                        lineNumber: 71,
+                                        columnNumber: 13
                                     }, this),
                                     languages.map((school, idx)=>{
                                         return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -39979,15 +39961,20 @@ function SchedulingForm({ dataRow, turnOffScheduling, scheduling }) {
                                             children: school
                                         }, idx, false, {
                                             fileName: "src/components/Scheduling/SchedulingForm.js",
-                                            lineNumber: 77,
-                                            columnNumber: 33
+                                            lineNumber: 74,
+                                            columnNumber: 17
                                         }, this);
                                     })
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/Scheduling/SchedulingForm.js",
-                                lineNumber: 73,
-                                columnNumber: 21
+                                lineNumber: 70,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
+                                fileName: "src/components/Scheduling/SchedulingForm.js",
+                                lineNumber: 78,
+                                columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonDefault.default), {
                                 variant: "primary",
@@ -39995,39 +39982,49 @@ function SchedulingForm({ dataRow, turnOffScheduling, scheduling }) {
                                 children: "Next"
                             }, void 0, false, {
                                 fileName: "src/components/Scheduling/SchedulingForm.js",
-                                lineNumber: 81,
-                                columnNumber: 21
+                                lineNumber: 79,
+                                columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/Scheduling/SchedulingForm.js",
-                        lineNumber: 71,
-                        columnNumber: 15
+                        lineNumber: 67,
+                        columnNumber: 9
                     }, this),
                     tagSelect ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _setTagsDefault.default), {
                         dataRow: dataRow,
                         handleSchoolSelect: handleSchoolSelect
                     }, void 0, false, {
                         fileName: "src/components/Scheduling/SchedulingForm.js",
-                        lineNumber: 84,
-                        columnNumber: 19
+                        lineNumber: 82,
+                        columnNumber: 22
                     }, this) : "",
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
+                        fileName: "src/components/Scheduling/SchedulingForm.js",
+                        lineNumber: 83,
+                        columnNumber: 9
+                    }, this),
                     schoolSelect ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _boundarySchoolDefault.default), {
                         handleDtSelect: handleDtSelect
                     }, void 0, false, {
                         fileName: "src/components/Scheduling/SchedulingForm.js",
-                        lineNumber: 85,
-                        columnNumber: 21
+                        lineNumber: 84,
+                        columnNumber: 25
                     }, this) : "",
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
+                        fileName: "src/components/Scheduling/SchedulingForm.js",
+                        lineNumber: 85,
+                        columnNumber: 9
+                    }, this),
                     dtSelect ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _appointmentDefault.default), {}, void 0, false, {
                         fileName: "src/components/Scheduling/SchedulingForm.js",
                         lineNumber: 86,
-                        columnNumber: 17
+                        columnNumber: 21
                     }, this) : ""
                 ]
             }, void 0, true, {
                 fileName: "src/components/Scheduling/SchedulingForm.js",
-                lineNumber: 69,
+                lineNumber: 65,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonDefault.default), {
@@ -40042,11 +40039,11 @@ function SchedulingForm({ dataRow, turnOffScheduling, scheduling }) {
         ]
     }, void 0, true, {
         fileName: "src/components/Scheduling/SchedulingForm.js",
-        lineNumber: 62,
+        lineNumber: 63,
         columnNumber: 5
     }, this);
 }
-_s(SchedulingForm, "YegXRt0HcOnxvTJw+WUN1PbC5no=");
+_s(SchedulingForm, "3z/8srJfC1LaUlrcFwr4sAeGWlI=");
 _c = SchedulingForm;
 exports.default = SchedulingForm;
 var _c;
@@ -40057,7 +40054,7 @@ $RefreshReg$(_c, "SchedulingForm");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-bootstrap":"3AD9A","react-bootstrap/Form":"iBZ80","react-bootstrap/Button":"aPzUt","react-bootstrap/Modal":"aNVmp","./SetTags":"l7RjO","./BoundarySchool":"hSzVK","./Appointment":"Kz3JN","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"3AD9A":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-bootstrap":"3AD9A","react-bootstrap/Form":"iBZ80","react-bootstrap/Button":"aPzUt","react-bootstrap/Modal":"aNVmp","./SetTags":"l7RjO","./BoundarySchool":"hSzVK","./Appointment":"Kz3JN","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./HeaderComponent":"7GkL4"}],"3AD9A":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "Accordion", ()=>(0, _accordionDefault.default));
@@ -40543,7 +40540,7 @@ $RefreshReg$(_c, "BoundarySchool");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react-bootstrap/Form":"iBZ80","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react-bootstrap":"3AD9A"}],"Kz3JN":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react-bootstrap/Form":"iBZ80","react":"21dqq","react-bootstrap":"3AD9A","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"Kz3JN":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$c24b = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -40564,7 +40561,7 @@ const Appointment = ()=>{
                 children: "Appointment"
             }, void 0, false, {
                 fileName: "src/components/Scheduling/Appointment.js",
-                lineNumber: 7,
+                lineNumber: 8,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
@@ -40573,7 +40570,7 @@ const Appointment = ()=>{
                 name: "date"
             }, void 0, false, {
                 fileName: "src/components/Scheduling/Appointment.js",
-                lineNumber: 8,
+                lineNumber: 9,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
@@ -40582,14 +40579,14 @@ const Appointment = ()=>{
                 name: "time"
             }, void 0, false, {
                 fileName: "src/components/Scheduling/Appointment.js",
-                lineNumber: 9,
+                lineNumber: 10,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/Scheduling/Appointment.js",
-        lineNumber: 6,
-        columnNumber: 6
+        lineNumber: 7,
+        columnNumber: 5
     }, undefined);
 };
 _c = Appointment;
@@ -40602,7 +40599,71 @@ $RefreshReg$(_c, "Appointment");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react-bootstrap/Form":"iBZ80","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}]},["35mlO","1xC6H","d7jqD"], "d7jqD", "parcelRequiree552")
+},{"react/jsx-dev-runtime":"iTorj","react-bootstrap/Form":"iBZ80","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"7GkL4":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$ada7 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$ada7.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _modal = require("react-bootstrap/Modal");
+var _modalDefault = parcelHelpers.interopDefault(_modal);
+function HeaderComponent({ dataRow }) {
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactDefault.default).Fragment, {
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _modalDefault.default).Header, {
+            children: [
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
+                    children: "Scheduling Form"
+                }, void 0, false, {
+                    fileName: "src/components/Scheduling/HeaderComponent.js",
+                    lineNumber: 8,
+                    columnNumber: 17
+                }, this),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
+                    fileName: "src/components/Scheduling/HeaderComponent.js",
+                    lineNumber: 9,
+                    columnNumber: 17
+                }, this),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h5", {
+                    children: [
+                        "Schedule Appointment for: ",
+                        dataRow[1],
+                        " ",
+                        dataRow[2]
+                    ]
+                }, void 0, true, {
+                    fileName: "src/components/Scheduling/HeaderComponent.js",
+                    lineNumber: 10,
+                    columnNumber: 17
+                }, this)
+            ]
+        }, void 0, true, {
+            fileName: "src/components/Scheduling/HeaderComponent.js",
+            lineNumber: 7,
+            columnNumber: 13
+        }, this)
+    }, void 0, false, {
+        fileName: "src/components/Scheduling/HeaderComponent.js",
+        lineNumber: 6,
+        columnNumber: 9
+    }, this);
+}
+_c = HeaderComponent;
+exports.default = HeaderComponent;
+var _c;
+$RefreshReg$(_c, "HeaderComponent");
+
+  $parcel$ReactRefreshHelpers$ada7.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-bootstrap/Modal":"aNVmp","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}]},["35mlO","1xC6H","d7jqD"], "d7jqD", "parcelRequiree552")
 
 </script>
     <script src="https://cdn.jsdelivr.net/npm/react/umd/react.production.min.js" crossorigin=""></script>
