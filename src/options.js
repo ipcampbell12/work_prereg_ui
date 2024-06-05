@@ -21,3 +21,30 @@ export const schoolNames = [
     "Springfield Elementary School",
     "Sunnydale High School"
 ];
+
+export const languages = [
+    "English",
+    "Spanish",
+    "Mam",
+    "Chuj",
+    "Russian",
+    "Ukranian",
+    "Popti",
+    "Mixteco",
+    "Q'anjob'al",
+    "Arabic"
+];
+
+
+export const tags = [
+    "504 Plan",
+    "Special Ed",
+    "Transition Meeting",
+    "Needs ELPA Screener",
+    "Out of State EL",
+    "In State EL",
+    "Overflow",
+    "Health concern",
+    "Gaps in schooling",
+    "Dual language assessment required"
+];

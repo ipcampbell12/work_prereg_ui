@@ -3,9 +3,9 @@ import Button from 'react-bootstrap/Button';
 
 function ButtonComponent({ toggleCurrent, toggleNext, togglePrevious }) {
     return (
-        <div>
-            <Button variant="danger" onClick={() => { toggleCurrent(false); togglePrevious(true) }}>Previous</Button>
-            <Button variant="primary" onClick={() => { toggleCurrent(false); toggleNext(true) }}>Next</Button>
+        <div className='center-element'>
+            <Button variant="danger" className="mx-1 my-1 center-element" onClick={() => { toggleCurrent(false); togglePrevious(true) }}>Previous</Button>
+            <Button variant="primary" className="mx-1 my-1 center-element" onClick={() => { toggleCurrent(false); toggleNext(true) }}>Next</Button>
         </div>
     );
 }

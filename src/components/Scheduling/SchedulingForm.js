@@ -39,13 +39,13 @@ function SchedulingForm({ dataRow, turnOffScheduling, scheduling }) {
       <ModalBody>
         {intro ?
           <div>
-            <h5 >Follow these prompts to sechedule an appointment for {`${dataRow[1]} ${dataRow[2]}`}</h5>
+            <h5 className='center-element'>Follow these prompts to sechedule an appointment for {`${dataRow[1]} ${dataRow[2]}`}</h5>
             <ButtonComponent toggleCurrent={setIntro} toggleNext={setLanguageSelect} togglePrevious={turnOffScheduling} />
           </div>
           : ''}
 
         <br />
-        {languageSelect ? <LanguageSelect dataRow={dataRow} toggleCurrent={setLanguageSelect} toggleNext={setTagSelect} togglePrevious={setIntro} languages={languages} /> : ''}
+        {languageSelect ? <LanguageSelect dataRow={dataRow} toggleCurrent={setLanguageSelect} toggleNext={setTagSelect} togglePrevious={setIntro} /> : ''}
         <br />
         {tagSelect ? <SetTags dataRow={dataRow} toggleCurrent={setTagSelect} toggleNext={setSchoolSelect} togglePrevious={setLanguageSelect} /> : ''}
         <br />

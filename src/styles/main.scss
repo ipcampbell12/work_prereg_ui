@@ -1,0 +1,23 @@
+.center-element {
+    text-align: center;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.map-container {
+    position: relative;
+    height: 600px;
+    border: 2px solid #006100;
+}
+
+.vertically-centered-element {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    text-align: center;
+    transform: translateY(-50%);
+}
