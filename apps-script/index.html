@@ -11,24 +11,34 @@
   text-align: center;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+.map-container {
+  flex-direction: column;
+  align-items: center;
+  display: flex;
 }
 
-.map-container {
-  border: 2px solid #006100;
-  height: 600px;
-  position: relative;
+.iframe-container {
+  justify-content: center;
+  width: 100%;
+  display: flex;
+}
+
+.iframe-element {
+  border: 0;
+  width: 100%;
+  max-width: 100%;
+  height: 400px;
+}
+
+.center-element {
+  text-align: center;
+  margin: auto;
 }
 
 .vertically-centered-element {
-  text-align: center;
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  justify-content: center;
+  align-items: center;
+  display: flex;
 }
 
 
@@ -40037,10 +40047,19 @@ function SchedulingForm({ dataRow, turnOffScheduling, scheduling }) {
                 lineNumber: 39,
                 columnNumber: 7
             }, this),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonDefault.default), {
-                variant: "warning",
-                onClick: turnOffScheduling,
-                children: "Close"
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "center-element",
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonDefault.default), {
+                    className: "mx-1 my-1 center-element",
+                    variant: "danger",
+                    width: "75px",
+                    onClick: turnOffScheduling,
+                    children: "Close"
+                }, void 0, false, {
+                    fileName: "src/components/Scheduling/SchedulingForm.js",
+                    lineNumber: 58,
+                    columnNumber: 9
+                }, this)
             }, void 0, false, {
                 fileName: "src/components/Scheduling/SchedulingForm.js",
                 lineNumber: 57,
@@ -40496,6 +40515,7 @@ function SetTags({ dataRow, toggleCurrent, toggleNext, togglePrevious }) {
                     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Check, {
                         type: "switch",
                         id: "custom-switch",
+                        className: "d-flex flex-nowrap",
                         label: tag,
                         value: tag
                     }, idx, false, {
@@ -40515,7 +40535,7 @@ function SetTags({ dataRow, toggleCurrent, toggleNext, togglePrevious }) {
                 togglePrevious: togglePrevious
             }, void 0, false, {
                 fileName: "src/components/Scheduling/SetTags.js",
-                lineNumber: 25,
+                lineNumber: 26,
                 columnNumber: 26
             }, this) : ""
         ]
@@ -40612,9 +40632,9 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _buttonComponent = require("./ButtonComponent");
 var _buttonComponentDefault = parcelHelpers.interopDefault(_buttonComponent);
-const BoundarySchool = ({ toggleCurrent, toggleNext, togglePrevious })=>{
+const BoundarySchool = ({ toggleCurrent, toggleNext, togglePrevious, handleInputChange })=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Group, {
-        className: "center-element map-container",
+        className: "center-element map-container align-baseline",
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Label, {
                 className: "mx-1 center-element",
@@ -40626,9 +40646,8 @@ const BoundarySchool = ({ toggleCurrent, toggleNext, togglePrevious })=>{
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("iframe", {
                 src: "https://app.guidek12.com/woodburnor/school_search/current/",
-                width: 400,
                 height: 400,
-                className: "vertically-centered-element"
+                className: "iframe-element"
             }, void 0, false, {
                 fileName: "src/components/Scheduling/SchoolSelect.js",
                 lineNumber: 9,
@@ -40639,13 +40658,44 @@ const BoundarySchool = ({ toggleCurrent, toggleNext, togglePrevious })=>{
                 lineNumber: 10,
                 columnNumber: 7
             }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "center-element",
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Label, {
+                        className: "small p-0 text-muted mx-1 my-1",
+                        children: "Copy and paste boundary school here:"
+                    }, void 0, false, {
+                        fileName: "src/components/Scheduling/SchoolSelect.js",
+                        lineNumber: 12,
+                        columnNumber: 9
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Control, {
+                        type: "text",
+                        placeholder: "Boundary School",
+                        className: "mx-1 my-1 center-element"
+                    }, void 0, false, {
+                        fileName: "src/components/Scheduling/SchoolSelect.js",
+                        lineNumber: 13,
+                        columnNumber: 9
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/Scheduling/SchoolSelect.js",
+                lineNumber: 11,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
+                fileName: "src/components/Scheduling/SchoolSelect.js",
+                lineNumber: 15,
+                columnNumber: 7
+            }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonComponentDefault.default), {
                 toggleCurrent: toggleCurrent,
                 toggleNext: toggleNext,
                 togglePrevious: togglePrevious
             }, void 0, false, {
                 fileName: "src/components/Scheduling/SchoolSelect.js",
-                lineNumber: 11,
+                lineNumber: 16,
                 columnNumber: 7
             }, undefined)
         ]
@@ -40683,32 +40733,47 @@ var _buttonComponent = require("./ButtonComponent");
 var _buttonComponentDefault = parcelHelpers.interopDefault(_buttonComponent);
 const DtSelect = ({ toggleCurrent, toggleNext, togglePrevious })=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Group, {
+        className: "mx-3 my-3 center-element align-baseline",
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Label, {
-                children: "Appointment"
+                className: "mx-3 my-3 center-element",
+                children: "Select a date and time for the appointment:"
             }, void 0, false, {
                 fileName: "src/components/Scheduling/DtSelect.js",
                 lineNumber: 9,
                 columnNumber: 7
             }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                className: "mx-1",
-                type: "date",
-                id: "apt-date",
-                name: "date"
-            }, void 0, false, {
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                        className: "mx-3 my-3 center-element",
+                        type: "date",
+                        id: "apt-date",
+                        name: "date"
+                    }, void 0, false, {
+                        fileName: "src/components/Scheduling/DtSelect.js",
+                        lineNumber: 11,
+                        columnNumber: 9
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
+                        fileName: "src/components/Scheduling/DtSelect.js",
+                        lineNumber: 12,
+                        columnNumber: 9
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                        className: "mx-3 my-3 center-element",
+                        type: "time",
+                        id: "apt-time",
+                        name: "time"
+                    }, void 0, false, {
+                        fileName: "src/components/Scheduling/DtSelect.js",
+                        lineNumber: 13,
+                        columnNumber: 9
+                    }, undefined)
+                ]
+            }, void 0, true, {
                 fileName: "src/components/Scheduling/DtSelect.js",
                 lineNumber: 10,
-                columnNumber: 7
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                className: "mx-1",
-                type: "time",
-                id: "apt-time",
-                name: "time"
-            }, void 0, false, {
-                fileName: "src/components/Scheduling/DtSelect.js",
-                lineNumber: 11,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonComponentDefault.default), {
@@ -40717,7 +40782,7 @@ const DtSelect = ({ toggleCurrent, toggleNext, togglePrevious })=>{
                 togglePrevious: togglePrevious
             }, void 0, false, {
                 fileName: "src/components/Scheduling/DtSelect.js",
-                lineNumber: 12,
+                lineNumber: 15,
                 columnNumber: 7
             }, undefined)
         ]

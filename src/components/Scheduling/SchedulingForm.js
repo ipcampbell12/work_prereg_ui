@@ -54,7 +54,9 @@ function SchedulingForm({ dataRow, turnOffScheduling, scheduling }) {
         {dtSelect ? <DtSelect toggleCurrent={setDtSelect} togglePrevious={setSchoolSelect} /> : ''}
 
       </ModalBody>
-      <Button variant="warning" onClick={turnOffScheduling}>Close</Button>
+      <div className='center-element'>
+        <Button className="mx-1 my-1 center-element" variant="danger" width="75px" onClick={turnOffScheduling}>Close</Button>
+      </div>
     </Modal>
   )
 }

@@ -15,6 +15,7 @@ function SetTags({ dataRow, toggleCurrent, toggleNext, togglePrevious }) {
             <Form.Check
               type="switch"
               id="custom-switch"
+              className="d-flex flex-nowrap"
               key={idx}
               label={tag}
               value={tag}
