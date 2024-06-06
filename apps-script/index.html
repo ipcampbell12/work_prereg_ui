@@ -40494,7 +40494,16 @@ var _reactDefault = parcelHelpers.interopDefault(_react);
 var _options = require("../../options");
 var _buttonComponent = require("./ButtonComponent");
 var _buttonComponentDefault = parcelHelpers.interopDefault(_buttonComponent);
+var _container = require("react-bootstrap/Container");
+var _containerDefault = parcelHelpers.interopDefault(_container);
+var _row = require("react-bootstrap/Row");
+var _rowDefault = parcelHelpers.interopDefault(_row);
+var _col = require("react-bootstrap/Col");
+var _colDefault = parcelHelpers.interopDefault(_col);
 function SetTags({ dataRow, toggleCurrent, toggleNext, togglePrevious }) {
+    // Assuming tags always has at least 10 elements
+    const firstColumnTags = (0, _options.tags).slice(0, 5);
+    const secondColumnTags = (0, _options.tags).slice(5, 10);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Group, {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Label, {
@@ -40507,41 +40516,77 @@ function SetTags({ dataRow, toggleCurrent, toggleNext, togglePrevious }) {
                 ]
             }, void 0, true, {
                 fileName: "src/components/Scheduling/SetTags.js",
-                lineNumber: 11,
+                lineNumber: 16,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                children: (0, _options.tags).map((tag, idx)=>{
-                    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Check, {
-                        type: "switch",
-                        id: "custom-switch",
-                        className: "d-flex flex-nowrap",
-                        label: tag,
-                        value: tag
-                    }, idx, false, {
+                className: "mx-1 my-1",
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _containerDefault.default), {
+                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _rowDefault.default), {
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _colDefault.default), {
+                                children: firstColumnTags.map((tag, idx)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Check, {
+                                        type: "switch",
+                                        id: `custom-switch-${idx}`,
+                                        className: "d-flex flex-nowrap",
+                                        label: tag,
+                                        value: tag
+                                    }, idx, false, {
+                                        fileName: "src/components/Scheduling/SetTags.js",
+                                        lineNumber: 24,
+                                        columnNumber: 17
+                                    }, this))
+                            }, void 0, false, {
+                                fileName: "src/components/Scheduling/SetTags.js",
+                                lineNumber: 22,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _colDefault.default), {
+                                children: secondColumnTags.map((tag, idx)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Check, {
+                                        type: "switch",
+                                        id: `custom-switch-${idx + 5}`,
+                                        className: "d-flex flex-nowrap",
+                                        label: tag,
+                                        value: tag
+                                    }, idx + 5, false, {
+                                        fileName: "src/components/Scheduling/SetTags.js",
+                                        lineNumber: 36,
+                                        columnNumber: 17
+                                    }, this))
+                            }, void 0, false, {
+                                fileName: "src/components/Scheduling/SetTags.js",
+                                lineNumber: 34,
+                                columnNumber: 13
+                            }, this)
+                        ]
+                    }, void 0, true, {
                         fileName: "src/components/Scheduling/SetTags.js",
-                        lineNumber: 15,
-                        columnNumber: 13
-                    }, this);
-                })
+                        lineNumber: 21,
+                        columnNumber: 11
+                    }, this)
+                }, void 0, false, {
+                    fileName: "src/components/Scheduling/SetTags.js",
+                    lineNumber: 20,
+                    columnNumber: 9
+                }, this)
             }, void 0, false, {
                 fileName: "src/components/Scheduling/SetTags.js",
-                lineNumber: 12,
+                lineNumber: 19,
                 columnNumber: 7
             }, this),
-            (0, _options.tags).length > 0 ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonComponentDefault.default), {
+            (0, _options.tags).length > 0 && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonComponentDefault.default), {
                 toggleCurrent: toggleCurrent,
                 toggleNext: toggleNext,
                 togglePrevious: togglePrevious
             }, void 0, false, {
                 fileName: "src/components/Scheduling/SetTags.js",
-                lineNumber: 26,
-                columnNumber: 26
-            }, this) : ""
+                lineNumber: 50,
+                columnNumber: 9
+            }, this)
         ]
     }, void 0, true, {
         fileName: "src/components/Scheduling/SetTags.js",
-        lineNumber: 10,
+        lineNumber: 15,
         columnNumber: 5
     }, this);
 }
@@ -40555,7 +40600,7 @@ $RefreshReg$(_c, "SetTags");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react-bootstrap/Form":"iBZ80","react":"21dqq","../../options":"lNd80","./ButtonComponent":"leKcM","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"leKcM":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react-bootstrap/Form":"iBZ80","react":"21dqq","../../options":"lNd80","./ButtonComponent":"leKcM","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react-bootstrap/Container":"hEdsw","react-bootstrap/Row":"cMC39","react-bootstrap/Col":"2L2I6"}],"leKcM":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$8477 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
