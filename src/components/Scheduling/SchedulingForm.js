@@ -11,9 +11,9 @@ import { clientSideGetData } from '../../apiCalls';
 import ButtonComponent from './ButtonComponent';
 
 
-function SchedulingForm({ dataRow, turnOffScheduling, scheduling }) {
+function SchedulingForm({ siblings, turnOffScheduling, scheduling }) {
 
-  const [languages, setLanguages] = useState([])
+
   const [arrToSave, setArrToSave] = useState('')
 
   //view states
@@ -35,19 +35,19 @@ function SchedulingForm({ dataRow, turnOffScheduling, scheduling }) {
 
   return (
     <Modal show={scheduling} onHide={turnOffScheduling} size='lg'>
-      <HeaderComponent dataRow={dataRow} />
+      <HeaderComponent siblings={siblings} />
       <ModalBody>
         {intro ?
           <div>
-            <h5 className='center-element'>Follow these prompts to sechedule an appointment for {`${dataRow[1]} ${dataRow[2]}`}</h5>
+            <h5 className='center-element'>Follow these prompts to sechedule an appointment for {siblings.map((row) => { `${row[2]},${row[1]}` })}</h5>
             <ButtonComponent toggleCurrent={setIntro} toggleNext={setLanguageSelect} togglePrevious={turnOffScheduling} />
           </div>
           : ''}
 
         <br />
-        {languageSelect ? <LanguageSelect dataRow={dataRow} toggleCurrent={setLanguageSelect} toggleNext={setTagSelect} togglePrevious={setIntro} /> : ''}
+        {languageSelect ? <LanguageSelect siblings={siblings} toggleCurrent={setLanguageSelect} toggleNext={setTagSelect} togglePrevious={setIntro} /> : ''}
         <br />
-        {tagSelect ? <SetTags dataRow={dataRow} toggleCurrent={setTagSelect} toggleNext={setSchoolSelect} togglePrevious={setLanguageSelect} /> : ''}
+        {tagSelect ? <SetTags siblings={siblings} toggleCurrent={setTagSelect} toggleNext={setSchoolSelect} togglePrevious={setLanguageSelect} /> : ''}
         <br />
         {schoolSelect ? <BoundarySchool toggleCurrent={setSchoolSelect} toggleNext={setDtSelect} togglePrevious={setTagSelect} /> : ''}
         <br />

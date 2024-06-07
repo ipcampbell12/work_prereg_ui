@@ -8,6 +8,7 @@ function Home() {
     const [dataState, setDataState] = useState([]);
     const [tabState, setTabState] = useState("submitted");
     const [dataRow, setDataRow] = useState(dataState[0])
+    const [siblings, setSiblings] = useState([])
     const [modalOpen, setModalOpen] = useState(false);
 
     const openModal = () => {
@@ -29,7 +30,7 @@ function Home() {
             await google.script.run
                 .withSuccessHandler(displaySheetData)
                 .withFailureHandler(errorHandler)
-                .serverSideGetData("Pre Registrations",2,1,10);
+                .serverSideGetData("Pre Registrations", 2, 1, 10);
 
         } catch (error) {
             console.error("Error fetching data: ", error)
@@ -49,7 +50,7 @@ function Home() {
         <div>
             <h1> Behold The Data</h1>
 
-            <Tabs onTab={handleTabClick} tabState={tabState} getData={clientSideGetData} dataState={dataState} openModal={openModal} setDataRow={setDataRow} modalOpen={modalOpen} closeModal={closeModal} dataRow={dataRow} />
+            <Tabs onTab={handleTabClick} tabState={tabState} getData={clientSideGetData} dataState={dataState} openModal={openModal} setDataRow={setDataRow} modalOpen={modalOpen} closeModal={closeModal} dataRow={dataRow} setSiblings={setSiblings} siblings={siblings} />
 
 
         </div>

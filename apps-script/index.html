@@ -33796,6 +33796,7 @@ function Home() {
     const [dataState, setDataState] = (0, _react.useState)([]);
     const [tabState, setTabState] = (0, _react.useState)("submitted");
     const [dataRow, setDataRow] = (0, _react.useState)(dataState[0]);
+    const [siblings, setSiblings] = (0, _react.useState)([]);
     const [modalOpen, setModalOpen] = (0, _react.useState)(false);
     const openModal = ()=>{
         setModalOpen(true);
@@ -33828,7 +33829,7 @@ function Home() {
                 children: " Behold The Data"
             }, void 0, false, {
                 fileName: "src/components/Home.js",
-                lineNumber: 50,
+                lineNumber: 51,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _tabsDefault.default), {
@@ -33840,20 +33841,22 @@ function Home() {
                 setDataRow: setDataRow,
                 modalOpen: modalOpen,
                 closeModal: closeModal,
-                dataRow: dataRow
+                dataRow: dataRow,
+                setSiblings: setSiblings,
+                siblings: siblings
             }, void 0, false, {
                 fileName: "src/components/Home.js",
-                lineNumber: 52,
+                lineNumber: 53,
                 columnNumber: 13
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/components/Home.js",
-        lineNumber: 49,
+        lineNumber: 50,
         columnNumber: 9
     }, this);
 }
-_s(Home, "3DhcwbCcri8h2m47ul9UmRyfCEk=");
+_s(Home, "HFUiDOriOrnbFqgmVlKF7dEodgE=");
 _c = Home;
 exports.default = Home; // <Tabs getData={clientSideGetData} dataState={dataState} />
 var _c;
@@ -33889,7 +33892,7 @@ const tabNames = [
     "pending",
     "transferred"
 ];
-function Tabs({ onTab, tabState, getData, dataState, openModal, setDataRow, modalOpen, closeModal, dataRow }) {
+function Tabs({ onTab, tabState, getData, dataState, openModal, setDataRow, modalOpen, closeModal, dataRow, setSiblings, siblings }) {
     _s();
     const [scheduling, setScheduling] = (0, _react.useState)(false);
     const turnOnScheduling = ()=>{
@@ -33923,13 +33926,13 @@ function Tabs({ onTab, tabState, getData, dataState, openModal, setDataRow, moda
                 columnNumber: 27
             }, this),
             scheduling && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _schedulingFormDefault.default), {
-                dataRow: dataRow,
+                siblings: siblings,
                 turnOffScheduling: turnOffScheduling,
                 scheduling: scheduling
             }, void 0, false, {
                 fileName: "src/components/Tabs.js",
                 lineNumber: 34,
-                columnNumber: 29
+                columnNumber: 28
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
                 className: "nav nav-tabs",
@@ -33981,7 +33984,8 @@ function Tabs({ onTab, tabState, getData, dataState, openModal, setDataRow, moda
                             getData: getData,
                             tabState: tabState,
                             openModal: openModal,
-                            setDataRow: setDataRow
+                            setDataRow: setDataRow,
+                            setSiblings: setSiblings
                         }, void 0, false, {
                             fileName: "src/components/Tabs.js",
                             lineNumber: 60,
@@ -34003,7 +34007,8 @@ function Tabs({ onTab, tabState, getData, dataState, openModal, setDataRow, moda
                             getData: getData,
                             tabState: tabState,
                             openModal: openModal,
-                            setDataRow: setDataRow
+                            setDataRow: setDataRow,
+                            setSiblings: setSiblings
                         }, void 0, false, {
                             fileName: "src/components/Tabs.js",
                             lineNumber: 63,
@@ -34025,7 +34030,8 @@ function Tabs({ onTab, tabState, getData, dataState, openModal, setDataRow, moda
                             getData: getData,
                             tabState: tabState,
                             openModal: openModal,
-                            setDataRow: setDataRow
+                            setDataRow: setDataRow,
+                            setSiblings: setSiblings
                         }, void 0, false, {
                             fileName: "src/components/Tabs.js",
                             lineNumber: 65,
@@ -34047,7 +34053,8 @@ function Tabs({ onTab, tabState, getData, dataState, openModal, setDataRow, moda
                             getData: getData,
                             tabState: tabState,
                             openModal: openModal,
-                            setDataRow: setDataRow
+                            setDataRow: setDataRow,
+                            setSiblings: setSiblings
                         }, void 0, false, {
                             fileName: "src/components/Tabs.js",
                             lineNumber: 67,
@@ -34096,7 +34103,7 @@ var _react = require("react");
 var _preRegCard = require("./PreRegCard");
 var _preRegCardDefault = parcelHelpers.interopDefault(_preRegCard);
 var _s = $RefreshSig$();
-function DataDisplay({ dataState, getData, tabState, openModal, setDataRow }) {
+function DataDisplay({ dataState, getData, tabState, openModal, setDataRow, setSiblings }) {
     _s();
     (0, _react.useEffect)(()=>{
         //console.log("Use effect hook is running")
@@ -34108,7 +34115,8 @@ function DataDisplay({ dataState, getData, tabState, openModal, setDataRow }) {
                 return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _preRegCardDefault.default), {
                     row: row,
                     openModal: openModal,
-                    setDataRow: setDataRow
+                    setDataRow: setDataRow,
+                    setSiblings: setSiblings
                 }, row[0], false, {
                     fileName: "src/components/DataDisplay.js",
                     lineNumber: 18,
@@ -39925,9 +39933,8 @@ var _apiCalls = require("../../apiCalls");
 var _buttonComponent = require("./ButtonComponent");
 var _buttonComponentDefault = parcelHelpers.interopDefault(_buttonComponent);
 var _s = $RefreshSig$();
-function SchedulingForm({ dataRow, turnOffScheduling, scheduling }) {
+function SchedulingForm({ siblings, turnOffScheduling, scheduling }) {
     _s();
-    const [languages, setLanguages] = (0, _react.useState)([]);
     const [arrToSave, setArrToSave] = (0, _react.useState)("");
     //view states
     const [intro, setIntro] = (0, _react.useState)(true);
@@ -39948,7 +39955,7 @@ function SchedulingForm({ dataRow, turnOffScheduling, scheduling }) {
         size: "lg",
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _headerComponentDefault.default), {
-                dataRow: dataRow
+                siblings: siblings
             }, void 0, false, {
                 fileName: "src/components/Scheduling/SchedulingForm.js",
                 lineNumber: 38,
@@ -39962,7 +39969,9 @@ function SchedulingForm({ dataRow, turnOffScheduling, scheduling }) {
                                 className: "center-element",
                                 children: [
                                     "Follow these prompts to sechedule an appointment for ",
-                                    `${dataRow[1]} ${dataRow[2]}`
+                                    siblings.map((row)=>{
+                                        row[2], row[1];
+                                    })
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/Scheduling/SchedulingForm.js",
@@ -39990,7 +39999,7 @@ function SchedulingForm({ dataRow, turnOffScheduling, scheduling }) {
                         columnNumber: 9
                     }, this),
                     languageSelect ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _languageSelectDefault.default), {
-                        dataRow: dataRow,
+                        siblings: siblings,
                         toggleCurrent: setLanguageSelect,
                         toggleNext: setTagSelect,
                         togglePrevious: setIntro
@@ -40005,7 +40014,7 @@ function SchedulingForm({ dataRow, turnOffScheduling, scheduling }) {
                         columnNumber: 9
                     }, this),
                     tagSelect ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _setTagsDefault.default), {
-                        dataRow: dataRow,
+                        siblings: siblings,
                         toggleCurrent: setTagSelect,
                         toggleNext: setSchoolSelect,
                         togglePrevious: setLanguageSelect
@@ -40072,7 +40081,7 @@ function SchedulingForm({ dataRow, turnOffScheduling, scheduling }) {
         columnNumber: 5
     }, this);
 }
-_s(SchedulingForm, "XAGYjnvBCjM1TtRadcHoOzNuowA=");
+_s(SchedulingForm, "zpIwTAXnyOYTDCD2kdkFP5c1tXE=");
 _c = SchedulingForm;
 exports.default = SchedulingForm;
 var _c;
@@ -40867,7 +40876,7 @@ var _row = require("react-bootstrap/Row");
 var _rowDefault = parcelHelpers.interopDefault(_row);
 var _col = require("react-bootstrap/Col");
 var _colDefault = parcelHelpers.interopDefault(_col);
-function HeaderComponent({ dataRow }) {
+function HeaderComponent({ siblings }) {
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _modalDefault.default).Header, {
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _containerDefault.default), {
             className: "center-element",
@@ -40903,9 +40912,9 @@ function HeaderComponent({ dataRow }) {
                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _colDefault.default), {
                         children: [
                             " Schedule Appointment for: ",
-                            dataRow[1],
-                            " ",
-                            dataRow[2]
+                            siblings.map((row)=>{
+                                row[2], row[1];
+                            })
                         ]
                     }, void 0, true, {
                         fileName: "src/components/Scheduling/HeaderComponent.js",
@@ -41039,10 +41048,19 @@ $RefreshReg$(_c, "LanguageSelect");
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "clientSideGetData", ()=>clientSideGetData);
-async function clientSideGetData(sheet, row, col, numCols, displayFunc) {
+parcelHelpers.export(exports, "clientSideGetSiblings", ()=>clientSideGetSiblings);
+async function clientSideGetData(sheet, row, col, numCols, displayFunc1) {
     try {
         //console.log("Attempting to fetch data from google sheet")
-        await google.script.run.withSuccessHandler(displayFunc).serverSideGetData(sheet, row, col, numCols);
+        await google.script.run.withSuccessHandler(displayFunc1).serverSideGetData(sheet, row, col, numCols);
+    } catch (error) {
+        console.error("Error fetching data: ", error);
+    }
+}
+async function clientSideGetSiblings(parent) {
+    try {
+        //console.log("Attempting to fetch data from google sheet")
+        await google.script.run.withSuccessHandler(displayFunc).serverSideGetSiblings(parent);
     } catch (error) {
         console.error("Error fetching data: ", error);
     }

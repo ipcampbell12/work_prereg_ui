@@ -12,19 +12,19 @@ function getSsSheet(name) {
     return sheet;
 }
 
-function getSheetDataRange(name,row,col,numCols) {
+function getSheetDataRange(name, row, col, numCols) {
     const sheet = getSsSheet(name);
     const range = sheet.getRange(row, col, sheet.getLastRow(), numCols);
     return range;
 }
 
-function getAllValues(name,row,col,numCols) {
-    const range = getSheetDataRange(name,row,col,numCols)
+function getAllValues(name, row, col, numCols) {
+    const range = getSheetDataRange(name, row, col, numCols)
     return range.getValues();
 }
 
-function serverSideGetData(name,row,col,numCols) {
-    const sheetData = getAllValues(name,row,col,numCols);
+function serverSideGetData(name, row, col, numCols) {
+    const sheetData = getAllValues(name, row, col, numCols);
     const data = sheetData.filter(row => row[0] !== '')
     const dataNew = JSON.stringify(data)
     return dataNew;
@@ -54,4 +54,17 @@ function createId() {
     Logger.log("The data length is: ", dataLength);
     const id = dataLength + 1;
     return id;
+}
+
+function serverSideGetSiblings(parent) {
+    const sheet = getSsSheet("Pre Registrations");
+    const range = sheet.getRange(2, 1, sheet.getLastRow(), 14)
+    //Logger.log(parent)
+    const siblings = range.getValues().filter(row => row[6] === parent)
+    //Logger.log(siblings)
+    return siblings;
+}
+
+function trySiblings() {
+    getSiblings("What?")
 }

@@ -10,6 +10,18 @@ export async function clientSideGetData(sheet, row, col, numCols, displayFunc) {
     }
 }
 
+export async function clientSideGetSiblings(parent) {
+    try {
+        //console.log("Attempting to fetch data from google sheet")
+        await google.script.run
+            .withSuccessHandler(displayFunc)
+            .serverSideGetSiblings(parent);
+
+    } catch (error) {
+        console.error("Error fetching data: ", error)
+    }
+}
+
 
 
 

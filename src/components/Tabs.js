@@ -5,16 +5,16 @@ import SchedulingForm from './Scheduling/SchedulingForm';
 
 const tabNames = ["submitted", "scheduled", "pending", "transferred"];
 
-function Tabs({ onTab, tabState, getData, dataState, openModal, setDataRow, modalOpen, closeModal, dataRow }) {
+function Tabs({ onTab, tabState, getData, dataState, openModal, setDataRow, modalOpen, closeModal, dataRow, setSiblings, siblings }) {
 
-    const [scheduling, setScheduling] =useState(false)
+    const [scheduling, setScheduling] = useState(false)
 
-    const turnOnScheduling = () =>{
+    const turnOnScheduling = () => {
         console.log("You should see a full screen modal")
         setScheduling(true)
     }
 
-    const turnOffScheduling = () =>{
+    const turnOffScheduling = () => {
         setScheduling(false)
     }
 
@@ -23,15 +23,15 @@ function Tabs({ onTab, tabState, getData, dataState, openModal, setDataRow, moda
         //console.log("The tab state in tabs is: ", tabState)
     }, []);
 
-    useEffect(()=>{
-        console.log("Scheduling is set to: ",scheduling)
-        console.log("ModalOpen is set to: ",modalOpen)
-    },[scheduling])
+    useEffect(() => {
+        console.log("Scheduling is set to: ", scheduling)
+        console.log("ModalOpen is set to: ", modalOpen)
+    }, [scheduling])
 
     return (
         <div>
             {modalOpen && <PreRegModal dataRow={dataRow} closeModal={closeModal} modalOpen={modalOpen} getData={getData} turnOnScheduling={turnOnScheduling} />}
-            {scheduling  && <SchedulingForm dataRow={dataRow} turnOffScheduling={turnOffScheduling} scheduling={scheduling}/>}
+            {scheduling && <SchedulingForm siblings={siblings} turnOffScheduling={turnOffScheduling} scheduling={scheduling} />}
             <ul className="nav nav-tabs" role="tablist">
                 {
                     tabNames.map((tab, index) => {
@@ -57,14 +57,14 @@ function Tabs({ onTab, tabState, getData, dataState, openModal, setDataRow, moda
             </ul>
             <div className="tab-content" id="myTabContent">
                 <div className={`tab-pane fade ${tabState === 'submitted' ? 'show active' : ''}`} id="submitted-tab-pane" role="tabpanel" aria-labelledby="submitted-tab" tabIndex="0">
-                    {tabState === 'submitted' && <DataDisplay dataState={dataState} getData={getData} tabState={tabState} openModal={openModal} setDataRow={setDataRow} />}
+                    {tabState === 'submitted' && <DataDisplay dataState={dataState} getData={getData} tabState={tabState} openModal={openModal} setDataRow={setDataRow} setSiblings={setSiblings} />}
                 </div>
                 <div className={`tab-pane fade ${tabState === 'scheduled' ? 'show active' : ''}`} id="scheduled-tab-pane" role="tabpanel" aria-labelledby="scheduled-tab" tabIndex="0">
-                    {tabState === 'scheduled' && <DataDisplay dataState={dataState} getData={getData} tabState={tabState} openModal={openModal} setDataRow={setDataRow} />}</div>
+                    {tabState === 'scheduled' && <DataDisplay dataState={dataState} getData={getData} tabState={tabState} openModal={openModal} setDataRow={setDataRow} setSiblings={setSiblings} />}</div>
                 <div className={`tab-pane fade ${tabState === 'pending' ? 'show active' : ''}`} id="pending-tab-pane" role="tabpanel" aria-labelledby="pending-tab" tabIndex="0">
-                    {tabState === 'pending' && <DataDisplay dataState={dataState} getData={getData} tabState={tabState} openModal={openModal} setDataRow={setDataRow} />}</div>
+                    {tabState === 'pending' && <DataDisplay dataState={dataState} getData={getData} tabState={tabState} openModal={openModal} setDataRow={setDataRow} setSiblings={setSiblings} />}</div>
                 <div className={`tab-pane fade ${tabState === 'transferred' ? 'show active' : ''}`} id="transferred-tab-pane" role="tabpanel" aria-labelledby="transferred-tab" tabIndex="0">
-                    {tabState === 'transferred' && <DataDisplay dataState={dataState} getData={getData} tabState={tabState} openModal={openModal} setDataRow={setDataRow} />}</div>
+                    {tabState === 'transferred' && <DataDisplay dataState={dataState} getData={getData} tabState={tabState} openModal={openModal} setDataRow={setDataRow} setSiblings={setSiblings} />}</div>
             </div>
         </div>
     );
