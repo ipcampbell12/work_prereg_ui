@@ -1,27 +1,19 @@
-export async function clientSideGetData(sheet, row, col, numCols, displayFunc) {
-    try {
-        //console.log("Attempting to fetch data from google sheet")
-        await google.script.run
-            .withSuccessHandler(displayFunc)
-            .serverSideGetData(sheet, row, col, numCols);
-
-    } catch (error) {
-        console.error("Error fetching data: ", error)
-    }
+export function clientSideGetData(sheet, row, col, numCols, displayFunc) {
+  google.script.run
+    .withSuccessHandler(displayFunc)
+    .serverSideGetData(sheet, row, col, numCols);
 }
 
-export async function clientSideGetSiblings(parent) {
-    try {
-        //console.log("Attempting to fetch data from google sheet")
-        await google.script.run
-            .withSuccessHandler(displayFunc)
-            .serverSideGetSiblings(parent);
-
-    } catch (error) {
-        console.error("Error fetching data: ", error)
-    }
+export function clientSideGetSiblings(parent, displayFunc) {
+  console.log("Client side get siblings: ", parent);
+  google.script.run
+    .withSuccessHandler(displayFunc)
+    .serverSideGetSiblings(parent);
 }
 
 
-
-
+export function clientSideSaveData(row, data) {
+  console.log("Client side get siblings: ", parent);
+  google.script.run
+    .serverSideUpdateRow(row, data)
+}

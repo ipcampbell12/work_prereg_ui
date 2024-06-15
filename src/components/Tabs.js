@@ -5,69 +5,147 @@ import SchedulingForm from './Scheduling/SchedulingForm';
 
 const tabNames = ["submitted", "scheduled", "pending", "transferred"];
 
-function Tabs({ onTab, tabState, getData, dataState, openModal, setDataRow, modalOpen, closeModal, dataRow, setSiblings, siblings }) {
+function Tabs(props) {
+  const [scheduling, setScheduling] = useState(false);
+  const [tabState, setTabState] = useState("submitted");
+  const [modalOpen, setModalOpen] = useState(false);
+  const [dataRow, setDataRow] = useState(props.dataState[0]);
 
-    const [scheduling, setScheduling] = useState(false)
+  const handleTabClick = (tab) => {
+    setTabState(tab);
+    console.log("The tab state is now: ", tab);
+  };
 
-    const turnOnScheduling = () => {
-        console.log("You should see a full screen modal")
-        setScheduling(true)
-    }
+  const openModal = () => {
+    setModalOpen(true);
+  };
 
-    const turnOffScheduling = () => {
-        setScheduling(false)
-    }
+  const closeModal = () => {
+    setModalOpen(false);
+  };
 
-    useEffect(() => {
-        getData();
-        //console.log("The tab state in tabs is: ", tabState)
-    }, []);
+  const turnOnScheduling = () => {
+    console.log("You should see a full screen modal");
+    setScheduling(true);
+  };
 
-    useEffect(() => {
-        console.log("Scheduling is set to: ", scheduling)
-        console.log("ModalOpen is set to: ", modalOpen)
-    }, [scheduling])
+  const turnOffScheduling = () => {
+    setScheduling(false);
+  };
 
-    return (
-        <div>
-            {modalOpen && <PreRegModal dataRow={dataRow} closeModal={closeModal} modalOpen={modalOpen} getData={getData} turnOnScheduling={turnOnScheduling} />}
-            {scheduling && <SchedulingForm siblings={siblings} turnOffScheduling={turnOffScheduling} scheduling={scheduling} />}
-            <ul className="nav nav-tabs" role="tablist">
-                {
-                    tabNames.map((tab, index) => {
-                        return (
-                            <li className="nav-item" role="presentation" key={index} aria-label={`${tab}`}>
-                                <button
-                                    className={`nav-link ${tabState === tab ? 'active' : ''}`}
-                                    id={`${tab}-tab`}
-                                    data-bs-toggle="tab"
-                                    data-bs-target={`#${tab}-tab-pane`}
-                                    type="button"
-                                    role="tab"
-                                    aria-controls={`${tab}-tab-pane`}
-                                    aria-selected={tabState === tab}
-                                    onClick={(tab) => onTab(tab.target.id.split('-')[0])}
-                                >
-                                    {tab}
-                                </button>
-                            </li>
-                        );
-                    })
-                }
-            </ul>
-            <div className="tab-content" id="myTabContent">
-                <div className={`tab-pane fade ${tabState === 'submitted' ? 'show active' : ''}`} id="submitted-tab-pane" role="tabpanel" aria-labelledby="submitted-tab" tabIndex="0">
-                    {tabState === 'submitted' && <DataDisplay dataState={dataState} getData={getData} tabState={tabState} openModal={openModal} setDataRow={setDataRow} setSiblings={setSiblings} />}
-                </div>
-                <div className={`tab-pane fade ${tabState === 'scheduled' ? 'show active' : ''}`} id="scheduled-tab-pane" role="tabpanel" aria-labelledby="scheduled-tab" tabIndex="0">
-                    {tabState === 'scheduled' && <DataDisplay dataState={dataState} getData={getData} tabState={tabState} openModal={openModal} setDataRow={setDataRow} setSiblings={setSiblings} />}</div>
-                <div className={`tab-pane fade ${tabState === 'pending' ? 'show active' : ''}`} id="pending-tab-pane" role="tabpanel" aria-labelledby="pending-tab" tabIndex="0">
-                    {tabState === 'pending' && <DataDisplay dataState={dataState} getData={getData} tabState={tabState} openModal={openModal} setDataRow={setDataRow} setSiblings={setSiblings} />}</div>
-                <div className={`tab-pane fade ${tabState === 'transferred' ? 'show active' : ''}`} id="transferred-tab-pane" role="tabpanel" aria-labelledby="transferred-tab" tabIndex="0">
-                    {tabState === 'transferred' && <DataDisplay dataState={dataState} getData={getData} tabState={tabState} openModal={openModal} setDataRow={setDataRow} setSiblings={setSiblings} />}</div>
-            </div>
+  return (
+    <div>
+      {modalOpen && (
+        <PreRegModal
+          dataRow={dataRow}
+          closeModal={closeModal}
+          modalOpen={modalOpen}
+          turnOnScheduling={turnOnScheduling}
+          onParent={props.onParent}
+          displaySheetData={props.displaySheetData}
+        />
+      )}
+      {scheduling && (
+        <SchedulingForm
+          siblingsState={props.siblingsState}
+          turnOffScheduling={turnOffScheduling}
+          scheduling={scheduling}
+        />
+      )}
+      <ul className="nav nav-tabs" role="tablist">
+        {tabNames.map((tab, index) => {
+          return (
+            <li
+              className="nav-item"
+              role="presentation"
+              key={index}
+              aria-label={`${tab}`}
+            >
+              <button
+                className={`nav-link ${tabState === tab ? "active" : ""}`}
+                id={`${tab}-tab`}
+                data-bs-toggle="tab"
+                data-bs-target={`#${tab}-tab-pane`}
+                type="button"
+                role="tab"
+                aria-controls={`${tab}-tab-pane`}
+                aria-selected={tabState === tab}
+                onClick={(tab) => handleTabClick(tab.target.id.split("-")[0])}
+              >
+                {tab}
+              </button>
+            </li>
+          );
+        })}
+      </ul>
+      <div className="tab-content" id="myTabContent">
+        <div
+          className={`tab-pane fade ${tabState === "submitted" ? "show active" : ""}`}
+          id="submitted-tab-pane"
+          role="tabpanel"
+          aria-labelledby="submitted-tab"
+          tabIndex="0"
+        >
+          {tabState === "submitted" && (
+            <DataDisplay
+              dataState={props.dataState}
+              tabState={tabState}
+              openModal={openModal}
+              setDataRow={setDataRow}
+            />
+          )}
         </div>
-    );
+        <div
+          className={`tab-pane fade ${tabState === "scheduled" ? "show active" : ""}`}
+          id="scheduled-tab-pane"
+          role="tabpanel"
+          aria-labelledby="scheduled-tab"
+          tabIndex="0"
+        >
+          {tabState === "scheduled" && (
+            <DataDisplay
+              dataState={props.dataState}
+              tabState={tabState}
+              openModal={openModal}
+              setDataRow={setDataRow}
+            />
+          )}
+        </div>
+        <div
+          className={`tab-pane fade ${tabState === "pending" ? "show active" : ""}`}
+          id="pending-tab-pane"
+          role="tabpanel"
+          aria-labelledby="pending-tab"
+          tabIndex="0"
+        >
+          {tabState === "pending" && (
+            <DataDisplay
+              dataState={props.dataState}
+              tabState={tabState}
+              openModal={openModal}
+              setDataRow={setDataRow}
+            />
+          )}
+        </div>
+        <div
+          className={`tab-pane fade ${tabState === "transferred" ? "show active" : ""}`}
+          id="transferred-tab-pane"
+          role="tabpanel"
+          aria-labelledby="transferred-tab"
+          tabIndex="0"
+        >
+          {tabState === "transferred" && (
+            <DataDisplay
+              dataState={props.dataState}
+              tabState={tabState}
+              openModal={openModal}
+              setDataRow={setDataRow}
+            />
+          )}
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default Tabs;

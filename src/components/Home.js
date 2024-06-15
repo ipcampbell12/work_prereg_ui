@@ -4,55 +4,40 @@ import Tabs from './Tabs';
 
 
 function Home() {
-
     const [dataState, setDataState] = useState([]);
-    const [tabState, setTabState] = useState("submitted");
-    const [dataRow, setDataRow] = useState(dataState[0])
-    const [siblings, setSiblings] = useState([])
-    const [modalOpen, setModalOpen] = useState(false);
+    const [siblingsState, setSiblingsState] = useState([]);
 
-    const openModal = () => {
-        setModalOpen(true)
-    }
-
-    const closeModal = () => {
-        setModalOpen(false)
-    }
-
-    const handleTabClick = (tab) => {
-        setTabState(tab);
-        console.log("The tab state is now: ", tab)
+    const handleParent = (parent) => {
+        console.log("The parent selected is: ", parent);
+        clientSideGetSiblings(parent, displaySiblings);
+        console.log("Sibling state is: ", siblingsState);
     };
 
-    async function clientSideGetData() {
-        try {
-            //console.log("Attempting to fetch data from google sheet")
-            await google.script.run
-                .withSuccessHandler(displaySheetData)
-                .withFailureHandler(errorHandler)
-                .serverSideGetData("Pre Registrations", 2, 1, 10);
+    useEffect(() => {
+        clientSideGetData("Pre Registrations", 2, 1, 14, displaySheetData);
+    }, []);
 
-        } catch (error) {
-            console.error("Error fetching data: ", error)
-        }
-    }
-
-    function errorHandler(error) {
-        console.error("Error from Google Script: ", error);
+    function displaySiblings(response) {
+        const data = JSON.parse(response);
+        setSiblingsState(data);
     }
 
     function displaySheetData(response) {
-        const data = JSON.parse(response)
-        setDataState(data)
+        const data = JSON.parse(response);
+        setDataState(data);
     }
 
+    //onTab was handleTabClick
     return (
         <div>
             <h1> Behold The Data</h1>
 
-            <Tabs onTab={handleTabClick} tabState={tabState} getData={clientSideGetData} dataState={dataState} openModal={openModal} setDataRow={setDataRow} modalOpen={modalOpen} closeModal={closeModal} dataRow={dataRow} setSiblings={setSiblings} siblings={siblings} />
-
-
+            <Tabs
+                dataState={dataState}
+                siblingsState={siblingsState}
+                onParent={handleParent}
+                displaySheetData={displaySheetData}
+            />
         </div>
     );
 }

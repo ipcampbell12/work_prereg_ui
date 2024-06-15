@@ -1,70 +1,70 @@
 function doGet() {
-    return HtmlService
-        .createTemplateFromFile("index")
-        .evaluate()
-        .addMetaTag("viewport", "width=device-width, initial-scale=1.0")
+  return HtmlService.createTemplateFromFile("index")
+    .evaluate()
+    .addMetaTag("viewport", "width=device-width, initial-scale=1.0");
 }
 
 
 function getSsSheet(name) {
-    var spreadsheet = SpreadsheetApp.openByUrl("https://docs.google.com/spreadsheets/d/1_Z5LgW3RA_gWWzL8DFBTgdNyJU3fPHo8y1q0cL3lqDQ/edit#gid=0")
-    var sheet = spreadsheet.getSheetByName(name);
-    return sheet;
+  var spreadsheet = SpreadsheetApp.openByUrl(
+    "https://docs.google.com/spreadsheets/d/1_Z5LgW3RA_gWWzL8DFBTgdNyJU3fPHo8y1q0cL3lqDQ/edit#gid=0",
+  );
+  var sheet = spreadsheet.getSheetByName(name);
+  return sheet;
 }
 
 function getSheetDataRange(name, row, col, numCols) {
-    const sheet = getSsSheet(name);
-    const range = sheet.getRange(row, col, sheet.getLastRow(), numCols);
-    return range;
+  const sheet = getSsSheet(name);
+  const range = sheet.getRange(row, col, sheet.getLastRow(), numCols);
+  return range;
 }
 
 function getAllValues(name, row, col, numCols) {
-    const range = getSheetDataRange(name, row, col, numCols)
-    return range.getValues();
+  const range = getSheetDataRange(name, row, col, numCols);
+  return range.getValues();
 }
 
 function serverSideGetData(name, row, col, numCols) {
-    const sheetData = getAllValues(name, row, col, numCols);
-    const data = sheetData.filter(row => row[0] !== '')
-    const dataNew = JSON.stringify(data)
-    return dataNew;
+  const sheetData = getAllValues(name, row, col, numCols);
+  const data = sheetData.filter((row) => row[0] !== "");
+  const dataNew = JSON.stringify(data);
+  return dataNew;
 }
 
 function serverSideUpdateRow(id, data) {
-    Logger.log(data)
-    const sheet = getSheet();
-    const row = id + 1;
-    const timeStamp = Utilities.formatDate(new Date(), "PST", "MM/dd/yyyy  'at' HH:mm aaa");
-    Logger.log(timeStamp)
-    const range = sheet.getRange(row, 1, 1, 11);
-    const dataArr = [...data, timeStamp]
-    range.setValues([dataArr]);
-    return dataArr;
-}
-
-function tryIt() {
-    const dataRow = [6.0, "Potter", "Harry", "Sat Feb 25 03:00:00 GMT-05:00 2012", "6th", "Hogwards School", "Lilly Potter", "555-678-9012", "scheduled"];
-    const row = 5;
-    serverSideUpdateRow(row, dataRow)
-}
-
-
-function createId() {
-    const dataLength = getAllValues().length;
-    Logger.log("The data length is: ", dataLength);
-    const id = dataLength + 1;
-    return id;
+  Logger.log(data);
+  const sheet = getSsSheet("Pre Registrations");
+  const row = id + 1;
+  const timeStamp = Utilities.formatDate(
+    new Date(),
+    "PST",
+    "MM/dd/yyyy  'at' HH:mm aaa",
+  );
+  Logger.log(timeStamp);
+  const range = sheet.getRange(row, 1, 1, 10);
+  const dataArr = [...data, timeStamp];
+  range.setValues([dataArr]);
+  return dataArr;
 }
 
 function serverSideGetSiblings(parent) {
-    const sheet = getSsSheet("Pre Registrations");
-    const range = sheet.getRange(2, 1, sheet.getLastRow(), 14)
-    //Logger.log(parent)
-    const siblings = range.getValues().filter(row => row[6] === parent)
-    //Logger.log(siblings)
-    return siblings;
+  const sheet = getSsSheet("Pre Registrations");
+  const range = sheet.getRange(2, 1, sheet.getLastRow(), 14);
+  Logger.log("Parent is:", parent);
+  const siblings = range
+    .getValues()
+    .filter((row) => row[6] === parent)
+    .filter((row) => row[0] !== "");
+
+  //need to stringify
+  const stringSiblings = JSON.stringify(siblings)
+  Logger.log("Siblings are:", stringSiblings);
+  return stringSiblings;
 }
 
-function trySiblings() {
-    getSiblings("What?")
+function createId() {
+  const dataLength = getAllValues().length;
+  Logger.log("The data length is: ", dataLength);
+  const id = dataLength + 1;
+  return id;
 }
