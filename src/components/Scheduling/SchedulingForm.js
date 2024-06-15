@@ -11,7 +11,7 @@ import { clientSideGetData } from '../../apiCalls';
 import ButtonComponent from './ButtonComponent';
 
 
-function SchedulingForm({ siblings, turnOffScheduling, scheduling }) {
+function SchedulingForm(props) {
 
 
   const [arrToSave, setArrToSave] = useState('')
@@ -34,20 +34,20 @@ function SchedulingForm({ siblings, turnOffScheduling, scheduling }) {
   }
 
   return (
-    <Modal show={scheduling} onHide={turnOffScheduling} size='lg'>
-      <HeaderComponent siblings={siblings} />
+    <Modal show={props.scheduling} onHide={props.turnOffScheduling} size='lg'>
+      <HeaderComponent siblingsState={props.siblingsState} />
       <ModalBody>
         {intro ?
           <div>
-            <h5 className='center-element'>Follow these prompts to sechedule an appointment for {siblings.map((row) => { `${row[2]},${row[1]}` })}</h5>
-            <ButtonComponent toggleCurrent={setIntro} toggleNext={setLanguageSelect} togglePrevious={turnOffScheduling} />
+            <h5 className='center-element'>Follow these prompts to sechedule an appointment for {props.siblingsState.map((row) => { `${row[2]},${row[1]}` })}</h5>
+            <ButtonComponent toggleCurrent={setIntro} toggleNext={setLanguageSelect} togglePrevious={props.turnOffScheduling} />
           </div>
           : ''}
 
         <br />
-        {languageSelect ? <LanguageSelect siblings={siblings} toggleCurrent={setLanguageSelect} toggleNext={setTagSelect} togglePrevious={setIntro} /> : ''}
+        {languageSelect ? <LanguageSelect siblingsState={props.siblingsState} toggleCurrent={setLanguageSelect} toggleNext={setTagSelect} togglePrevious={setIntro} /> : ''}
         <br />
-        {tagSelect ? <SetTags siblings={siblings} toggleCurrent={setTagSelect} toggleNext={setSchoolSelect} togglePrevious={setLanguageSelect} /> : ''}
+        {tagSelect ? <SetTags siblingsState={props.siblingsState} toggleCurrent={setTagSelect} toggleNext={setSchoolSelect} togglePrevious={setLanguageSelect} /> : ''}
         <br />
         {schoolSelect ? <BoundarySchool toggleCurrent={setSchoolSelect} toggleNext={setDtSelect} togglePrevious={setTagSelect} /> : ''}
         <br />
@@ -55,7 +55,7 @@ function SchedulingForm({ siblings, turnOffScheduling, scheduling }) {
 
       </ModalBody>
       <div className='center-element'>
-        <Button className="mx-1 my-1 center-element" variant="danger" width="75px" onClick={turnOffScheduling}>Close</Button>
+        <Button className="mx-1 my-1 center-element" variant="danger" width="75px" onClick={props.turnOffScheduling}>Close</Button>
       </div>
     </Modal>
   )

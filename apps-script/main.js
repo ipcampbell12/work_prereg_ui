@@ -25,9 +25,11 @@ function getAllValues(name, row, col, numCols) {
 }
 
 function serverSideGetData(name, row, col, numCols) {
+  Logger.log("Sheet name: ", name)
   const sheetData = getAllValues(name, row, col, numCols);
   const data = sheetData.filter((row) => row[0] !== "");
   const dataNew = JSON.stringify(data);
+  Logger.log("The data is: ", dataNew)
   return dataNew;
 }
 

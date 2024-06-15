@@ -33811,6 +33811,7 @@ function Home() {
     function displaySheetData(response) {
         const data = JSON.parse(response);
         setDataState(data);
+        console.log(dataState);
     }
     //onTab was handleTabClick
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -33819,7 +33820,7 @@ function Home() {
                 children: " Behold The Data"
             }, void 0, false, {
                 fileName: "src/components/Home.js",
-                lineNumber: 33,
+                lineNumber: 34,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _tabsDefault.default), {
@@ -33829,19 +33830,19 @@ function Home() {
                 displaySheetData: displaySheetData
             }, void 0, false, {
                 fileName: "src/components/Home.js",
-                lineNumber: 35,
+                lineNumber: 36,
                 columnNumber: 13
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/components/Home.js",
-        lineNumber: 32,
+        lineNumber: 33,
         columnNumber: 9
     }, this);
 }
 _s(Home, "ekYpsi3i5AL9cCo1dJ4QMBR+bfI=");
 _c = Home;
-exports.default = Home; // <Tabs getData={clientSideGetData} dataState={dataState} />
+exports.default = Home;
 var _c;
 $RefreshReg$(_c, "Home");
 
@@ -39917,7 +39918,7 @@ var _apiCalls = require("../../apiCalls");
 var _buttonComponent = require("./ButtonComponent");
 var _buttonComponentDefault = parcelHelpers.interopDefault(_buttonComponent);
 var _s = $RefreshSig$();
-function SchedulingForm({ siblings, turnOffScheduling, scheduling }) {
+function SchedulingForm(props) {
     _s();
     const [arrToSave, setArrToSave] = (0, _react.useState)("");
     //view states
@@ -39934,12 +39935,12 @@ function SchedulingForm({ siblings, turnOffScheduling, scheduling }) {
         setLanguages(data);
     }
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _modalDefault.default), {
-        show: scheduling,
-        onHide: turnOffScheduling,
+        show: props.scheduling,
+        onHide: props.turnOffScheduling,
         size: "lg",
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _headerComponentDefault.default), {
-                siblings: siblings
+                siblingsState: props.siblingsState
             }, void 0, false, {
                 fileName: "src/components/Scheduling/SchedulingForm.js",
                 lineNumber: 38,
@@ -39953,7 +39954,7 @@ function SchedulingForm({ siblings, turnOffScheduling, scheduling }) {
                                 className: "center-element",
                                 children: [
                                     "Follow these prompts to sechedule an appointment for ",
-                                    siblings.map((row)=>{
+                                    props.siblingsState.map((row)=>{
                                         row[2], row[1];
                                     })
                                 ]
@@ -39965,7 +39966,7 @@ function SchedulingForm({ siblings, turnOffScheduling, scheduling }) {
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonComponentDefault.default), {
                                 toggleCurrent: setIntro,
                                 toggleNext: setLanguageSelect,
-                                togglePrevious: turnOffScheduling
+                                togglePrevious: props.turnOffScheduling
                             }, void 0, false, {
                                 fileName: "src/components/Scheduling/SchedulingForm.js",
                                 lineNumber: 43,
@@ -39983,7 +39984,7 @@ function SchedulingForm({ siblings, turnOffScheduling, scheduling }) {
                         columnNumber: 9
                     }, this),
                     languageSelect ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _languageSelectDefault.default), {
-                        siblings: siblings,
+                        siblingsState: props.siblingsState,
                         toggleCurrent: setLanguageSelect,
                         toggleNext: setTagSelect,
                         togglePrevious: setIntro
@@ -39998,7 +39999,7 @@ function SchedulingForm({ siblings, turnOffScheduling, scheduling }) {
                         columnNumber: 9
                     }, this),
                     tagSelect ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _setTagsDefault.default), {
-                        siblings: siblings,
+                        siblingsState: props.siblingsState,
                         toggleCurrent: setTagSelect,
                         toggleNext: setSchoolSelect,
                         togglePrevious: setLanguageSelect
@@ -40046,7 +40047,7 @@ function SchedulingForm({ siblings, turnOffScheduling, scheduling }) {
                     className: "mx-1 my-1 center-element",
                     variant: "danger",
                     width: "75px",
-                    onClick: turnOffScheduling,
+                    onClick: props.turnOffScheduling,
                     children: "Close"
                 }, void 0, false, {
                     fileName: "src/components/Scheduling/SchedulingForm.js",
@@ -40860,7 +40861,7 @@ var _row = require("react-bootstrap/Row");
 var _rowDefault = parcelHelpers.interopDefault(_row);
 var _col = require("react-bootstrap/Col");
 var _colDefault = parcelHelpers.interopDefault(_col);
-function HeaderComponent({ siblings }) {
+function HeaderComponent(props) {
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _modalDefault.default).Header, {
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _containerDefault.default), {
             className: "center-element",
@@ -40896,7 +40897,7 @@ function HeaderComponent({ siblings }) {
                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _colDefault.default), {
                         children: [
                             " Schedule Appointment for: ",
-                            siblings.map((row)=>{
+                            props.siblingsState.map((row)=>{
                                 row[2], row[1];
                             })
                         ]

@@ -4,7 +4,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-function HeaderComponent({ siblings }) {
+function HeaderComponent(props) {
     return (
 
         <Modal.Header>
@@ -14,7 +14,7 @@ function HeaderComponent({ siblings }) {
                 </Row>
                 <br />
                 <Row>
-                    <Col> Schedule Appointment for: {siblings.map((row) => { `${row[2]},${row[1]}` })}</Col>
+                    <Col> Schedule Appointment for: {props.siblingsState.map((row) => { `${row[2]},${row[1]}` })}</Col>
                 </Row>
             </Container>
         </Modal.Header>

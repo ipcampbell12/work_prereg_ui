@@ -25,6 +25,7 @@ function Home() {
     function displaySheetData(response) {
         const data = JSON.parse(response);
         setDataState(data);
+        console.log(dataState)
     }
 
     //onTab was handleTabClick
@@ -44,4 +45,3 @@ function Home() {
 
 export default Home;
 
-// <Tabs getData={clientSideGetData} dataState={dataState} />
