@@ -2,7 +2,7 @@ import Form from 'react-bootstrap/Form';
 import React from 'react'
 import ButtonComponent from './ButtonComponent';
 
-const BoundarySchool = ({ toggleCurrent, toggleNext, togglePrevious, handleInputChange }) => {
+const BoundarySchool = (props) => {
   return (
     <Form.Group className="center-element map-container align-baseline">
       <Form.Label className="mx-1 center-element" >BoundarySchool</Form.Label>
@@ -13,7 +13,7 @@ const BoundarySchool = ({ toggleCurrent, toggleNext, togglePrevious, handleInput
         <Form.Control type="text" placeholder="Boundary School" className='mx-1 my-1 center-element' />
       </div>
       <br />
-      <ButtonComponent toggleCurrent={toggleCurrent} toggleNext={toggleNext} togglePrevious={togglePrevious} />
+      <ButtonComponent toggleCurrent={props.toggleCurrent} toggleNext={props.toggleNext} togglePrevious={props.togglePrevious} />
 
     </Form.Group>
   )

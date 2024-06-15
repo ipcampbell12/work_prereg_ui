@@ -40664,7 +40664,7 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _buttonComponent = require("./ButtonComponent");
 var _buttonComponentDefault = parcelHelpers.interopDefault(_buttonComponent);
-const BoundarySchool = ({ toggleCurrent, toggleNext, togglePrevious, handleInputChange })=>{
+const BoundarySchool = (props)=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Group, {
         className: "center-element map-container align-baseline",
         children: [
@@ -40722,9 +40722,9 @@ const BoundarySchool = ({ toggleCurrent, toggleNext, togglePrevious, handleInput
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonComponentDefault.default), {
-                toggleCurrent: toggleCurrent,
-                toggleNext: toggleNext,
-                togglePrevious: togglePrevious
+                toggleCurrent: props.toggleCurrent,
+                toggleNext: props.toggleNext,
+                togglePrevious: props.togglePrevious
             }, void 0, false, {
                 fileName: "src/components/Scheduling/SchoolSelect.js",
                 lineNumber: 16,
@@ -40763,7 +40763,7 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _buttonComponent = require("./ButtonComponent");
 var _buttonComponentDefault = parcelHelpers.interopDefault(_buttonComponent);
-const DtSelect = ({ toggleCurrent, toggleNext, togglePrevious })=>{
+const DtSelect = (props)=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Group, {
         className: "mx-3 my-3 center-element align-baseline",
         children: [
@@ -40809,9 +40809,9 @@ const DtSelect = ({ toggleCurrent, toggleNext, togglePrevious })=>{
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonComponentDefault.default), {
-                toggleCurrent: toggleCurrent,
-                toggleNext: toggleNext,
-                togglePrevious: togglePrevious
+                toggleCurrent: props.toggleCurrent,
+                toggleNext: props.toggleNext,
+                togglePrevious: props.togglePrevious
             }, void 0, false, {
                 fileName: "src/components/Scheduling/DtSelect.js",
                 lineNumber: 15,
