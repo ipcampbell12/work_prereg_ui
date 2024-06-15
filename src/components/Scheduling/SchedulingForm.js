@@ -23,16 +23,6 @@ function SchedulingForm(props) {
   const [schoolSelect, setSchoolSelect] = useState(false)
   const [dtSelect, setDtSelect] = useState(false)
 
-  useEffect(() => {
-    clientSideGetData("Home Languages", 2, 2, 1, displayLanguages)
-  }, [])
-
-
-  function displayLanguages(response) {
-    const data = JSON.parse(response)
-    setLanguages(data)
-  }
-
   return (
     <Modal show={props.scheduling} onHide={props.turnOffScheduling} size='lg'>
       <HeaderComponent siblingsState={props.siblingsState} />
