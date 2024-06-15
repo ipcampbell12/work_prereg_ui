@@ -1,21 +1,17 @@
 import { Fragment, useEffect } from 'react';
 import PreRegCard from './PreRegCard';
 
-function DataDisplay({ dataState, getData, tabState, openModal, setDataRow, setSiblings }) {
+function DataDisplay(props) {
 
-    useEffect(() => {
-        //console.log("Use effect hook is running")
-        getData()
-    }, [])
 
     return (
         <Fragment>
-            {dataState &&
+            {props.dataState &&
                 <ul>
                     {
-                        dataState.filter(row => row[8] === tabState).map(row => {
+                        props.dataState.filter(row => row[8] === props.tabState).map(row => {
                             return (
-                                <PreRegCard row={row} key={row[0]} openModal={openModal} setDataRow={setDataRow} setSiblings={setSiblings} />
+                                <PreRegCard row={row} key={row[0]} openModal={props.openModal} setDataRow={props.setDataRow} setSiblings={props.setSiblings} />
                             )
                         })
                     }

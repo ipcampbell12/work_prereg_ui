@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Tabs from './Tabs';
-
+import { clientSideGetData, clientSideGetSiblings } from '../apiCalls';
 
 
 function Home() {
