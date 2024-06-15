@@ -6,7 +6,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-function SetTags({ dataRow, toggleCurrent, toggleNext, togglePrevious }) {
+function SetTags(props) {
   // Assuming tags always has at least 10 elements
   const firstColumnTags = tags.slice(0, 5);
   const secondColumnTags = tags.slice(5, 10);
@@ -14,7 +14,7 @@ function SetTags({ dataRow, toggleCurrent, toggleNext, togglePrevious }) {
   return (
     <Form.Group>
       <Form.Label className='small p-0 text-muted'>
-        Please check any of the following for {dataRow[1]} {dataRow[2]}
+        Please check any of the following for {props.siblingsState.map((row) => { `${row[2]},${row[1]}` })}
       </Form.Label>
       <div className='mx-1 my-1'>
         <Container>
@@ -48,9 +48,9 @@ function SetTags({ dataRow, toggleCurrent, toggleNext, togglePrevious }) {
       </div>
       {tags.length > 0 && (
         <ButtonComponent
-          toggleCurrent={toggleCurrent}
-          toggleNext={toggleNext}
-          togglePrevious={togglePrevious}
+          toggleCurrent={props.toggleCurrent}
+          toggleNext={props.toggleNext}
+          togglePrevious={props.togglePrevious}
         />
       )}
     </Form.Group>

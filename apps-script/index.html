@@ -40487,7 +40487,7 @@ var _row = require("react-bootstrap/Row");
 var _rowDefault = parcelHelpers.interopDefault(_row);
 var _col = require("react-bootstrap/Col");
 var _colDefault = parcelHelpers.interopDefault(_col);
-function SetTags({ dataRow, toggleCurrent, toggleNext, togglePrevious }) {
+function SetTags(props) {
     // Assuming tags always has at least 10 elements
     const firstColumnTags = (0, _options.tags).slice(0, 5);
     const secondColumnTags = (0, _options.tags).slice(5, 10);
@@ -40497,9 +40497,9 @@ function SetTags({ dataRow, toggleCurrent, toggleNext, togglePrevious }) {
                 className: "small p-0 text-muted",
                 children: [
                     "Please check any of the following for ",
-                    dataRow[1],
-                    " ",
-                    dataRow[2]
+                    props.siblingsState.map((row)=>{
+                        row[2], row[1];
+                    })
                 ]
             }, void 0, true, {
                 fileName: "src/components/Scheduling/SetTags.js",
@@ -40562,9 +40562,9 @@ function SetTags({ dataRow, toggleCurrent, toggleNext, togglePrevious }) {
                 columnNumber: 7
             }, this),
             (0, _options.tags).length > 0 && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonComponentDefault.default), {
-                toggleCurrent: toggleCurrent,
-                toggleNext: toggleNext,
-                togglePrevious: togglePrevious
+                toggleCurrent: props.toggleCurrent,
+                toggleNext: props.toggleNext,
+                togglePrevious: props.togglePrevious
             }, void 0, false, {
                 fileName: "src/components/Scheduling/SetTags.js",
                 lineNumber: 50,
