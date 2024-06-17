@@ -24,8 +24,10 @@ function Tabs(props) {
     setModalOpen(false);
   };
 
-  const turnOnScheduling = () => {
+  const turnOnScheduling = (response) => {
+    const data = JSON.parse(response);
     console.log("You should see a full screen modal");
+    props.setSiblingsState(data)
     setScheduling(true);
   };
 
@@ -50,6 +52,7 @@ function Tabs(props) {
           siblingsState={props.siblingsState}
           turnOffScheduling={turnOffScheduling}
           scheduling={scheduling}
+          setSiblingsState={props.setSiblingsState}
         />
       )}
       <ul className="nav nav-tabs" role="tablist">

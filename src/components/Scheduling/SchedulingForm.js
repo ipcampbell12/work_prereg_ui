@@ -7,7 +7,6 @@ import BoundarySchool from './SchoolSelect';
 import DtSelect from './DtSelect';
 import HeaderComponent from './HeaderComponent';
 import LanguageSelect from './LanguageSelect';
-import { clientSideGetData } from '../../apiCalls';
 import ButtonComponent from './ButtonComponent';
 
 

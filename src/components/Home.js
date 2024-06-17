@@ -7,20 +7,10 @@ function Home() {
     const [dataState, setDataState] = useState([]);
     const [siblingsState, setSiblingsState] = useState([]);
 
-    const handleParent = (parent) => {
-        console.log("The parent selected is: ", parent);
-        clientSideGetSiblings(parent, displaySiblings);
-        console.log("Sibling state is: ", siblingsState);
-    };
-
     useEffect(() => {
         clientSideGetData("Pre Registrations", 2, 1, 14, displaySheetData);
     }, []);
 
-    function displaySiblings(response) {
-        const data = JSON.parse(response);
-        setSiblingsState(data);
-    }
 
     function displaySheetData(response) {
         const data = JSON.parse(response);
@@ -36,8 +26,8 @@ function Home() {
             <Tabs
                 dataState={dataState}
                 siblingsState={siblingsState}
-                onParent={handleParent}
                 displaySheetData={displaySheetData}
+                setSiblingsState={setSiblingsState}
             />
         </div>
     );

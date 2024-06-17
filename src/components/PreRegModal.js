@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import UpdatingForm from "./UpdatingForm";
 import BasicInfo from "./BasicInfo";
-import { clientSideSaveData, clientSideGetData } from "../apiCalls";
+import { clientSideSaveData, clientSideGetData, clientSideGetSiblings } from "../apiCalls";
 //import DropdownMenu from './DropDown';
 
 function PreRegModal({
@@ -11,7 +11,6 @@ function PreRegModal({
   closeModal,
   modalOpen,
   turnOnScheduling,
-  onParent,
   displaySheetData
 }) {
   const [editing, setEditing] = useState(false);
@@ -20,6 +19,7 @@ function PreRegModal({
   const turnOnEditing = () => {
     setEditing(true);
   };
+
   const saveChanges = (e) => {
     e.preventDefault();
     const row = dataRow[0];
@@ -63,8 +63,7 @@ function PreRegModal({
         <Button
           variant="warning"
           onClick={() => {
-            onParent(dataRow[6]);
-            turnOnScheduling();
+            clientSideGetSiblings(dataRow[6], turnOnScheduling);
             closeModal();
           }}
         >

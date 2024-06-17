@@ -33796,18 +33796,9 @@ function Home() {
     _s();
     const [dataState, setDataState] = (0, _react.useState)([]);
     const [siblingsState, setSiblingsState] = (0, _react.useState)([]);
-    const handleParent = (parent)=>{
-        console.log("The parent selected is: ", parent);
-        (0, _apiCalls.clientSideGetSiblings)(parent, displaySiblings);
-        console.log("Sibling state is: ", siblingsState);
-    };
     (0, _react.useEffect)(()=>{
         (0, _apiCalls.clientSideGetData)("Pre Registrations", 2, 1, 14, displaySheetData);
     }, []);
-    function displaySiblings(response) {
-        const data = JSON.parse(response);
-        setSiblingsState(data);
-    }
     function displaySheetData(response) {
         const data = JSON.parse(response);
         setDataState(data);
@@ -33820,23 +33811,23 @@ function Home() {
                 children: " Behold The Data"
             }, void 0, false, {
                 fileName: "src/components/Home.js",
-                lineNumber: 34,
+                lineNumber: 24,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _tabsDefault.default), {
                 dataState: dataState,
                 siblingsState: siblingsState,
-                onParent: handleParent,
-                displaySheetData: displaySheetData
+                displaySheetData: displaySheetData,
+                setSiblingsState: setSiblingsState
             }, void 0, false, {
                 fileName: "src/components/Home.js",
-                lineNumber: 36,
+                lineNumber: 26,
                 columnNumber: 13
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/components/Home.js",
-        lineNumber: 33,
+        lineNumber: 23,
         columnNumber: 9
     }, this);
 }
@@ -33892,8 +33883,10 @@ function Tabs(props) {
     const closeModal = ()=>{
         setModalOpen(false);
     };
-    const turnOnScheduling = ()=>{
+    const turnOnScheduling = (response)=>{
+        const data = JSON.parse(response);
         console.log("You should see a full screen modal");
+        props.setSiblingsState(data);
         setScheduling(true);
     };
     const turnOffScheduling = ()=>{
@@ -33910,16 +33903,17 @@ function Tabs(props) {
                 displaySheetData: props.displaySheetData
             }, void 0, false, {
                 fileName: "src/components/Tabs.js",
-                lineNumber: 39,
+                lineNumber: 41,
                 columnNumber: 9
             }, this),
             scheduling && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _schedulingFormDefault.default), {
                 siblingsState: props.siblingsState,
                 turnOffScheduling: turnOffScheduling,
-                scheduling: scheduling
+                scheduling: scheduling,
+                setSiblingsState: props.setSiblingsState
             }, void 0, false, {
                 fileName: "src/components/Tabs.js",
-                lineNumber: 49,
+                lineNumber: 51,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
@@ -33943,18 +33937,18 @@ function Tabs(props) {
                             children: tab
                         }, void 0, false, {
                             fileName: "src/components/Tabs.js",
-                            lineNumber: 64,
+                            lineNumber: 67,
                             columnNumber: 15
                         }, this)
                     }, index, false, {
                         fileName: "src/components/Tabs.js",
-                        lineNumber: 58,
+                        lineNumber: 61,
                         columnNumber: 13
                     }, this);
                 })
             }, void 0, false, {
                 fileName: "src/components/Tabs.js",
-                lineNumber: 55,
+                lineNumber: 58,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -33974,12 +33968,12 @@ function Tabs(props) {
                             setDataRow: setDataRow
                         }, void 0, false, {
                             fileName: "src/components/Tabs.js",
-                            lineNumber: 90,
+                            lineNumber: 93,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "src/components/Tabs.js",
-                        lineNumber: 82,
+                        lineNumber: 85,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -33995,12 +33989,12 @@ function Tabs(props) {
                             setDataRow: setDataRow
                         }, void 0, false, {
                             fileName: "src/components/Tabs.js",
-                            lineNumber: 106,
+                            lineNumber: 109,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "src/components/Tabs.js",
-                        lineNumber: 98,
+                        lineNumber: 101,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -34016,12 +34010,12 @@ function Tabs(props) {
                             setDataRow: setDataRow
                         }, void 0, false, {
                             fileName: "src/components/Tabs.js",
-                            lineNumber: 122,
+                            lineNumber: 125,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "src/components/Tabs.js",
-                        lineNumber: 114,
+                        lineNumber: 117,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -34037,24 +34031,24 @@ function Tabs(props) {
                             setDataRow: setDataRow
                         }, void 0, false, {
                             fileName: "src/components/Tabs.js",
-                            lineNumber: 138,
+                            lineNumber: 141,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "src/components/Tabs.js",
-                        lineNumber: 130,
+                        lineNumber: 133,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/components/Tabs.js",
-                lineNumber: 81,
+                lineNumber: 84,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/components/Tabs.js",
-        lineNumber: 37,
+        lineNumber: 39,
         columnNumber: 5
     }, this);
 }
@@ -34428,7 +34422,7 @@ var _basicInfoDefault = parcelHelpers.interopDefault(_basicInfo);
 var _apiCalls = require("../apiCalls");
 var _s = $RefreshSig$();
 //import DropdownMenu from './DropDown';
-function PreRegModal({ dataRow, closeModal, modalOpen, turnOnScheduling, onParent, displaySheetData }) {
+function PreRegModal({ dataRow, closeModal, modalOpen, turnOnScheduling, displaySheetData }) {
     _s();
     const [editing, setEditing] = (0, _react.useState)(false);
     const [arrToSave, setArrToSave] = (0, _react.useState)(dataRow.slice(0, 9));
@@ -34511,8 +34505,7 @@ function PreRegModal({ dataRow, closeModal, modalOpen, turnOnScheduling, onParen
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonDefault.default), {
                         variant: "warning",
                         onClick: ()=>{
-                            onParent(dataRow[6]);
-                            turnOnScheduling();
+                            (0, _apiCalls.clientSideGetSiblings)(dataRow[6], turnOnScheduling);
                             closeModal();
                         },
                         children: "Schedule Appointment"
@@ -34527,7 +34520,7 @@ function PreRegModal({ dataRow, closeModal, modalOpen, turnOnScheduling, onParen
                         children: editing ? "Save Changes" : "Edit Information"
                     }, void 0, false, {
                         fileName: "src/components/PreRegModal.js",
-                        lineNumber: 73,
+                        lineNumber: 72,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonDefault.default), {
@@ -34536,7 +34529,7 @@ function PreRegModal({ dataRow, closeModal, modalOpen, turnOnScheduling, onParen
                         children: "Close"
                     }, void 0, false, {
                         fileName: "src/components/PreRegModal.js",
-                        lineNumber: 79,
+                        lineNumber: 78,
                         columnNumber: 9
                     }, this)
                 ]
@@ -39914,7 +39907,6 @@ var _headerComponent = require("./HeaderComponent");
 var _headerComponentDefault = parcelHelpers.interopDefault(_headerComponent);
 var _languageSelect = require("./LanguageSelect");
 var _languageSelectDefault = parcelHelpers.interopDefault(_languageSelect);
-var _apiCalls = require("../../apiCalls");
 var _buttonComponent = require("./ButtonComponent");
 var _buttonComponentDefault = parcelHelpers.interopDefault(_buttonComponent);
 var _s = $RefreshSig$();
@@ -39936,7 +39928,7 @@ function SchedulingForm(props) {
                 siblingsState: props.siblingsState
             }, void 0, false, {
                 fileName: "src/components/Scheduling/SchedulingForm.js",
-                lineNumber: 28,
+                lineNumber: 27,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.ModalBody), {
@@ -39953,7 +39945,7 @@ function SchedulingForm(props) {
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/Scheduling/SchedulingForm.js",
-                                lineNumber: 32,
+                                lineNumber: 31,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonComponentDefault.default), {
@@ -39962,18 +39954,18 @@ function SchedulingForm(props) {
                                 togglePrevious: props.turnOffScheduling
                             }, void 0, false, {
                                 fileName: "src/components/Scheduling/SchedulingForm.js",
-                                lineNumber: 33,
+                                lineNumber: 32,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/Scheduling/SchedulingForm.js",
-                        lineNumber: 31,
+                        lineNumber: 30,
                         columnNumber: 11
                     }, this) : "",
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                         fileName: "src/components/Scheduling/SchedulingForm.js",
-                        lineNumber: 37,
+                        lineNumber: 36,
                         columnNumber: 9
                     }, this),
                     languageSelect ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _languageSelectDefault.default), {
@@ -39983,12 +39975,12 @@ function SchedulingForm(props) {
                         togglePrevious: setIntro
                     }, void 0, false, {
                         fileName: "src/components/Scheduling/SchedulingForm.js",
-                        lineNumber: 38,
+                        lineNumber: 37,
                         columnNumber: 27
                     }, this) : "",
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                         fileName: "src/components/Scheduling/SchedulingForm.js",
-                        lineNumber: 39,
+                        lineNumber: 38,
                         columnNumber: 9
                     }, this),
                     tagSelect ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _setTagsDefault.default), {
@@ -39998,12 +39990,12 @@ function SchedulingForm(props) {
                         togglePrevious: setLanguageSelect
                     }, void 0, false, {
                         fileName: "src/components/Scheduling/SchedulingForm.js",
-                        lineNumber: 40,
+                        lineNumber: 39,
                         columnNumber: 22
                     }, this) : "",
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                         fileName: "src/components/Scheduling/SchedulingForm.js",
-                        lineNumber: 41,
+                        lineNumber: 40,
                         columnNumber: 9
                     }, this),
                     schoolSelect ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _schoolSelectDefault.default), {
@@ -40012,12 +40004,12 @@ function SchedulingForm(props) {
                         togglePrevious: setTagSelect
                     }, void 0, false, {
                         fileName: "src/components/Scheduling/SchedulingForm.js",
-                        lineNumber: 42,
+                        lineNumber: 41,
                         columnNumber: 25
                     }, this) : "",
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                         fileName: "src/components/Scheduling/SchedulingForm.js",
-                        lineNumber: 43,
+                        lineNumber: 42,
                         columnNumber: 9
                     }, this),
                     dtSelect ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _dtSelectDefault.default), {
@@ -40025,13 +40017,13 @@ function SchedulingForm(props) {
                         togglePrevious: setSchoolSelect
                     }, void 0, false, {
                         fileName: "src/components/Scheduling/SchedulingForm.js",
-                        lineNumber: 44,
+                        lineNumber: 43,
                         columnNumber: 21
                     }, this) : ""
                 ]
             }, void 0, true, {
                 fileName: "src/components/Scheduling/SchedulingForm.js",
-                lineNumber: 29,
+                lineNumber: 28,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -40044,18 +40036,18 @@ function SchedulingForm(props) {
                     children: "Close"
                 }, void 0, false, {
                     fileName: "src/components/Scheduling/SchedulingForm.js",
-                    lineNumber: 48,
+                    lineNumber: 47,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "src/components/Scheduling/SchedulingForm.js",
-                lineNumber: 47,
+                lineNumber: 46,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/components/Scheduling/SchedulingForm.js",
-        lineNumber: 27,
+        lineNumber: 26,
         columnNumber: 5
     }, this);
 }
@@ -40070,7 +40062,7 @@ $RefreshReg$(_c, "SchedulingForm");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-bootstrap":"3AD9A","react-bootstrap/Button":"aPzUt","react-bootstrap/Modal":"aNVmp","./SetTags":"l7RjO","./SchoolSelect":"fGWfM","./DtSelect":"eYbfI","./HeaderComponent":"7GkL4","./LanguageSelect":"3WEpN","../../apiCalls":"knm0I","./ButtonComponent":"leKcM","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"3AD9A":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-bootstrap":"3AD9A","react-bootstrap/Button":"aPzUt","react-bootstrap/Modal":"aNVmp","./SetTags":"l7RjO","./SchoolSelect":"fGWfM","./DtSelect":"eYbfI","./HeaderComponent":"7GkL4","./LanguageSelect":"3WEpN","./ButtonComponent":"leKcM","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"3AD9A":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "Accordion", ()=>(0, _accordionDefault.default));
