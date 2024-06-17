@@ -13,38 +13,43 @@ function SetTags(props) {
 
   return (
     <Form.Group>
-      <Form.Label className='small p-0 text-muted'>
-        Please check any of the following for {props.siblingsState.map((row) => { `${row[2]},${row[1]}` })}
+      <Form.Label className='small p-0 text-muted'>Please note any of the following situations
       </Form.Label>
       <div className='mx-1 my-1'>
-        <Container>
-          <Row>
-            <Col>
-              {firstColumnTags.map((tag, idx) => (
-                <Form.Check
-                  type="switch"
-                  id={`custom-switch-${idx}`}
-                  className="d-flex flex-nowrap"
-                  key={idx}
-                  label={tag}
-                  value={tag}
-                />
-              ))}
-            </Col>
-            <Col>
-              {secondColumnTags.map((tag, idx) => (
-                <Form.Check
-                  type="switch"
-                  id={`custom-switch-${idx + 5}`} // Ensure unique id
-                  className="d-flex flex-nowrap"
-                  key={idx + 5}
-                  label={tag}
-                  value={tag}
-                />
-              ))}
-            </Col>
-          </Row>
-        </Container>
+        {props.siblingsState.map(row => {
+          return (
+            <Container className='mx-1 my-1' key={row[0]}>
+              <h6 className='mx-2 my-2 text-muted'>Check all of the following that apply for {<p className='fw-bold'>{`${row[1]}  ${row[2]}`}</p>}</h6>
+              <Row>
+                <Col>
+                  {firstColumnTags.map((tag, idx) => (
+                    <Form.Check
+                      type="switch"
+                      id={`custom-switch-${idx}`}
+                      className="d-flex flex-nowrap"
+                      key={idx}
+                      label={tag}
+                      value={tag}
+                    />
+                  ))}
+                </Col>
+                <Col>
+                  {secondColumnTags.map((tag, idx) => (
+                    <Form.Check
+                      type="switch"
+                      id={`custom-switch-${idx + 5}`} // Ensure unique id
+                      className="d-flex flex-nowrap"
+                      key={idx + 5}
+                      label={tag}
+                      value={tag}
+                    />
+                  ))}
+                </Col>
+              </Row>
+            </Container>
+          )
+        }
+        )}
       </div>
       {tags.length > 0 && (
         <ButtonComponent
