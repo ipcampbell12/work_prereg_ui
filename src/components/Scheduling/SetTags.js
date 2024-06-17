@@ -19,7 +19,7 @@ function SetTags(props) {
         {props.siblingsState.map(row => {
           return (
             <Container className='mx-1 my-1' key={row[0]}>
-              <h6 className='mx-2 my-2 text-muted'>Check all of the following that apply for {<p className='fw-bold'>{`${row[1]}  ${row[2]}`}</p>}</h6>
+              <h6 className='mx-2 my-2 text-muted'>Check all of the following that apply for {<p className='fw-bold' style={{ display: "inline" }}>{`${row[1]}  ${row[2]}`}</p>}</h6>
               <Row>
                 <Col>
                   {firstColumnTags.map((tag, idx) => (

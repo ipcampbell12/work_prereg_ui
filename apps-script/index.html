@@ -33842,7 +33842,7 @@ $RefreshReg$(_c, "Home");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./Tabs":"dKTFd","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../apiCalls":"knm0I"}],"dKTFd":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./Tabs":"dKTFd","../apiCalls":"knm0I","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"dKTFd":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$f084 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -33875,7 +33875,6 @@ function Tabs(props) {
     const [dataRow, setDataRow] = (0, _react.useState)(props.dataState[0]);
     const handleTabClick = (tab)=>{
         setTabState(tab);
-        console.log("The tab state is now: ", tab);
     };
     const openModal = ()=>{
         setModalOpen(true);
@@ -33885,7 +33884,6 @@ function Tabs(props) {
     };
     const turnOnScheduling = (response)=>{
         const data = JSON.parse(response);
-        console.log("You should see a full screen modal");
         props.setSiblingsState(data);
         setScheduling(true);
     };
@@ -33903,7 +33901,7 @@ function Tabs(props) {
                 displaySheetData: props.displaySheetData
             }, void 0, false, {
                 fileName: "src/components/Tabs.js",
-                lineNumber: 41,
+                lineNumber: 39,
                 columnNumber: 9
             }, this),
             scheduling && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _schedulingFormDefault.default), {
@@ -33913,7 +33911,7 @@ function Tabs(props) {
                 setSiblingsState: props.setSiblingsState
             }, void 0, false, {
                 fileName: "src/components/Tabs.js",
-                lineNumber: 51,
+                lineNumber: 49,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
@@ -33937,18 +33935,18 @@ function Tabs(props) {
                             children: tab
                         }, void 0, false, {
                             fileName: "src/components/Tabs.js",
-                            lineNumber: 67,
+                            lineNumber: 65,
                             columnNumber: 15
                         }, this)
                     }, index, false, {
                         fileName: "src/components/Tabs.js",
-                        lineNumber: 61,
+                        lineNumber: 59,
                         columnNumber: 13
                     }, this);
                 })
             }, void 0, false, {
                 fileName: "src/components/Tabs.js",
-                lineNumber: 58,
+                lineNumber: 56,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -33968,12 +33966,12 @@ function Tabs(props) {
                             setDataRow: setDataRow
                         }, void 0, false, {
                             fileName: "src/components/Tabs.js",
-                            lineNumber: 93,
+                            lineNumber: 91,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "src/components/Tabs.js",
-                        lineNumber: 85,
+                        lineNumber: 83,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -33989,12 +33987,12 @@ function Tabs(props) {
                             setDataRow: setDataRow
                         }, void 0, false, {
                             fileName: "src/components/Tabs.js",
-                            lineNumber: 109,
+                            lineNumber: 107,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "src/components/Tabs.js",
-                        lineNumber: 101,
+                        lineNumber: 99,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -34010,12 +34008,12 @@ function Tabs(props) {
                             setDataRow: setDataRow
                         }, void 0, false, {
                             fileName: "src/components/Tabs.js",
-                            lineNumber: 125,
+                            lineNumber: 123,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "src/components/Tabs.js",
-                        lineNumber: 117,
+                        lineNumber: 115,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -34031,24 +34029,24 @@ function Tabs(props) {
                             setDataRow: setDataRow
                         }, void 0, false, {
                             fileName: "src/components/Tabs.js",
-                            lineNumber: 141,
+                            lineNumber: 139,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "src/components/Tabs.js",
-                        lineNumber: 133,
+                        lineNumber: 131,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/components/Tabs.js",
-                lineNumber: 84,
+                lineNumber: 82,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/components/Tabs.js",
-        lineNumber: 39,
+        lineNumber: 37,
         columnNumber: 5
     }, this);
 }
@@ -40487,70 +40485,91 @@ function SetTags(props) {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Label, {
                 className: "small p-0 text-muted",
-                children: [
-                    "Please check any of the following for ",
-                    props.siblingsState.map((row)=>{
-                        row[2], row[1];
-                    })
-                ]
-            }, void 0, true, {
+                children: "Please note any of the following situations"
+            }, void 0, false, {
                 fileName: "src/components/Scheduling/SetTags.js",
                 lineNumber: 16,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 className: "mx-1 my-1",
-                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _containerDefault.default), {
-                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _rowDefault.default), {
+                children: props.siblingsState.map((row)=>{
+                    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _containerDefault.default), {
+                        className: "mx-1 my-1",
                         children: [
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _colDefault.default), {
-                                children: firstColumnTags.map((tag, idx)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Check, {
-                                        type: "switch",
-                                        id: `custom-switch-${idx}`,
-                                        className: "d-flex flex-nowrap",
-                                        label: tag,
-                                        value: tag
-                                    }, idx, false, {
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h6", {
+                                className: "mx-2 my-2 text-muted",
+                                children: [
+                                    "Check all of the following that apply for ",
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                        className: "fw-bold",
+                                        style: {
+                                            display: "inline"
+                                        },
+                                        children: `${row[1]}  ${row[2]}`
+                                    }, void 0, false, {
+                                        fileName: "src/components/Scheduling/SetTags.js",
+                                        lineNumber: 22,
+                                        columnNumber: 95
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "src/components/Scheduling/SetTags.js",
+                                lineNumber: 22,
+                                columnNumber: 15
+                            }, this),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _rowDefault.default), {
+                                children: [
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _colDefault.default), {
+                                        children: firstColumnTags.map((tag, idx)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Check, {
+                                                type: "switch",
+                                                id: `custom-switch-${idx}`,
+                                                className: "d-flex flex-nowrap",
+                                                label: tag,
+                                                value: tag
+                                            }, idx, false, {
+                                                fileName: "src/components/Scheduling/SetTags.js",
+                                                lineNumber: 26,
+                                                columnNumber: 21
+                                            }, this))
+                                    }, void 0, false, {
                                         fileName: "src/components/Scheduling/SetTags.js",
                                         lineNumber: 24,
                                         columnNumber: 17
-                                    }, this))
-                            }, void 0, false, {
-                                fileName: "src/components/Scheduling/SetTags.js",
-                                lineNumber: 22,
-                                columnNumber: 13
-                            }, this),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _colDefault.default), {
-                                children: secondColumnTags.map((tag, idx)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Check, {
-                                        type: "switch",
-                                        id: `custom-switch-${idx + 5}`,
-                                        className: "d-flex flex-nowrap",
-                                        label: tag,
-                                        value: tag
-                                    }, idx + 5, false, {
+                                    }, this),
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _colDefault.default), {
+                                        children: secondColumnTags.map((tag, idx)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Check, {
+                                                type: "switch",
+                                                id: `custom-switch-${idx + 5}`,
+                                                className: "d-flex flex-nowrap",
+                                                label: tag,
+                                                value: tag
+                                            }, idx + 5, false, {
+                                                fileName: "src/components/Scheduling/SetTags.js",
+                                                lineNumber: 38,
+                                                columnNumber: 21
+                                            }, this))
+                                    }, void 0, false, {
                                         fileName: "src/components/Scheduling/SetTags.js",
                                         lineNumber: 36,
                                         columnNumber: 17
-                                    }, this))
-                            }, void 0, false, {
+                                    }, this)
+                                ]
+                            }, void 0, true, {
                                 fileName: "src/components/Scheduling/SetTags.js",
-                                lineNumber: 34,
-                                columnNumber: 13
+                                lineNumber: 23,
+                                columnNumber: 15
                             }, this)
                         ]
-                    }, void 0, true, {
+                    }, row[0], true, {
                         fileName: "src/components/Scheduling/SetTags.js",
                         lineNumber: 21,
-                        columnNumber: 11
-                    }, this)
-                }, void 0, false, {
-                    fileName: "src/components/Scheduling/SetTags.js",
-                    lineNumber: 20,
-                    columnNumber: 9
-                }, this)
+                        columnNumber: 13
+                    }, this);
+                })
             }, void 0, false, {
                 fileName: "src/components/Scheduling/SetTags.js",
-                lineNumber: 19,
+                lineNumber: 18,
                 columnNumber: 7
             }, this),
             (0, _options.tags).length > 0 && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonComponentDefault.default), {
@@ -40559,7 +40578,7 @@ function SetTags(props) {
                 togglePrevious: props.togglePrevious
             }, void 0, false, {
                 fileName: "src/components/Scheduling/SetTags.js",
-                lineNumber: 50,
+                lineNumber: 55,
                 columnNumber: 9
             }, this)
         ]
@@ -40847,7 +40866,7 @@ var _rowDefault = parcelHelpers.interopDefault(_row);
 var _col = require("react-bootstrap/Col");
 var _colDefault = parcelHelpers.interopDefault(_col);
 function HeaderComponent(props) {
-    console.log("siblingsState is: ", props.siblingsState);
+    // console.log("siblingsState in header component is: ", props.siblingsState)
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _modalDefault.default).Header, {
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _containerDefault.default), {
             className: "center-element",
@@ -40883,9 +40902,7 @@ function HeaderComponent(props) {
                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _colDefault.default), {
                         children: [
                             " Schedule Appointment for: ",
-                            props.siblingsState.map((row)=>{
-                                row[2], row[1];
-                            })
+                            props.siblingsState.map((row)=>`${row[1]} ${row[2]}`).join(", ")
                         ]
                     }, void 0, true, {
                         fileName: "src/components/Scheduling/HeaderComponent.js",
