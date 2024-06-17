@@ -13,7 +13,6 @@ function Tabs(props) {
 
   const handleTabClick = (tab) => {
     setTabState(tab);
-    console.log("The tab state is now: ", tab);
   };
 
   const openModal = () => {
@@ -26,7 +25,6 @@ function Tabs(props) {
 
   const turnOnScheduling = (response) => {
     const data = JSON.parse(response);
-    console.log("You should see a full screen modal");
     props.setSiblingsState(data)
     setScheduling(true);
   };

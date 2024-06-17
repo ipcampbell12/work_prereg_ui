@@ -5,7 +5,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 function HeaderComponent(props) {
-    console.log("siblingsState is: ", props.siblingsState)
+    // console.log("siblingsState in header component is: ", props.siblingsState)
     return (
 
         <Modal.Header>
@@ -15,7 +15,7 @@ function HeaderComponent(props) {
                 </Row>
                 <br />
                 <Row>
-                    <Col> Schedule Appointment for: {props.siblingsState.map((row) => { `${row[2]},${row[1]}` })}</Col>
+                    <Col> Schedule Appointment for: {props.siblingsState.map(row => `${row[1]} ${row[2]}`).join(', ')}</Col>
                 </Row>
             </Container>
         </Modal.Header>
