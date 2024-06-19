@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import DataDisplay from './DataDisplay';
 import PreRegModal from './PreRegModal';
 import SchedulingForm from './Scheduling/SchedulingForm';
-import { clientSideGetData, clientSideGetSiblings } from '../apiCalls';
+import { clientSideGetSiblings } from '../apiCalls';
 
 
 const tabNames = ["submitted", "scheduled", "pending", "transferred"];
@@ -12,7 +12,7 @@ function Tabs(props) {
   const [tabState, setTabState] = useState("submitted");
   const [modalOpen, setModalOpen] = useState(false);
   const [dataRow, setDataRow] = useState(props.dataState[0]);
-  const [modalSpinnerState, setModalSpinnerState] = useState(true)
+  const [modalSpinnerState, setModalSpinnerState] = useState(false)
 
   //add sibling state to Tabs component to reduce complexity. You don't need to pass it around 
   const handleTabClick = (tab) => {
@@ -26,7 +26,7 @@ function Tabs(props) {
 
   //can be moved to preRegeModal
   const showData = (response) => {
-    console.log("Turn on scheduling is running")
+    //  console.log("Turn on scheduling is running")
     const data = JSON.parse(response);
     props.setSiblingsState(data)
     setModalSpinnerState(false)
@@ -34,12 +34,14 @@ function Tabs(props) {
 
   const turnOffScheduling = () => {
     setScheduling(false);
-    console.log("Scheduling is getting turned off")
+    //  console.log("Scheduling is getting turned off")
   };
 
   const handleScheduling = (dataCol, callback) => {
     setModalOpen(false);
+    setModalSpinnerState(true)
     setScheduling(true);
+    console.log("modalSpinnerState is: ", modalSpinnerState)
     clientSideGetSiblings(dataCol, callback)
   }
 
@@ -51,7 +53,7 @@ function Tabs(props) {
           modalOpen={modalOpen}
           displaySheetData={props.displaySheetData}
           handleScheduling={handleScheduling}
-          closeModa={() => setModalOpen(false)}
+          closeModal={() => setModalOpen(false)}
           showData={showData}
         />
       )}

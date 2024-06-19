@@ -1,22 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import Tabs from './Tabs';
-import { clientSideGetData, clientSideGetSiblings } from '../apiCalls';
+import { clientSideGetData } from '../apiCalls';
 
 
 
 function Home() {
     const [dataState, setDataState] = useState([]);
     const [siblingsState, setSiblingsState] = useState([]);
-
-
-    function spinnerOn() {
-        setModalSpinnerState(true)
-        console.log("spinnerOn change spinner state to: ", modalSpinnerState)
-    }
-    function spinnerOff() {
-        setModalSpinnerState(false)
-        console.log("spinnerOff change spinner state to: ", modalSpinnerState)
-    }
 
     useEffect(() => {
         clientSideGetData("Pre Registrations", 2, 1, 14, displaySheetData);
@@ -41,8 +31,6 @@ function Home() {
                 siblingsState={siblingsState}
                 displaySheetData={displaySheetData}
                 setSiblingsState={setSiblingsState}
-                spinnerOn={spinnerOn}
-                spinnerOff={spinnerOff}
             />
 
         </div>

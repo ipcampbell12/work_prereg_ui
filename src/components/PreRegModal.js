@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import UpdatingForm from "./UpdatingForm";
 import BasicInfo from "./BasicInfo";
-import { clientSideSaveData, clientSideGetData, clientSideGetSiblings } from "../apiCalls";
+import { clientSideSaveData, clientSideGetData } from "../apiCalls";
 //import DropdownMenu from './DropDown';
 
 function PreRegModal({

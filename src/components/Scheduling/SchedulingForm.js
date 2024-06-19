@@ -23,18 +23,24 @@ function SchedulingForm(props) {
   const [schoolSelect, setSchoolSelect] = useState(false)
   const [dtSelect, setDtSelect] = useState(false)
 
+  console.log("Spinner state is: ", props.spinnerState)
 
   return (
     <Modal show={props.scheduling} onHide={props.turnOffScheduling} size='lg'>
 
-      {props.modalSpinnerState && <Spinner animation="border" role="status" />}
-      {!props.modalSpinnerState && (
+      {props.spinnerState && (
+        <div className='center-element my-5 mx-5'>
+          <Spinner animation="grow" variant="info" role="status" />
+        </div>
+      )}
+
+      {!props.spinnerState && (
         <React.Fragment>
           <HeaderComponent siblingsState={props.siblingsState} />
           <ModalBody>
             {intro ?
               <div>
-                <h5 className='center-element'>Follow these prompts to sechedule an appointment for {props.siblingsState.map((row) => { `${row[2]},${row[1]}` })}</h5>
+                <h5 className='center-element'>Follow these prompts to sechedule an appointment for {props.siblingsState.map((row) => `${row[2]}, ${row[1]}`).join(', ')}</h5>
                 <ButtonComponent toggleCurrent={setIntro} toggleNext={setLanguageSelect} togglePrevious={props.turnOffScheduling} />
               </div>
               : ''}
