@@ -8,10 +8,10 @@ import { clientSideSaveData, clientSideGetData, clientSideGetSiblings } from "..
 
 function PreRegModal({
   dataRow,
-  closeModal,
   modalOpen,
-  turnOnScheduling,
   displaySheetData,
+  handleScheduling,
+  closeModal,
   showData
 }) {
   const [editing, setEditing] = useState(false);
@@ -20,8 +20,6 @@ function PreRegModal({
   const turnOnEditing = () => {
     setEditing(true);
   };
-
-  console.log("setScheduling is: ", turnOnScheduling)
 
   const saveChanges = (e) => {
     e.preventDefault();
@@ -65,13 +63,8 @@ function PreRegModal({
       <Modal.Footer>
         <Button
           variant="warning"
-          onClick={() => {
-            closeModal();
-            console.log("Going to open scheduling modal")
-            //turn on scheduling modal and THEN get sibling data
-            turnOnScheduling()
-            clientSideGetSiblings(dataRow[6], showData);
-          }}
+          //all this can be contained in a single function in the Tabs.js copmonent
+          onClick={() => handleScheduling(dataRow[6], showData)}
         >
           Schedule Appointment
         </Button>

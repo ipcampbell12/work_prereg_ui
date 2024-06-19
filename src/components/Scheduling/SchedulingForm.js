@@ -8,6 +8,7 @@ import DtSelect from './DtSelect';
 import HeaderComponent from './HeaderComponent';
 import LanguageSelect from './LanguageSelect';
 import ButtonComponent from './ButtonComponent';
+import Spinner from 'react-bootstrap/Spinner';
 
 
 function SchedulingForm(props) {
@@ -22,31 +23,41 @@ function SchedulingForm(props) {
   const [schoolSelect, setSchoolSelect] = useState(false)
   const [dtSelect, setDtSelect] = useState(false)
 
+
   return (
     <Modal show={props.scheduling} onHide={props.turnOffScheduling} size='lg'>
-      <HeaderComponent siblingsState={props.siblingsState} />
-      <ModalBody>
-        {intro ?
-          <div>
-            <h5 className='center-element'>Follow these prompts to sechedule an appointment for {props.siblingsState.map((row) => { `${row[2]},${row[1]}` })}</h5>
-            <ButtonComponent toggleCurrent={setIntro} toggleNext={setLanguageSelect} togglePrevious={props.turnOffScheduling} />
-          </div>
-          : ''}
 
-        <br />
-        {languageSelect ? <LanguageSelect siblingsState={props.siblingsState} toggleCurrent={setLanguageSelect} toggleNext={setTagSelect} togglePrevious={setIntro} /> : ''}
-        <br />
-        {tagSelect ? <SetTags siblingsState={props.siblingsState} toggleCurrent={setTagSelect} toggleNext={setSchoolSelect} togglePrevious={setLanguageSelect} /> : ''}
-        <br />
-        {schoolSelect ? <BoundarySchool siblingsState={props.siblingsState} toggleCurrent={setSchoolSelect} toggleNext={setDtSelect} togglePrevious={setTagSelect} /> : ''}
-        <br />
-        {dtSelect ? <DtSelect toggleCurrent={setDtSelect} togglePrevious={setSchoolSelect} /> : ''}
+      {props.modalSpinnerState && <Spinner animation="border" role="status" />}
+      {!props.modalSpinnerState && (
+        <React.Fragment>
+          <HeaderComponent siblingsState={props.siblingsState} />
+          <ModalBody>
+            {intro ?
+              <div>
+                <h5 className='center-element'>Follow these prompts to sechedule an appointment for {props.siblingsState.map((row) => { `${row[2]},${row[1]}` })}</h5>
+                <ButtonComponent toggleCurrent={setIntro} toggleNext={setLanguageSelect} togglePrevious={props.turnOffScheduling} />
+              </div>
+              : ''}
 
-      </ModalBody>
+            <br />
+            {languageSelect ? <LanguageSelect siblingsState={props.siblingsState} toggleCurrent={setLanguageSelect} toggleNext={setTagSelect} togglePrevious={setIntro} /> : ''}
+            <br />
+            {tagSelect ? <SetTags siblingsState={props.siblingsState} toggleCurrent={setTagSelect} toggleNext={setSchoolSelect} togglePrevious={setLanguageSelect} /> : ''}
+            <br />
+            {schoolSelect ? <BoundarySchool siblingsState={props.siblingsState} toggleCurrent={setSchoolSelect} toggleNext={setDtSelect} togglePrevious={setTagSelect} /> : ''}
+            <br />
+            {dtSelect ? <DtSelect toggleCurrent={setDtSelect} togglePrevious={setSchoolSelect} /> : ''}
+
+          </ModalBody>
+        </React.Fragment>
+      )
+
+      }
       <div className='center-element'>
         <Button className="mx-1 my-1 center-element" variant="danger" width="75px" onClick={props.turnOffScheduling}>Close</Button>
       </div>
     </Modal>
+
   )
 }
 

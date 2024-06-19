@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import DataDisplay from './DataDisplay';
 import PreRegModal from './PreRegModal';
 import SchedulingForm from './Scheduling/SchedulingForm';
+import { clientSideGetData, clientSideGetSiblings } from '../apiCalls';
 
 
 const tabNames = ["submitted", "scheduled", "pending", "transferred"];
@@ -11,8 +12,9 @@ function Tabs(props) {
   const [tabState, setTabState] = useState("submitted");
   const [modalOpen, setModalOpen] = useState(false);
   const [dataRow, setDataRow] = useState(props.dataState[0]);
+  const [modalSpinnerState, setModalSpinnerState] = useState(true)
 
-  //add sibling state to Tabs component to reduce complexity. You don't need ot pass it around 
+  //add sibling state to Tabs component to reduce complexity. You don't need to pass it around 
   const handleTabClick = (tab) => {
     setTabState(tab);
   };
@@ -21,18 +23,13 @@ function Tabs(props) {
     setModalOpen(true);
   };
 
-  const closeModal = () => {
-    setModalOpen(false);
-  };
 
   //can be moved to preRegeModal
   const showData = (response) => {
     console.log("Turn on scheduling is running")
     const data = JSON.parse(response);
     props.setSiblingsState(data)
-    //props.spinnerOff()
-    //console.log("Spinner has been turned off")
-    console.log("Scheduling state is: ", scheduling)
+    setModalSpinnerState(false)
   };
 
   const turnOffScheduling = () => {
@@ -40,17 +37,21 @@ function Tabs(props) {
     console.log("Scheduling is getting turned off")
   };
 
+  const handleScheduling = (dataCol, callback) => {
+    setModalOpen(false);
+    setScheduling(true);
+    clientSideGetSiblings(dataCol, callback)
+  }
+
   return (
     <div>
       {modalOpen && (
         <PreRegModal
           dataRow={dataRow}
-          closeModal={closeModal}
           modalOpen={modalOpen}
-          turnOnScheduling={() => setScheduling(true)}
-          onParent={props.onParent}
           displaySheetData={props.displaySheetData}
-          spinnerOn={props.spinnerOn}
+          handleScheduling={handleScheduling}
+          closeModa={() => setModalOpen(false)}
           showData={showData}
         />
       )}
@@ -60,6 +61,7 @@ function Tabs(props) {
           turnOffScheduling={turnOffScheduling}
           scheduling={scheduling}
           setSiblingsState={props.setSiblingsState}
+          spinnerState={modalSpinnerState}
         />
       )}
       <ul className="nav nav-tabs" role="tablist">

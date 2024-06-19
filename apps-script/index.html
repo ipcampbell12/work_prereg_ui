@@ -33791,14 +33791,11 @@ var _reactDefault = parcelHelpers.interopDefault(_react);
 var _tabs = require("./Tabs");
 var _tabsDefault = parcelHelpers.interopDefault(_tabs);
 var _apiCalls = require("../apiCalls");
-var _spinner = require("react-bootstrap/Spinner");
-var _spinnerDefault = parcelHelpers.interopDefault(_spinner);
 var _s = $RefreshSig$();
 function Home() {
     _s();
     const [dataState, setDataState] = (0, _react.useState)([]);
     const [siblingsState, setSiblingsState] = (0, _react.useState)([]);
-    const [modalSpinnerState, setModalSpinnerState] = (0, _react.useState)(false);
     function spinnerOn() {
         setModalSpinnerState(true);
         console.log("spinnerOn change spinner state to: ", modalSpinnerState);
@@ -33825,15 +33822,7 @@ function Home() {
                 lineNumber: 36,
                 columnNumber: 13
             }, this),
-            modalSpinnerState && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _spinnerDefault.default), {
-                animation: "border",
-                role: "status"
-            }, void 0, false, {
-                fileName: "src/components/Home.js",
-                lineNumber: 37,
-                columnNumber: 35
-            }, this),
-            modalSpinnerState === false ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _tabsDefault.default), {
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _tabsDefault.default), {
                 dataState: dataState,
                 siblingsState: siblingsState,
                 displaySheetData: displaySheetData,
@@ -33843,8 +33832,8 @@ function Home() {
             }, void 0, false, {
                 fileName: "src/components/Home.js",
                 lineNumber: 39,
-                columnNumber: 44
-            }, this) : ""
+                columnNumber: 13
+            }, this)
         ]
     }, void 0, true, {
         fileName: "src/components/Home.js",
@@ -33852,7 +33841,7 @@ function Home() {
         columnNumber: 9
     }, this);
 }
-_s(Home, "ssknwvo8WvapVzBB3dl78LI+HVs=");
+_s(Home, "ekYpsi3i5AL9cCo1dJ4QMBR+bfI=");
 _c = Home;
 exports.default = Home;
 var _c;
@@ -33863,7 +33852,7 @@ $RefreshReg$(_c, "Home");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./Tabs":"dKTFd","../apiCalls":"knm0I","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react-bootstrap/Spinner":"2r8jr"}],"dKTFd":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./Tabs":"dKTFd","../apiCalls":"knm0I","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"dKTFd":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$f084 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -33881,6 +33870,7 @@ var _preRegModal = require("./PreRegModal");
 var _preRegModalDefault = parcelHelpers.interopDefault(_preRegModal);
 var _schedulingForm = require("./Scheduling/SchedulingForm");
 var _schedulingFormDefault = parcelHelpers.interopDefault(_schedulingForm);
+var _apiCalls = require("../apiCalls");
 var _s = $RefreshSig$();
 const tabNames = [
     "submitted",
@@ -33894,53 +33884,53 @@ function Tabs(props) {
     const [tabState, setTabState] = (0, _react.useState)("submitted");
     const [modalOpen, setModalOpen] = (0, _react.useState)(false);
     const [dataRow, setDataRow] = (0, _react.useState)(props.dataState[0]);
-    //add sibling state to Tabs component to reduce complexity. You don't need ot pass it around 
+    const [modalSpinnerState, setModalSpinnerState] = (0, _react.useState)(true);
+    //add sibling state to Tabs component to reduce complexity. You don't need to pass it around 
     const handleTabClick = (tab)=>{
         setTabState(tab);
     };
     const openModal = ()=>{
         setModalOpen(true);
     };
-    const closeModal = ()=>{
-        setModalOpen(false);
-    };
     //can be moved to preRegeModal
     const showData = (response)=>{
         console.log("Turn on scheduling is running");
         const data = JSON.parse(response);
         props.setSiblingsState(data);
-        //props.spinnerOff()
-        //console.log("Spinner has been turned off")
-        console.log("Scheduling state is: ", scheduling);
+        setModalSpinnerState(false);
     };
     const turnOffScheduling = ()=>{
         setScheduling(false);
         console.log("Scheduling is getting turned off");
     };
+    const handleScheduling = (dataCol, callback)=>{
+        setModalOpen(false);
+        setScheduling(true);
+        (0, _apiCalls.clientSideGetSiblings)(dataCol, callback);
+    };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: [
             modalOpen && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _preRegModalDefault.default), {
                 dataRow: dataRow,
-                closeModal: closeModal,
                 modalOpen: modalOpen,
-                turnOnScheduling: ()=>setScheduling(true),
-                onParent: props.onParent,
                 displaySheetData: props.displaySheetData,
-                spinnerOn: props.spinnerOn,
+                handleScheduling: handleScheduling,
+                closeModa: ()=>setModalOpen(false),
                 showData: showData
             }, void 0, false, {
                 fileName: "src/components/Tabs.js",
-                lineNumber: 46,
+                lineNumber: 49,
                 columnNumber: 9
             }, this),
             scheduling && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _schedulingFormDefault.default), {
                 siblingsState: props.siblingsState,
                 turnOffScheduling: turnOffScheduling,
                 scheduling: scheduling,
-                setSiblingsState: props.setSiblingsState
+                setSiblingsState: props.setSiblingsState,
+                spinnerState: modalSpinnerState
             }, void 0, false, {
                 fileName: "src/components/Tabs.js",
-                lineNumber: 58,
+                lineNumber: 59,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
@@ -33964,18 +33954,18 @@ function Tabs(props) {
                             children: tab
                         }, void 0, false, {
                             fileName: "src/components/Tabs.js",
-                            lineNumber: 74,
+                            lineNumber: 76,
                             columnNumber: 15
                         }, this)
                     }, index, false, {
                         fileName: "src/components/Tabs.js",
-                        lineNumber: 68,
+                        lineNumber: 70,
                         columnNumber: 13
                     }, this);
                 })
             }, void 0, false, {
                 fileName: "src/components/Tabs.js",
-                lineNumber: 65,
+                lineNumber: 67,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -33995,12 +33985,12 @@ function Tabs(props) {
                             setDataRow: setDataRow
                         }, void 0, false, {
                             fileName: "src/components/Tabs.js",
-                            lineNumber: 100,
+                            lineNumber: 102,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "src/components/Tabs.js",
-                        lineNumber: 92,
+                        lineNumber: 94,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -34016,12 +34006,12 @@ function Tabs(props) {
                             setDataRow: setDataRow
                         }, void 0, false, {
                             fileName: "src/components/Tabs.js",
-                            lineNumber: 116,
+                            lineNumber: 118,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "src/components/Tabs.js",
-                        lineNumber: 108,
+                        lineNumber: 110,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -34037,12 +34027,12 @@ function Tabs(props) {
                             setDataRow: setDataRow
                         }, void 0, false, {
                             fileName: "src/components/Tabs.js",
-                            lineNumber: 132,
+                            lineNumber: 134,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "src/components/Tabs.js",
-                        lineNumber: 124,
+                        lineNumber: 126,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -34058,28 +34048,28 @@ function Tabs(props) {
                             setDataRow: setDataRow
                         }, void 0, false, {
                             fileName: "src/components/Tabs.js",
-                            lineNumber: 148,
+                            lineNumber: 150,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "src/components/Tabs.js",
-                        lineNumber: 140,
+                        lineNumber: 142,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/components/Tabs.js",
-                lineNumber: 91,
+                lineNumber: 93,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/components/Tabs.js",
-        lineNumber: 44,
+        lineNumber: 47,
         columnNumber: 5
     }, this);
 }
-_s(Tabs, "/7ZSArWJ1PD+DVYtpZ3vI18E+qc=");
+_s(Tabs, "tY6y6DKJD6P/Dv5mM7yXYarw2nA=");
 _c = Tabs;
 exports.default = Tabs;
 var _c;
@@ -34090,7 +34080,7 @@ $RefreshReg$(_c, "Tabs");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./DataDisplay":"gunHM","./PreRegModal":"iwIZV","./Scheduling/SchedulingForm":"lLPPX","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"gunHM":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./DataDisplay":"gunHM","./PreRegModal":"iwIZV","./Scheduling/SchedulingForm":"lLPPX","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../apiCalls":"knm0I"}],"gunHM":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$78ba = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -34449,14 +34439,13 @@ var _basicInfoDefault = parcelHelpers.interopDefault(_basicInfo);
 var _apiCalls = require("../apiCalls");
 var _s = $RefreshSig$();
 //import DropdownMenu from './DropDown';
-function PreRegModal({ dataRow, closeModal, modalOpen, turnOnScheduling, displaySheetData, showData }) {
+function PreRegModal({ dataRow, modalOpen, displaySheetData, handleScheduling, closeModal, showData }) {
     _s();
     const [editing, setEditing] = (0, _react.useState)(false);
     const [arrToSave, setArrToSave] = (0, _react.useState)(dataRow.slice(0, 9));
     const turnOnEditing = ()=>{
         setEditing(true);
     };
-    console.log("setScheduling is: ", turnOnScheduling);
     const saveChanges = (e)=>{
         e.preventDefault();
         const row = dataRow[0];
@@ -34494,12 +34483,12 @@ function PreRegModal({ dataRow, closeModal, modalOpen, turnOnScheduling, display
                     ]
                 }, void 0, true, {
                     fileName: "src/components/PreRegModal.js",
-                    lineNumber: 48,
+                    lineNumber: 46,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "src/components/PreRegModal.js",
-                lineNumber: 47,
+                lineNumber: 45,
                 columnNumber: 7
             }, this),
             !editing ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _modalDefault.default).Body, {
@@ -34507,12 +34496,12 @@ function PreRegModal({ dataRow, closeModal, modalOpen, turnOnScheduling, display
                     dataRow: dataRow
                 }, void 0, false, {
                     fileName: "src/components/PreRegModal.js",
-                    lineNumber: 55,
+                    lineNumber: 53,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "src/components/PreRegModal.js",
-                lineNumber: 54,
+                lineNumber: 52,
                 columnNumber: 9
             }, this) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _modalDefault.default).Body, {
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _updatingFormDefault.default), {
@@ -34520,29 +34509,24 @@ function PreRegModal({ dataRow, closeModal, modalOpen, turnOnScheduling, display
                     dataRow: dataRow
                 }, void 0, false, {
                     fileName: "src/components/PreRegModal.js",
-                    lineNumber: 59,
+                    lineNumber: 57,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "src/components/PreRegModal.js",
-                lineNumber: 58,
+                lineNumber: 56,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _modalDefault.default).Footer, {
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonDefault.default), {
                         variant: "warning",
-                        onClick: ()=>{
-                            closeModal();
-                            console.log("Going to open scheduling modal");
-                            //turn on scheduling modal and THEN get sibling data
-                            turnOnScheduling();
-                            (0, _apiCalls.clientSideGetSiblings)(dataRow[6], showData);
-                        },
+                        //all this can be contained in a single function in the Tabs.js copmonent
+                        onClick: ()=>handleScheduling(dataRow[6], showData),
                         children: "Schedule Appointment"
                     }, void 0, false, {
                         fileName: "src/components/PreRegModal.js",
-                        lineNumber: 66,
+                        lineNumber: 64,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonDefault.default), {
@@ -34551,7 +34535,7 @@ function PreRegModal({ dataRow, closeModal, modalOpen, turnOnScheduling, display
                         children: editing ? "Save Changes" : "Edit Information"
                     }, void 0, false, {
                         fileName: "src/components/PreRegModal.js",
-                        lineNumber: 78,
+                        lineNumber: 71,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonDefault.default), {
@@ -34560,19 +34544,19 @@ function PreRegModal({ dataRow, closeModal, modalOpen, turnOnScheduling, display
                         children: "Close"
                     }, void 0, false, {
                         fileName: "src/components/PreRegModal.js",
-                        lineNumber: 84,
+                        lineNumber: 77,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/components/PreRegModal.js",
-                lineNumber: 65,
+                lineNumber: 63,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/components/PreRegModal.js",
-        lineNumber: 46,
+        lineNumber: 44,
         columnNumber: 5
     }, this);
 }
@@ -39940,6 +39924,8 @@ var _languageSelect = require("./LanguageSelect");
 var _languageSelectDefault = parcelHelpers.interopDefault(_languageSelect);
 var _buttonComponent = require("./ButtonComponent");
 var _buttonComponentDefault = parcelHelpers.interopDefault(_buttonComponent);
+var _spinner = require("react-bootstrap/Spinner");
+var _spinnerDefault = parcelHelpers.interopDefault(_spinner);
 var _s = $RefreshSig$();
 function SchedulingForm(props) {
     _s();
@@ -39955,107 +39941,124 @@ function SchedulingForm(props) {
         onHide: props.turnOffScheduling,
         size: "lg",
         children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _headerComponentDefault.default), {
-                siblingsState: props.siblingsState
+            props.modalSpinnerState && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _spinnerDefault.default), {
+                animation: "border",
+                role: "status"
             }, void 0, false, {
                 fileName: "src/components/Scheduling/SchedulingForm.js",
-                lineNumber: 27,
-                columnNumber: 7
+                lineNumber: 30,
+                columnNumber: 35
             }, this),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.ModalBody), {
+            !props.modalSpinnerState && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactDefault.default).Fragment, {
                 children: [
-                    intro ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _headerComponentDefault.default), {
+                        siblingsState: props.siblingsState
+                    }, void 0, false, {
+                        fileName: "src/components/Scheduling/SchedulingForm.js",
+                        lineNumber: 33,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.ModalBody), {
                         children: [
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h5", {
-                                className: "center-element",
+                            intro ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                                 children: [
-                                    "Follow these prompts to sechedule an appointment for ",
-                                    props.siblingsState.map((row)=>{
-                                        row[2], row[1];
-                                    })
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h5", {
+                                        className: "center-element",
+                                        children: [
+                                            "Follow these prompts to sechedule an appointment for ",
+                                            props.siblingsState.map((row)=>{
+                                                row[2], row[1];
+                                            })
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "src/components/Scheduling/SchedulingForm.js",
+                                        lineNumber: 37,
+                                        columnNumber: 17
+                                    }, this),
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonComponentDefault.default), {
+                                        toggleCurrent: setIntro,
+                                        toggleNext: setLanguageSelect,
+                                        togglePrevious: props.turnOffScheduling
+                                    }, void 0, false, {
+                                        fileName: "src/components/Scheduling/SchedulingForm.js",
+                                        lineNumber: 38,
+                                        columnNumber: 17
+                                    }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/Scheduling/SchedulingForm.js",
-                                lineNumber: 31,
+                                lineNumber: 36,
+                                columnNumber: 15
+                            }, this) : "",
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
+                                fileName: "src/components/Scheduling/SchedulingForm.js",
+                                lineNumber: 42,
                                 columnNumber: 13
                             }, this),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonComponentDefault.default), {
-                                toggleCurrent: setIntro,
-                                toggleNext: setLanguageSelect,
-                                togglePrevious: props.turnOffScheduling
+                            languageSelect ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _languageSelectDefault.default), {
+                                siblingsState: props.siblingsState,
+                                toggleCurrent: setLanguageSelect,
+                                toggleNext: setTagSelect,
+                                togglePrevious: setIntro
                             }, void 0, false, {
                                 fileName: "src/components/Scheduling/SchedulingForm.js",
-                                lineNumber: 32,
+                                lineNumber: 43,
+                                columnNumber: 31
+                            }, this) : "",
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
+                                fileName: "src/components/Scheduling/SchedulingForm.js",
+                                lineNumber: 44,
                                 columnNumber: 13
-                            }, this)
+                            }, this),
+                            tagSelect ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _setTagsDefault.default), {
+                                siblingsState: props.siblingsState,
+                                toggleCurrent: setTagSelect,
+                                toggleNext: setSchoolSelect,
+                                togglePrevious: setLanguageSelect
+                            }, void 0, false, {
+                                fileName: "src/components/Scheduling/SchedulingForm.js",
+                                lineNumber: 45,
+                                columnNumber: 26
+                            }, this) : "",
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
+                                fileName: "src/components/Scheduling/SchedulingForm.js",
+                                lineNumber: 46,
+                                columnNumber: 13
+                            }, this),
+                            schoolSelect ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _schoolSelectDefault.default), {
+                                siblingsState: props.siblingsState,
+                                toggleCurrent: setSchoolSelect,
+                                toggleNext: setDtSelect,
+                                togglePrevious: setTagSelect
+                            }, void 0, false, {
+                                fileName: "src/components/Scheduling/SchedulingForm.js",
+                                lineNumber: 47,
+                                columnNumber: 29
+                            }, this) : "",
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
+                                fileName: "src/components/Scheduling/SchedulingForm.js",
+                                lineNumber: 48,
+                                columnNumber: 13
+                            }, this),
+                            dtSelect ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _dtSelectDefault.default), {
+                                toggleCurrent: setDtSelect,
+                                togglePrevious: setSchoolSelect
+                            }, void 0, false, {
+                                fileName: "src/components/Scheduling/SchedulingForm.js",
+                                lineNumber: 49,
+                                columnNumber: 25
+                            }, this) : ""
                         ]
                     }, void 0, true, {
                         fileName: "src/components/Scheduling/SchedulingForm.js",
-                        lineNumber: 30,
+                        lineNumber: 34,
                         columnNumber: 11
-                    }, this) : "",
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
-                        fileName: "src/components/Scheduling/SchedulingForm.js",
-                        lineNumber: 36,
-                        columnNumber: 9
-                    }, this),
-                    languageSelect ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _languageSelectDefault.default), {
-                        siblingsState: props.siblingsState,
-                        toggleCurrent: setLanguageSelect,
-                        toggleNext: setTagSelect,
-                        togglePrevious: setIntro
-                    }, void 0, false, {
-                        fileName: "src/components/Scheduling/SchedulingForm.js",
-                        lineNumber: 37,
-                        columnNumber: 27
-                    }, this) : "",
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
-                        fileName: "src/components/Scheduling/SchedulingForm.js",
-                        lineNumber: 38,
-                        columnNumber: 9
-                    }, this),
-                    tagSelect ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _setTagsDefault.default), {
-                        siblingsState: props.siblingsState,
-                        toggleCurrent: setTagSelect,
-                        toggleNext: setSchoolSelect,
-                        togglePrevious: setLanguageSelect
-                    }, void 0, false, {
-                        fileName: "src/components/Scheduling/SchedulingForm.js",
-                        lineNumber: 39,
-                        columnNumber: 22
-                    }, this) : "",
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
-                        fileName: "src/components/Scheduling/SchedulingForm.js",
-                        lineNumber: 40,
-                        columnNumber: 9
-                    }, this),
-                    schoolSelect ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _schoolSelectDefault.default), {
-                        toggleCurrent: setSchoolSelect,
-                        toggleNext: setDtSelect,
-                        togglePrevious: setTagSelect
-                    }, void 0, false, {
-                        fileName: "src/components/Scheduling/SchedulingForm.js",
-                        lineNumber: 41,
-                        columnNumber: 25
-                    }, this) : "",
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
-                        fileName: "src/components/Scheduling/SchedulingForm.js",
-                        lineNumber: 42,
-                        columnNumber: 9
-                    }, this),
-                    dtSelect ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _dtSelectDefault.default), {
-                        toggleCurrent: setDtSelect,
-                        togglePrevious: setSchoolSelect
-                    }, void 0, false, {
-                        fileName: "src/components/Scheduling/SchedulingForm.js",
-                        lineNumber: 43,
-                        columnNumber: 21
-                    }, this) : ""
+                    }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/components/Scheduling/SchedulingForm.js",
-                lineNumber: 28,
-                columnNumber: 7
+                lineNumber: 32,
+                columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 className: "center-element",
@@ -40067,18 +40070,18 @@ function SchedulingForm(props) {
                     children: "Close"
                 }, void 0, false, {
                     fileName: "src/components/Scheduling/SchedulingForm.js",
-                    lineNumber: 47,
+                    lineNumber: 57,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "src/components/Scheduling/SchedulingForm.js",
-                lineNumber: 46,
+                lineNumber: 56,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/components/Scheduling/SchedulingForm.js",
-        lineNumber: 26,
+        lineNumber: 28,
         columnNumber: 5
     }, this);
 }
@@ -40093,7 +40096,7 @@ $RefreshReg$(_c, "SchedulingForm");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-bootstrap":"3AD9A","react-bootstrap/Button":"aPzUt","react-bootstrap/Modal":"aNVmp","./SetTags":"l7RjO","./SchoolSelect":"fGWfM","./DtSelect":"eYbfI","./HeaderComponent":"7GkL4","./LanguageSelect":"3WEpN","./ButtonComponent":"leKcM","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"3AD9A":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-bootstrap":"3AD9A","react-bootstrap/Button":"aPzUt","react-bootstrap/Modal":"aNVmp","./SetTags":"l7RjO","./SchoolSelect":"fGWfM","./DtSelect":"eYbfI","./HeaderComponent":"7GkL4","./LanguageSelect":"3WEpN","./ButtonComponent":"leKcM","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react-bootstrap/Spinner":"2r8jr"}],"3AD9A":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "Accordion", ()=>(0, _accordionDefault.default));
@@ -40731,73 +40734,95 @@ var _reactDefault = parcelHelpers.interopDefault(_react);
 var _buttonComponent = require("./ButtonComponent");
 var _buttonComponentDefault = parcelHelpers.interopDefault(_buttonComponent);
 const BoundarySchool = (props)=>{
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Group, {
-        className: "center-element map-container align-baseline",
-        children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Label, {
-                className: "mx-1 center-element",
-                children: "BoundarySchool"
-            }, void 0, false, {
-                fileName: "src/components/Scheduling/SchoolSelect.js",
-                lineNumber: 8,
-                columnNumber: 7
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("iframe", {
-                src: "https://app.guidek12.com/woodburnor/school_search/current/",
-                height: 400,
-                className: "iframe-element"
-            }, void 0, false, {
-                fileName: "src/components/Scheduling/SchoolSelect.js",
-                lineNumber: 9,
-                columnNumber: 7
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
-                fileName: "src/components/Scheduling/SchoolSelect.js",
-                lineNumber: 10,
-                columnNumber: 7
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "center-element",
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactDefault.default).Fragment, {
+        children: props.siblingsState.map((sibling)=>{
+            return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Group, {
+                className: "center-element map-container align-baseline",
                 children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Label, {
-                        className: "small p-0 text-muted mx-1 my-1",
-                        children: "Copy and paste boundary school here:"
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h6", {
+                        children: `${sibling[1]}, ${sibling[2]}`
+                    }, void 0, false, {
+                        fileName: "src/components/Scheduling/SchoolSelect.js",
+                        lineNumber: 11,
+                        columnNumber: 13
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                        children: `Grade Level: ${sibling[4]}`
                     }, void 0, false, {
                         fileName: "src/components/Scheduling/SchoolSelect.js",
                         lineNumber: 12,
-                        columnNumber: 9
+                        columnNumber: 13
                     }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Control, {
-                        type: "text",
-                        placeholder: "Boundary School",
-                        className: "mx-1 my-1 center-element"
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Label, {
+                        className: "mx-1 center-element",
+                        children: "BoundarySchool"
                     }, void 0, false, {
                         fileName: "src/components/Scheduling/SchoolSelect.js",
                         lineNumber: 13,
-                        columnNumber: 9
+                        columnNumber: 13
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("iframe", {
+                        src: "https://app.guidek12.com/woodburnor/school_search/current/",
+                        height: 400,
+                        className: "iframe-element"
+                    }, void 0, false, {
+                        fileName: "src/components/Scheduling/SchoolSelect.js",
+                        lineNumber: 14,
+                        columnNumber: 13
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
+                        fileName: "src/components/Scheduling/SchoolSelect.js",
+                        lineNumber: 15,
+                        columnNumber: 13
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        className: "center-element",
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Label, {
+                                className: "small p-0 text-muted mx-1 my-1",
+                                children: "Copy and paste boundary school here:"
+                            }, void 0, false, {
+                                fileName: "src/components/Scheduling/SchoolSelect.js",
+                                lineNumber: 17,
+                                columnNumber: 15
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Control, {
+                                type: "text",
+                                placeholder: "Boundary School",
+                                className: "mx-1 my-1 center-element"
+                            }, void 0, false, {
+                                fileName: "src/components/Scheduling/SchoolSelect.js",
+                                lineNumber: 18,
+                                columnNumber: 15
+                            }, undefined)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/components/Scheduling/SchoolSelect.js",
+                        lineNumber: 16,
+                        columnNumber: 13
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
+                        fileName: "src/components/Scheduling/SchoolSelect.js",
+                        lineNumber: 20,
+                        columnNumber: 13
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonComponentDefault.default), {
+                        toggleCurrent: props.toggleCurrent,
+                        toggleNext: props.toggleNext,
+                        togglePrevious: props.togglePrevious
+                    }, void 0, false, {
+                        fileName: "src/components/Scheduling/SchoolSelect.js",
+                        lineNumber: 21,
+                        columnNumber: 13
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/Scheduling/SchoolSelect.js",
-                lineNumber: 11,
-                columnNumber: 7
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
-                fileName: "src/components/Scheduling/SchoolSelect.js",
-                lineNumber: 15,
-                columnNumber: 7
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonComponentDefault.default), {
-                toggleCurrent: props.toggleCurrent,
-                toggleNext: props.toggleNext,
-                togglePrevious: props.togglePrevious
-            }, void 0, false, {
-                fileName: "src/components/Scheduling/SchoolSelect.js",
-                lineNumber: 16,
-                columnNumber: 7
-            }, undefined)
-        ]
-    }, void 0, true, {
+                lineNumber: 10,
+                columnNumber: 11
+            }, undefined);
+        })
+    }, void 0, false, {
         fileName: "src/components/Scheduling/SchoolSelect.js",
         lineNumber: 7,
         columnNumber: 5
