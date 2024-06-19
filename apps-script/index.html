@@ -41622,72 +41622,208 @@ const BoundarySchool = (props)=>{
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Group, {
             className: "center-element map-container align-baseline",
             children: [
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Select, {
-                    className: "center-element mx-3 my-3",
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                    className: "container text-center",
                     children: [
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
-                            children: "Select one of the students"
-                        }, void 0, false, {
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                            className: "col justify-content-center",
+                            children: [
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                    className: "row border border-black",
+                                    children: [
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h6", {
+                                            children: "Select the Student"
+                                        }, void 0, false, {
+                                            fileName: "src/components/Scheduling/SchoolSelect.js",
+                                            lineNumber: 20,
+                                            columnNumber: 15
+                                        }, undefined),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Select, {
+                                            className: "center-element mx-1 my-1",
+                                            children: [
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
+                                                    children: "Select one of the students"
+                                                }, void 0, false, {
+                                                    fileName: "src/components/Scheduling/SchoolSelect.js",
+                                                    lineNumber: 22,
+                                                    columnNumber: 17
+                                                }, undefined),
+                                                props.siblingsState.map((sibling)=>{
+                                                    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
+                                                        children: `${sibling[1]}, ${sibling[2]}, Grade level: ${sibling[4]}`
+                                                    }, sibling[0], false, {
+                                                        fileName: "src/components/Scheduling/SchoolSelect.js",
+                                                        lineNumber: 25,
+                                                        columnNumber: 21
+                                                    }, undefined);
+                                                })
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "src/components/Scheduling/SchoolSelect.js",
+                                            lineNumber: 21,
+                                            columnNumber: 15
+                                        }, undefined)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "src/components/Scheduling/SchoolSelect.js",
+                                    lineNumber: 19,
+                                    columnNumber: 13
+                                }, undefined),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                    className: "row border border-black",
+                                    children: [
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h6", {
+                                            children: "Copy Address"
+                                        }, void 0, false, {
+                                            fileName: "src/components/Scheduling/SchoolSelect.js",
+                                            lineNumber: 32,
+                                            columnNumber: 15
+                                        }, undefined),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Label, {
+                                            className: "mx-1 my-1",
+                                            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                                children: props.siblingsState[0][5]
+                                            }, void 0, false, {
+                                                fileName: "src/components/Scheduling/SchoolSelect.js",
+                                                lineNumber: 33,
+                                                columnNumber: 49
+                                            }, undefined)
+                                        }, void 0, false, {
+                                            fileName: "src/components/Scheduling/SchoolSelect.js",
+                                            lineNumber: 33,
+                                            columnNumber: 15
+                                        }, undefined),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonDefault.default), {
+                                            onClick: ()=>{
+                                                (0, _options.copyToClipboard)(props.siblingsState[0][5]);
+                                                setAlertState(true);
+                                            },
+                                            variant: "secondary",
+                                            size: "sm",
+                                            className: "mx-1 my-1",
+                                            active: true,
+                                            children: "Copy Address to Clipboard"
+                                        }, void 0, false, {
+                                            fileName: "src/components/Scheduling/SchoolSelect.js",
+                                            lineNumber: 34,
+                                            columnNumber: 15
+                                        }, undefined)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "src/components/Scheduling/SchoolSelect.js",
+                                    lineNumber: 31,
+                                    columnNumber: 13
+                                }, undefined),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                    className: "row border border-black",
+                                    children: [
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h6", {
+                                            children: "Select Boundary School"
+                                        }, void 0, false, {
+                                            fileName: "src/components/Scheduling/SchoolSelect.js",
+                                            lineNumber: 37,
+                                            columnNumber: 15
+                                        }, undefined),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Select, {
+                                            className: "center-element mx-1 my-1",
+                                            children: [
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
+                                                    children: "Boundary School"
+                                                }, void 0, false, {
+                                                    fileName: "src/components/Scheduling/SchoolSelect.js",
+                                                    lineNumber: 39,
+                                                    columnNumber: 17
+                                                }, undefined),
+                                                (0, _options.schoolNames).map((school, idx)=>{
+                                                    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
+                                                        value: school,
+                                                        children: school
+                                                    }, idx, false, {
+                                                        fileName: "src/components/Scheduling/SchoolSelect.js",
+                                                        lineNumber: 42,
+                                                        columnNumber: 21
+                                                    }, undefined);
+                                                })
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "src/components/Scheduling/SchoolSelect.js",
+                                            lineNumber: 38,
+                                            columnNumber: 15
+                                        }, undefined)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "src/components/Scheduling/SchoolSelect.js",
+                                    lineNumber: 36,
+                                    columnNumber: 13
+                                }, undefined)
+                            ]
+                        }, void 0, true, {
                             fileName: "src/components/Scheduling/SchoolSelect.js",
-                            lineNumber: 21,
+                            lineNumber: 18,
                             columnNumber: 11
                         }, undefined),
-                        props.siblingsState.map((sibling)=>{
-                            return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
-                                children: `${sibling[1]}, ${sibling[2]}, Grade level: ${sibling[4]}`
-                            }, sibling[0], false, {
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                            className: "col justify-content-center",
+                            children: props.siblingsState.map((sibling)=>{
+                                return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                    className: "row border border-black mx-1 my-1",
+                                    children: [
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                            className: "mx-1 my-1",
+                                            children: `${sibling[1]}, ${sibling[2]}, Grade level: ${sibling[4]}`
+                                        }, void 0, false, {
+                                            fileName: "src/components/Scheduling/SchoolSelect.js",
+                                            lineNumber: 53,
+                                            columnNumber: 21
+                                        }, undefined),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                            className: "mx-1 my-1",
+                                            children: [
+                                                "Boundary School: ",
+                                                sibling[10]
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "src/components/Scheduling/SchoolSelect.js",
+                                            lineNumber: 54,
+                                            columnNumber: 21
+                                        }, undefined)
+                                    ]
+                                }, sibling[0], true, {
+                                    fileName: "src/components/Scheduling/SchoolSelect.js",
+                                    lineNumber: 52,
+                                    columnNumber: 19
+                                }, undefined);
+                            })
+                        }, void 0, false, {
+                            fileName: "src/components/Scheduling/SchoolSelect.js",
+                            lineNumber: 48,
+                            columnNumber: 11
+                        }, undefined),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                            className: "row justify-content-between mx-1 my-1",
+                            children: alertState && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _customAlertDefault.default), {
+                                variant: "success",
+                                text: "Address Copied to Clipboard!",
+                                setAlert: setAlertState
+                            }, void 0, false, {
                                 fileName: "src/components/Scheduling/SchoolSelect.js",
-                                lineNumber: 24,
-                                columnNumber: 15
-                            }, undefined);
-                        })
+                                lineNumber: 62,
+                                columnNumber: 28
+                            }, undefined)
+                        }, void 0, false, {
+                            fileName: "src/components/Scheduling/SchoolSelect.js",
+                            lineNumber: 61,
+                            columnNumber: 11
+                        }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/Scheduling/SchoolSelect.js",
-                    lineNumber: 20,
+                    lineNumber: 17,
                     columnNumber: 9
                 }, undefined),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Label, {
-                    className: "mx-1 my-1",
-                    children: [
-                        "Address: ",
-                        props.siblingsState[0][5]
-                    ]
-                }, void 0, true, {
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                     fileName: "src/components/Scheduling/SchoolSelect.js",
-                    lineNumber: 29,
-                    columnNumber: 9
-                }, undefined),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonDefault.default), {
-                    onClick: ()=>{
-                        (0, _options.copyToClipboard)(props.siblingsState[0][5]);
-                        setAlertState(true);
-                    },
-                    variant: "secondary",
-                    size: "sm",
-                    className: "mx-1 my-1",
-                    active: true,
-                    children: "Copy Address to Clipboard"
-                }, void 0, false, {
-                    fileName: "src/components/Scheduling/SchoolSelect.js",
-                    lineNumber: 30,
-                    columnNumber: 9
-                }, undefined),
-                alertState && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _customAlertDefault.default), {
-                    variant: "success",
-                    text: "Address Copied to Clipboard!",
-                    setAlert: setAlertState
-                }, void 0, false, {
-                    fileName: "src/components/Scheduling/SchoolSelect.js",
-                    lineNumber: 31,
-                    columnNumber: 24
-                }, undefined),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Label, {
-                    className: "mx-1 center-element",
-                    children: "BoundarySchool"
-                }, void 0, false, {
-                    fileName: "src/components/Scheduling/SchoolSelect.js",
-                    lineNumber: 33,
+                    lineNumber: 65,
                     columnNumber: 9
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("iframe", {
@@ -41697,43 +41833,12 @@ const BoundarySchool = (props)=>{
                     className: "iframe-element"
                 }, void 0, false, {
                     fileName: "src/components/Scheduling/SchoolSelect.js",
-                    lineNumber: 34,
+                    lineNumber: 67,
                     columnNumber: 9
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                     fileName: "src/components/Scheduling/SchoolSelect.js",
-                    lineNumber: 35,
-                    columnNumber: 9
-                }, undefined),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Select, {
-                    className: "center-element mx-3 my-3",
-                    children: [
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
-                            children: "Select a Boundary School based on output above"
-                        }, void 0, false, {
-                            fileName: "src/components/Scheduling/SchoolSelect.js",
-                            lineNumber: 39,
-                            columnNumber: 11
-                        }, undefined),
-                        (0, _options.schoolNames).map((school, idx)=>{
-                            return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
-                                value: school,
-                                children: school
-                            }, idx, false, {
-                                fileName: "src/components/Scheduling/SchoolSelect.js",
-                                lineNumber: 42,
-                                columnNumber: 15
-                            }, undefined);
-                        })
-                    ]
-                }, void 0, true, {
-                    fileName: "src/components/Scheduling/SchoolSelect.js",
-                    lineNumber: 38,
-                    columnNumber: 9
-                }, undefined),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
-                    fileName: "src/components/Scheduling/SchoolSelect.js",
-                    lineNumber: 46,
+                    lineNumber: 68,
                     columnNumber: 9
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonComponentDefault.default), {
@@ -41742,7 +41847,7 @@ const BoundarySchool = (props)=>{
                     togglePrevious: props.togglePrevious
                 }, void 0, false, {
                     fileName: "src/components/Scheduling/SchoolSelect.js",
-                    lineNumber: 47,
+                    lineNumber: 70,
                     columnNumber: 9
                 }, undefined)
             ]
