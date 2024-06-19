@@ -23,15 +23,8 @@ function UpdatingForm({ handleInputChange, dataRow }) {
                     </Form.Select>
                 </Form.Group>
                 <Form.Group>
-                    <Form.Label className='small p-0 text-muted'>School: {dataRow[5]}</Form.Label>
-                    <Form.Select onChange={(e) => handleInputChange(5, e.target.value)}>
-                        <option>Select a school</option>
-                        {schoolNames.map((school, idx) => {
-                            return (
-                                <option key={idx} value={school}>{school}</option>
-                            )
-                        })}
-                    </Form.Select>
+                    <Form.Label className='small p-0 text-muted'>Address: {dataRow[5]}</Form.Label>
+                    <Form.Control type="text" placeholder="Enter Address" onChange={(e) => handleInputChange(5, e.target.value)} />
                 </Form.Group>
                 <Form.Group>
                     <Form.Label className='small p-0 text-muted'>Parent: {dataRow[6]}</Form.Label>

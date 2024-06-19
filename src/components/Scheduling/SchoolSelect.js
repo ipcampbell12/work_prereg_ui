@@ -1,9 +1,15 @@
 import Form from 'react-bootstrap/Form';
-import React from 'react'
+import Button from 'react-bootstrap/Button';
+import React, { useState } from 'react'
 import ButtonComponent from './ButtonComponent';
-import { schoolNames } from '../../options';
+import { schoolNames, copyToClipboard } from '../../options';
+import CustomAlert from '../../UI/CustomAlert'
+
 
 const BoundarySchool = (props) => {
+  const [alertState, setAlertState] = useState(false)
+
+
   return (
     <React.Fragment>
 
@@ -20,12 +26,14 @@ const BoundarySchool = (props) => {
           })
           }
         </Form.Select>
+        <Form.Label className='mx-1 my-1'>Address: {props.siblingsState[0][5]}</Form.Label>
+        <Button onClick={() => { copyToClipboard(props.siblingsState[0][5]); setAlertState(true) }} variant="secondary" size="sm" className='mx-1 my-1' active>Copy Address to Clipboard</Button>
+        {alertState && <CustomAlert variant={'success'} text={"Address Copied to Clipboard!"} setAlert={setAlertState} />}
 
-        <div>
-          <Form.Label className="mx-1 center-element" >BoundarySchool</Form.Label>
-          <iframe src="https://app.guidek12.com/woodburnor/school_search/current/" height={400} width={200} className='iframe-element'></iframe>
-          <br />
-        </div>
+        <Form.Label className="mx-1 center-element" >BoundarySchool</Form.Label>
+        <iframe src="https://app.guidek12.com/woodburnor/school_search/current/" height={400} width={200} className='iframe-element'></iframe>
+        <br />
+
 
         <Form.Select className='center-element mx-3 my-3'>
           <option>Select a Boundary School based on output above</option>
