@@ -10,9 +10,9 @@ function LanguageSelect(props) {
             <br />
             <Form.Select className='center-element'>
                 <option>Select a langauge</option>
-                {languages.map((school, idx) => {
+                {languages.map((language, idx) => {
                     return (
-                        <option key={idx} value={school}>{school}</option>
+                        <option key={idx} value={language}>{language}</option>
                     )
                 })}
             </Form.Select>
