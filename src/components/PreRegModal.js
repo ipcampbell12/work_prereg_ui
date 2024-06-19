@@ -12,7 +12,7 @@ function PreRegModal({
   modalOpen,
   turnOnScheduling,
   displaySheetData,
-  spinnerOn
+  showData
 }) {
   const [editing, setEditing] = useState(false);
   const [arrToSave, setArrToSave] = useState(dataRow.slice(0, 9));
@@ -20,6 +20,8 @@ function PreRegModal({
   const turnOnEditing = () => {
     setEditing(true);
   };
+
+  console.log("setScheduling is: ", turnOnScheduling)
 
   const saveChanges = (e) => {
     e.preventDefault();
@@ -65,8 +67,10 @@ function PreRegModal({
           variant="warning"
           onClick={() => {
             closeModal();
-            // spinnerOn();
-            clientSideGetSiblings(dataRow[6], turnOnScheduling);
+            console.log("Going to open scheduling modal")
+            //turn on scheduling modal and THEN get sibling data
+            turnOnScheduling()
+            clientSideGetSiblings(dataRow[6], showData);
           }}
         >
           Schedule Appointment

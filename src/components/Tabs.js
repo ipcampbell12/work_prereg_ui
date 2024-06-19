@@ -12,6 +12,7 @@ function Tabs(props) {
   const [modalOpen, setModalOpen] = useState(false);
   const [dataRow, setDataRow] = useState(props.dataState[0]);
 
+  //add sibling state to Tabs component to reduce complexity. You don't need ot pass it around 
   const handleTabClick = (tab) => {
     setTabState(tab);
   };
@@ -24,13 +25,13 @@ function Tabs(props) {
     setModalOpen(false);
   };
 
-  const turnOnScheduling = (response) => {
+  //can be moved to preRegeModal
+  const showData = (response) => {
     console.log("Turn on scheduling is running")
     const data = JSON.parse(response);
     props.setSiblingsState(data)
     //props.spinnerOff()
     //console.log("Spinner has been turned off")
-    setScheduling(true);
     console.log("Scheduling state is: ", scheduling)
   };
 
@@ -46,10 +47,11 @@ function Tabs(props) {
           dataRow={dataRow}
           closeModal={closeModal}
           modalOpen={modalOpen}
-          turnOnScheduling={turnOnScheduling}
+          turnOnScheduling={() => setScheduling(true)}
           onParent={props.onParent}
           displaySheetData={props.displaySheetData}
           spinnerOn={props.spinnerOn}
+          showData={showData}
         />
       )}
       {scheduling && (
