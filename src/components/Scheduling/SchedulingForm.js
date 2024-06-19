@@ -40,7 +40,7 @@ function SchedulingForm(props) {
           <ModalBody>
             {intro ?
               <div>
-                <h5 className='center-element'>Follow these prompts to sechedule an appointment for {props.siblingsState.map((row) => `${row[2]}, ${row[1]}`).join(', ')}</h5>
+                <h6 className='center-element mx-2 my-2 text-muted'>Follow these prompts to sechedule an appointment for {props.siblingsState.map((row) => `${row[2]}, ${row[1]}`).join(', ')}</h6>
                 <ButtonComponent toggleCurrent={setIntro} toggleNext={setLanguageSelect} togglePrevious={props.turnOffScheduling} />
               </div>
               : ''}

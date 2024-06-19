@@ -39963,8 +39963,8 @@ function SchedulingForm(props) {
                         children: [
                             intro ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                                 children: [
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h5", {
-                                        className: "center-element",
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h6", {
+                                        className: "center-element mx-2 my-2 text-muted",
                                         children: [
                                             "Follow these prompts to sechedule an appointment for ",
                                             props.siblingsState.map((row)=>`${row[2]}, ${row[1]}`).join(", ")
@@ -41039,9 +41039,7 @@ function LanguageSelect(props) {
                 className: "small p-0 text-muted center-element",
                 children: [
                     "What is the home language for ",
-                    props.siblingsState.map((row)=>{
-                        row[2], row[1];
-                    }),
+                    props.siblingsState.map((row)=>`${row[2]},${row[1]}`).join(", "),
                     "?"
                 ]
             }, void 0, true, {
