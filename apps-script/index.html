@@ -33791,11 +33791,22 @@ var _reactDefault = parcelHelpers.interopDefault(_react);
 var _tabs = require("./Tabs");
 var _tabsDefault = parcelHelpers.interopDefault(_tabs);
 var _apiCalls = require("../apiCalls");
+var _spinner = require("react-bootstrap/Spinner");
+var _spinnerDefault = parcelHelpers.interopDefault(_spinner);
 var _s = $RefreshSig$();
 function Home() {
     _s();
     const [dataState, setDataState] = (0, _react.useState)([]);
     const [siblingsState, setSiblingsState] = (0, _react.useState)([]);
+    const [modalSpinnerState, setModalSpinnerState] = (0, _react.useState)(false);
+    function spinnerOn() {
+        setModalSpinnerState(true);
+        console.log("spinnerOn change spinner state to: ", modalSpinnerState);
+    }
+    function spinnerOff() {
+        setModalSpinnerState(false);
+        console.log("spinnerOff change spinner state to: ", modalSpinnerState);
+    }
     (0, _react.useEffect)(()=>{
         (0, _apiCalls.clientSideGetData)("Pre Registrations", 2, 1, 14, displaySheetData);
     }, []);
@@ -33811,27 +33822,37 @@ function Home() {
                 children: " Behold The Data"
             }, void 0, false, {
                 fileName: "src/components/Home.js",
-                lineNumber: 24,
+                lineNumber: 36,
                 columnNumber: 13
             }, this),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _tabsDefault.default), {
+            modalSpinnerState && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _spinnerDefault.default), {
+                animation: "border",
+                role: "status"
+            }, void 0, false, {
+                fileName: "src/components/Home.js",
+                lineNumber: 37,
+                columnNumber: 35
+            }, this),
+            modalSpinnerState === false ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _tabsDefault.default), {
                 dataState: dataState,
                 siblingsState: siblingsState,
                 displaySheetData: displaySheetData,
-                setSiblingsState: setSiblingsState
+                setSiblingsState: setSiblingsState,
+                spinnerOn: spinnerOn,
+                spinnerOff: spinnerOff
             }, void 0, false, {
                 fileName: "src/components/Home.js",
-                lineNumber: 26,
-                columnNumber: 13
-            }, this)
+                lineNumber: 39,
+                columnNumber: 44
+            }, this) : ""
         ]
     }, void 0, true, {
         fileName: "src/components/Home.js",
-        lineNumber: 23,
+        lineNumber: 35,
         columnNumber: 9
     }, this);
 }
-_s(Home, "ekYpsi3i5AL9cCo1dJ4QMBR+bfI=");
+_s(Home, "ssknwvo8WvapVzBB3dl78LI+HVs=");
 _c = Home;
 exports.default = Home;
 var _c;
@@ -33842,7 +33863,7 @@ $RefreshReg$(_c, "Home");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./Tabs":"dKTFd","../apiCalls":"knm0I","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"dKTFd":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./Tabs":"dKTFd","../apiCalls":"knm0I","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react-bootstrap/Spinner":"2r8jr"}],"dKTFd":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$f084 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -33883,12 +33904,17 @@ function Tabs(props) {
         setModalOpen(false);
     };
     const turnOnScheduling = (response)=>{
+        console.log("Turn on scheduling is running");
         const data = JSON.parse(response);
         props.setSiblingsState(data);
+        //props.spinnerOff()
+        //console.log("Spinner has been turned off")
         setScheduling(true);
+        console.log("Scheduling state is: ", scheduling);
     };
     const turnOffScheduling = ()=>{
         setScheduling(false);
+        console.log("Scheduling is getting turned off");
     };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: [
@@ -33898,10 +33924,11 @@ function Tabs(props) {
                 modalOpen: modalOpen,
                 turnOnScheduling: turnOnScheduling,
                 onParent: props.onParent,
-                displaySheetData: props.displaySheetData
+                displaySheetData: props.displaySheetData,
+                spinnerOn: props.spinnerOn
             }, void 0, false, {
                 fileName: "src/components/Tabs.js",
-                lineNumber: 39,
+                lineNumber: 45,
                 columnNumber: 9
             }, this),
             scheduling && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _schedulingFormDefault.default), {
@@ -33911,7 +33938,7 @@ function Tabs(props) {
                 setSiblingsState: props.setSiblingsState
             }, void 0, false, {
                 fileName: "src/components/Tabs.js",
-                lineNumber: 49,
+                lineNumber: 56,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
@@ -33935,18 +33962,18 @@ function Tabs(props) {
                             children: tab
                         }, void 0, false, {
                             fileName: "src/components/Tabs.js",
-                            lineNumber: 65,
+                            lineNumber: 72,
                             columnNumber: 15
                         }, this)
                     }, index, false, {
                         fileName: "src/components/Tabs.js",
-                        lineNumber: 59,
+                        lineNumber: 66,
                         columnNumber: 13
                     }, this);
                 })
             }, void 0, false, {
                 fileName: "src/components/Tabs.js",
-                lineNumber: 56,
+                lineNumber: 63,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -33966,12 +33993,12 @@ function Tabs(props) {
                             setDataRow: setDataRow
                         }, void 0, false, {
                             fileName: "src/components/Tabs.js",
-                            lineNumber: 91,
+                            lineNumber: 98,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "src/components/Tabs.js",
-                        lineNumber: 83,
+                        lineNumber: 90,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -33987,12 +34014,12 @@ function Tabs(props) {
                             setDataRow: setDataRow
                         }, void 0, false, {
                             fileName: "src/components/Tabs.js",
-                            lineNumber: 107,
+                            lineNumber: 114,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "src/components/Tabs.js",
-                        lineNumber: 99,
+                        lineNumber: 106,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -34008,12 +34035,12 @@ function Tabs(props) {
                             setDataRow: setDataRow
                         }, void 0, false, {
                             fileName: "src/components/Tabs.js",
-                            lineNumber: 123,
+                            lineNumber: 130,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "src/components/Tabs.js",
-                        lineNumber: 115,
+                        lineNumber: 122,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -34029,24 +34056,24 @@ function Tabs(props) {
                             setDataRow: setDataRow
                         }, void 0, false, {
                             fileName: "src/components/Tabs.js",
-                            lineNumber: 139,
+                            lineNumber: 146,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "src/components/Tabs.js",
-                        lineNumber: 131,
+                        lineNumber: 138,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/components/Tabs.js",
-                lineNumber: 82,
+                lineNumber: 89,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/components/Tabs.js",
-        lineNumber: 37,
+        lineNumber: 43,
         columnNumber: 5
     }, this);
 }
@@ -34420,7 +34447,7 @@ var _basicInfoDefault = parcelHelpers.interopDefault(_basicInfo);
 var _apiCalls = require("../apiCalls");
 var _s = $RefreshSig$();
 //import DropdownMenu from './DropDown';
-function PreRegModal({ dataRow, closeModal, modalOpen, turnOnScheduling, displaySheetData }) {
+function PreRegModal({ dataRow, closeModal, modalOpen, turnOnScheduling, displaySheetData, spinnerOn }) {
     _s();
     const [editing, setEditing] = (0, _react.useState)(false);
     const [arrToSave, setArrToSave] = (0, _react.useState)(dataRow.slice(0, 9));
@@ -34464,12 +34491,12 @@ function PreRegModal({ dataRow, closeModal, modalOpen, turnOnScheduling, display
                     ]
                 }, void 0, true, {
                     fileName: "src/components/PreRegModal.js",
-                    lineNumber: 45,
+                    lineNumber: 46,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "src/components/PreRegModal.js",
-                lineNumber: 44,
+                lineNumber: 45,
                 columnNumber: 7
             }, this),
             !editing ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _modalDefault.default).Body, {
@@ -34477,12 +34504,12 @@ function PreRegModal({ dataRow, closeModal, modalOpen, turnOnScheduling, display
                     dataRow: dataRow
                 }, void 0, false, {
                     fileName: "src/components/PreRegModal.js",
-                    lineNumber: 52,
+                    lineNumber: 53,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "src/components/PreRegModal.js",
-                lineNumber: 51,
+                lineNumber: 52,
                 columnNumber: 9
             }, this) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _modalDefault.default).Body, {
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _updatingFormDefault.default), {
@@ -34490,12 +34517,12 @@ function PreRegModal({ dataRow, closeModal, modalOpen, turnOnScheduling, display
                     dataRow: dataRow
                 }, void 0, false, {
                     fileName: "src/components/PreRegModal.js",
-                    lineNumber: 56,
+                    lineNumber: 57,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "src/components/PreRegModal.js",
-                lineNumber: 55,
+                lineNumber: 56,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _modalDefault.default).Footer, {
@@ -34503,13 +34530,14 @@ function PreRegModal({ dataRow, closeModal, modalOpen, turnOnScheduling, display
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonDefault.default), {
                         variant: "warning",
                         onClick: ()=>{
-                            (0, _apiCalls.clientSideGetSiblings)(dataRow[6], turnOnScheduling);
                             closeModal();
+                            // spinnerOn();
+                            (0, _apiCalls.clientSideGetSiblings)(dataRow[6], turnOnScheduling);
                         },
                         children: "Schedule Appointment"
                     }, void 0, false, {
                         fileName: "src/components/PreRegModal.js",
-                        lineNumber: 63,
+                        lineNumber: 64,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonDefault.default), {
@@ -34518,7 +34546,7 @@ function PreRegModal({ dataRow, closeModal, modalOpen, turnOnScheduling, display
                         children: editing ? "Save Changes" : "Edit Information"
                     }, void 0, false, {
                         fileName: "src/components/PreRegModal.js",
-                        lineNumber: 72,
+                        lineNumber: 74,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonDefault.default), {
@@ -34527,19 +34555,19 @@ function PreRegModal({ dataRow, closeModal, modalOpen, turnOnScheduling, display
                         children: "Close"
                     }, void 0, false, {
                         fileName: "src/components/PreRegModal.js",
-                        lineNumber: 78,
+                        lineNumber: 80,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/components/PreRegModal.js",
-                lineNumber: 62,
+                lineNumber: 63,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/components/PreRegModal.js",
-        lineNumber: 43,
+        lineNumber: 44,
         columnNumber: 5
     }, this);
 }
@@ -40453,6 +40481,28 @@ as: Component = "div", ...props }, ref)=>{
 });
 Row.displayName = "Row";
 exports.default = Row;
+
+},{"classnames":"jocGM","react":"21dqq","./ThemeProvider":"dVixI","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"2r8jr":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _classnames = require("classnames");
+var _classnamesDefault = parcelHelpers.interopDefault(_classnames);
+var _react = require("react");
+var _themeProvider = require("./ThemeProvider");
+var _jsxRuntime = require("react/jsx-runtime");
+"use client";
+const Spinner = /*#__PURE__*/ _react.forwardRef(({ bsPrefix, variant, animation = "border", size, // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
+as: Component = "div", className, ...props }, ref)=>{
+    bsPrefix = (0, _themeProvider.useBootstrapPrefix)(bsPrefix, "spinner");
+    const bsSpinnerPrefix = `${bsPrefix}-${animation}`;
+    return /*#__PURE__*/ (0, _jsxRuntime.jsx)(Component, {
+        ref: ref,
+        ...props,
+        className: (0, _classnamesDefault.default)(className, bsSpinnerPrefix, size && `${bsSpinnerPrefix}-${size}`, variant && `text-${variant}`)
+    });
+});
+Spinner.displayName = "Spinner";
+exports.default = Spinner;
 
 },{"classnames":"jocGM","react":"21dqq","./ThemeProvider":"dVixI","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"l7RjO":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$a3a7 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");

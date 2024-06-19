@@ -3,6 +3,7 @@ import DataDisplay from './DataDisplay';
 import PreRegModal from './PreRegModal';
 import SchedulingForm from './Scheduling/SchedulingForm';
 
+
 const tabNames = ["submitted", "scheduled", "pending", "transferred"];
 
 function Tabs(props) {
@@ -24,13 +25,18 @@ function Tabs(props) {
   };
 
   const turnOnScheduling = (response) => {
+    console.log("Turn on scheduling is running")
     const data = JSON.parse(response);
     props.setSiblingsState(data)
+    //props.spinnerOff()
+    //console.log("Spinner has been turned off")
     setScheduling(true);
+    console.log("Scheduling state is: ", scheduling)
   };
 
   const turnOffScheduling = () => {
     setScheduling(false);
+    console.log("Scheduling is getting turned off")
   };
 
   return (
@@ -43,6 +49,7 @@ function Tabs(props) {
           turnOnScheduling={turnOnScheduling}
           onParent={props.onParent}
           displaySheetData={props.displaySheetData}
+          spinnerOn={props.spinnerOn}
         />
       )}
       {scheduling && (
