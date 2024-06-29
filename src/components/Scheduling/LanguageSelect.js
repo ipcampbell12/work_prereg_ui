@@ -6,8 +6,10 @@ import { languages } from '../../options';
 function LanguageSelect(props) {
     return (
         <Form.Group>
-            <Form.Label className='small p-0 text-muted center-element'>What is the home language for {props.siblingsState.map((row) => `${row[2]},${row[1]}`).join(', ')}?</Form.Label>
-            <br />
+            <div className='center-element'>
+                <Form.Label className='small p-0 text-muted'>What is the <p className='fw-bold' style={{ display: "inline" }}>home language</p> for {props.siblingsState.map((row) => `${row[2]},${row[1]}`).join(', ')}?</Form.Label>
+                <br />
+            </div>
             <Form.Select className='center-element'>
                 <option>Select a langauge</option>
                 {languages.map((language, idx) => {

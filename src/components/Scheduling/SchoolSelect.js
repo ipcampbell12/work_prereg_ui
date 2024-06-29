@@ -18,11 +18,12 @@ const BoundarySchool = (props) => {
       <Form.Group>
         <Table>
           <thead>
-            <tr>
+            <tr className='center-element'>
               <th>First Name</th>
               <th>Last Name</th>
               <th>Grade</th>
               <th>Address</th>
+              <th></th>
               <th>School Select</th>
             </tr>
           </thead>
@@ -43,8 +44,7 @@ const BoundarySchool = (props) => {
             }
           </tbody>
         </Table>
-        <Button onClick={() => { copyToClipboard(props.address); props.onAlert(true) }} variant="secondary" size="sm" className='mx-1 my-1' active>Copy Address to Clipboard</Button>
-        <div className="mx-1 my-1">
+        <div className="mx-1 my-1 center-element">
           {alertState && <CustomAlert variant={'success'} text={"Address Copied to Clipboard!"} setAlert={setAlertState} />}
         </div>
         <br />

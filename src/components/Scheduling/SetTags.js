@@ -13,32 +13,34 @@ function SetTags(props) {
 
   return (
     <Form.Group>
-      <Form.Label className='small p-0 text-muted'>Please note any of the following situations
-      </Form.Label>
+      <div className='center-element'>
+        <Form.Label className='small p-0 text-muted'>Please note any of the following situations
+        </Form.Label>
+      </div>
       <div className='mx-1 my-1'>
         {props.siblingsState.map(row => {
           return (
             <Container className='mx-1 my-1' key={row[0]}>
               <h6 className='mx-2 my-2 text-muted'>Check all of the following that apply for {<p className='fw-bold' style={{ display: "inline" }}>{`${row[1]}  ${row[2]}`}</p>}</h6>
               <Row>
-                <Col>
+                <Col className='center-element'>
                   {firstColumnTags.map((tag, idx) => (
                     <Form.Check
                       type="switch"
                       id={`custom-switch-${idx}`}
-                      className="d-flex flex-nowrap"
+                      className="d-flex flex-nowrap mx-1"
                       key={idx}
                       label={tag}
                       value={tag}
                     />
                   ))}
                 </Col>
-                <Col>
+                <Col className='center-element'>
                   {secondColumnTags.map((tag, idx) => (
                     <Form.Check
                       type="switch"
                       id={`custom-switch-${idx + 5}`} // Ensure unique id
-                      className="d-flex flex-nowrap"
+                      className="d-flex flex-nowrap mx-1"
                       key={idx + 5}
                       label={tag}
                       value={tag}

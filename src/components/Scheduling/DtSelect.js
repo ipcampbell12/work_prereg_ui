@@ -9,7 +9,6 @@ const DtSelect = (props) => {
       <Form.Label className='mx-3 my-3 center-element'>Select a date and time for the appointment:</Form.Label>
       <div>
         <input className="mx-3 my-3 center-element" type="date" id="apt-date" name="date" />
-        <br />
         <input className="mx-3 my-3 center-element" type="time" id="apt-time" name="time" />
       </div>
       <ButtonComponent toggleCurrent={props.toggleCurrent} toggleNext={props.toggleNext} togglePrevious={props.togglePrevious} />

@@ -13,9 +13,8 @@ function HeaderComponent(props) {
                 <Row>
                     <Col> <h4>Scheduling Form</h4></Col>
                 </Row>
-                <br />
                 <Row>
-                    <Col> Schedule Appointment for: {props.siblingsState.map(row => `${row[1]} ${row[2]}`).join(', ')}</Col>
+                    <Col> Scheduling appointment for: <p className='fw-bold' style={{ display: "inline" }}>{props.siblingsState.map(row => `${row[1]} ${row[2]}`).join(', ')}</p></Col>
                 </Row>
             </Container>
         </Modal.Header>
