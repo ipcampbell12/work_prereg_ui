@@ -45,13 +45,12 @@ function SchedulingForm(props) {
               </div>
               : ''}
 
-            <br />
             {languageSelect ? <LanguageSelect siblingsState={props.siblingsState} toggleCurrent={setLanguageSelect} toggleNext={setTagSelect} togglePrevious={setIntro} /> : ''}
-            <br />
+
             {tagSelect ? <SetTags siblingsState={props.siblingsState} toggleCurrent={setTagSelect} toggleNext={setSchoolSelect} togglePrevious={setLanguageSelect} /> : ''}
-            <br />
+
             {schoolSelect ? <BoundarySchool siblingsState={props.siblingsState} toggleCurrent={setSchoolSelect} toggleNext={setDtSelect} togglePrevious={setTagSelect} /> : ''}
-            <br />
+
             {dtSelect ? <DtSelect toggleCurrent={setDtSelect} togglePrevious={setSchoolSelect} /> : ''}
 
           </ModalBody>
