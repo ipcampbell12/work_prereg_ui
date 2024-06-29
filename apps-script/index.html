@@ -11,6 +11,14 @@
   text-align: center;
 }
 
+.selected-bg {
+  background-color: #90ee90;
+}
+
+.not-selected-bg {
+  background-color: #d3d3d3;
+}
+
 .map-container {
   flex-direction: column;
   align-items: center;
@@ -39754,18 +39762,18 @@ const languages = [
     "Q'anjob'al",
     "Arabic"
 ];
-const tags = [
-    "504 Plan",
-    "Special Ed",
-    "Transition Meeting",
-    "Needs ELPA Screener",
-    "Out of State EL",
-    "In State EL",
-    "Overflow",
-    "Health concern",
-    "Gaps in schooling",
-    "Dual language assessment required"
-];
+const tags = {
+    "504 Plan": "504",
+    "Special Ed": "IEP",
+    "Transition Meeting": "TM",
+    "Needs ELPA Screener": "ELPA",
+    "Out of State EL": "OSEL",
+    "In State EL": "ISEL",
+    "Overflow": "OF",
+    "Health concern": "ROI",
+    "Gaps in schooling": "SLIFE",
+    "Dual language assessment required": "DLA"
+};
 const copyToClipboard = async (text)=>{
     try {
         await navigator.clipboard.writeText(text);
@@ -41434,8 +41442,9 @@ var _col = require("react-bootstrap/Col");
 var _colDefault = parcelHelpers.interopDefault(_col);
 function SetTags(props) {
     // Assuming tags always has at least 10 elements
-    const firstColumnTags = (0, _options.tags).slice(0, 5);
-    const secondColumnTags = (0, _options.tags).slice(5, 10);
+    const keyArr = Object.keys((0, _options.tags));
+    const firstColumnTags = keyArr.slice(0, 5);
+    const secondColumnTags = keyArr.slice(5, 10);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Group, {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -41445,12 +41454,12 @@ function SetTags(props) {
                     children: "Please note any of the following situations"
                 }, void 0, false, {
                     fileName: "src/components/Scheduling/SetTags.js",
-                    lineNumber: 17,
+                    lineNumber: 18,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "src/components/Scheduling/SetTags.js",
-                lineNumber: 16,
+                lineNumber: 17,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -41471,13 +41480,13 @@ function SetTags(props) {
                                         children: `${row[1]}  ${row[2]}`
                                     }, void 0, false, {
                                         fileName: "src/components/Scheduling/SetTags.js",
-                                        lineNumber: 24,
+                                        lineNumber: 25,
                                         columnNumber: 95
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/Scheduling/SetTags.js",
-                                lineNumber: 24,
+                                lineNumber: 25,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _rowDefault.default), {
@@ -41492,12 +41501,12 @@ function SetTags(props) {
                                                 value: tag
                                             }, idx, false, {
                                                 fileName: "src/components/Scheduling/SetTags.js",
-                                                lineNumber: 28,
+                                                lineNumber: 29,
                                                 columnNumber: 21
                                             }, this))
                                     }, void 0, false, {
                                         fileName: "src/components/Scheduling/SetTags.js",
-                                        lineNumber: 26,
+                                        lineNumber: 27,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _colDefault.default), {
@@ -41510,45 +41519,45 @@ function SetTags(props) {
                                                 value: tag
                                             }, idx + 5, false, {
                                                 fileName: "src/components/Scheduling/SetTags.js",
-                                                lineNumber: 40,
+                                                lineNumber: 41,
                                                 columnNumber: 21
                                             }, this))
                                     }, void 0, false, {
                                         fileName: "src/components/Scheduling/SetTags.js",
-                                        lineNumber: 38,
+                                        lineNumber: 39,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/Scheduling/SetTags.js",
-                                lineNumber: 25,
+                                lineNumber: 26,
                                 columnNumber: 15
                             }, this)
                         ]
                     }, row[0], true, {
                         fileName: "src/components/Scheduling/SetTags.js",
-                        lineNumber: 23,
+                        lineNumber: 24,
                         columnNumber: 13
                     }, this);
                 })
             }, void 0, false, {
                 fileName: "src/components/Scheduling/SetTags.js",
-                lineNumber: 20,
+                lineNumber: 21,
                 columnNumber: 7
             }, this),
-            (0, _options.tags).length > 0 && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonComponentDefault.default), {
+            keyArr.length > 0 && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonComponentDefault.default), {
                 toggleCurrent: props.toggleCurrent,
                 toggleNext: props.toggleNext,
                 togglePrevious: props.togglePrevious
             }, void 0, false, {
                 fileName: "src/components/Scheduling/SetTags.js",
-                lineNumber: 57,
+                lineNumber: 58,
                 columnNumber: 9
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/components/Scheduling/SetTags.js",
-        lineNumber: 15,
+        lineNumber: 16,
         columnNumber: 5
     }, this);
 }
@@ -41689,7 +41698,9 @@ const BoundarySchool = (props)=>{
                                         lineNumber: 25,
                                         columnNumber: 15
                                     }, undefined),
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("th", {}, void 0, false, {
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("th", {
+                                        children: "Copy"
+                                    }, void 0, false, {
                                         fileName: "src/components/Scheduling/SchoolSelect.js",
                                         lineNumber: 26,
                                         columnNumber: 15
@@ -41875,31 +41886,38 @@ function StudentRow(props) {
     _s();
     const [schoolSelected, setSchoolSelected] = (0, _react.useState)(false);
     const handleSchoolSelect = (event)=>{
-        if (event.target.value !== "Select School") setSchoolSelected(true);
-        console.log("schoolSelected is set to ", schoolSelected);
+        const selectedValue = event.target.value;
+        console.log("Selected value:", selectedValue);
+        if (selectedValue !== "Select School") setSchoolSelected(true);
+        else setSchoolSelected(false);
     };
+    (0, _react.useEffect)(()=>{
+        console.log("School selected state:", schoolSelected);
+    }, [
+        schoolSelected
+    ]);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("tr", {
-        className: schoolSelected ? "bg-success-subtle" : "bg-body-secondary",
+        className: schoolSelected ? "selected-bg" : "not-selected-bg",
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
                 children: props.fname
             }, void 0, false, {
                 fileName: "src/components/Scheduling/StudentRow.js",
-                lineNumber: 21,
+                lineNumber: 28,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
                 children: props.lname
             }, void 0, false, {
                 fileName: "src/components/Scheduling/StudentRow.js",
-                lineNumber: 22,
+                lineNumber: 29,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
                 children: props.grade
             }, void 0, false, {
                 fileName: "src/components/Scheduling/StudentRow.js",
-                lineNumber: 23,
+                lineNumber: 30,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
@@ -41907,79 +41925,37 @@ function StudentRow(props) {
                 children: props.address
             }, void 0, false, {
                 fileName: "src/components/Scheduling/StudentRow.js",
-                lineNumber: 24,
+                lineNumber: 31,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
                 className: "center-element small-text",
-                children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                        children: "Copy"
-                    }, void 0, false, {
-                        fileName: "src/components/Scheduling/StudentRow.js",
-                        lineNumber: 26,
-                        columnNumber: 17
-                    }, this),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("svg", {
-                        xmlns: "http://www.w3.org/2000/svg",
-                        width: "16",
-                        height: "16",
-                        fill: "currentColor",
-                        className: "bi bi-clipboard",
-                        viewBox: "0 0 16 16",
-                        onClick: ()=>{
-                            (0, _options.copyToClipboard)(props.address);
-                            props.onAlert(true);
-                        },
-                        children: [
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("path", {
-                                d: "M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1z"
-                            }, void 0, false, {
-                                fileName: "src/components/Scheduling/StudentRow.js",
-                                lineNumber: 28,
-                                columnNumber: 21
-                            }, this),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("path", {
-                                d: "M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0z"
-                            }, void 0, false, {
-                                fileName: "src/components/Scheduling/StudentRow.js",
-                                lineNumber: 29,
-                                columnNumber: 21
-                            }, this)
-                        ]
-                    }, void 0, true, {
-                        fileName: "src/components/Scheduling/StudentRow.js",
-                        lineNumber: 27,
-                        columnNumber: 17
-                    }, this)
-                ]
-            }, void 0, true, {
-                fileName: "src/components/Scheduling/StudentRow.js",
-                lineNumber: 25,
-                columnNumber: 13
-            }, this),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
-                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Select, {
-                    onChange: handleSchoolSelect,
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("svg", {
+                    xmlns: "http://www.w3.org/2000/svg",
+                    width: "16",
+                    height: "16",
+                    fill: "currentColor",
+                    className: "bi bi-clipboard",
+                    viewBox: "0 0 16 16",
+                    onClick: ()=>{
+                        (0, _options.copyToClipboard)(props.address);
+                        props.onAlert(true);
+                    },
                     children: [
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
-                            children: "Select School"
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("path", {
+                            d: "M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1z"
                         }, void 0, false, {
                             fileName: "src/components/Scheduling/StudentRow.js",
                             lineNumber: 34,
                             columnNumber: 21
                         }, this),
-                        (0, _options.schoolNames).map((school, idx)=>{
-                            return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
-                                value: school,
-                                size: "sm",
-                                children: school
-                            }, idx, false, {
-                                fileName: "src/components/Scheduling/StudentRow.js",
-                                lineNumber: 37,
-                                columnNumber: 29
-                            }, this);
-                        })
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("path", {
+                            d: "M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0z"
+                        }, void 0, false, {
+                            fileName: "src/components/Scheduling/StudentRow.js",
+                            lineNumber: 35,
+                            columnNumber: 21
+                        }, this)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/Scheduling/StudentRow.js",
@@ -41990,15 +41966,49 @@ function StudentRow(props) {
                 fileName: "src/components/Scheduling/StudentRow.js",
                 lineNumber: 32,
                 columnNumber: 13
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Select, {
+                    onSelect: handleSchoolSelect,
+                    children: [
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
+                            value: "Select School",
+                            children: "Select School"
+                        }, void 0, false, {
+                            fileName: "src/components/Scheduling/StudentRow.js",
+                            lineNumber: 40,
+                            columnNumber: 21
+                        }, this),
+                        (0, _options.schoolNames).map((school, idx)=>{
+                            return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
+                                value: school,
+                                size: "sm",
+                                children: school
+                            }, idx, false, {
+                                fileName: "src/components/Scheduling/StudentRow.js",
+                                lineNumber: 43,
+                                columnNumber: 29
+                            }, this);
+                        })
+                    ]
+                }, void 0, true, {
+                    fileName: "src/components/Scheduling/StudentRow.js",
+                    lineNumber: 39,
+                    columnNumber: 17
+                }, this)
+            }, void 0, false, {
+                fileName: "src/components/Scheduling/StudentRow.js",
+                lineNumber: 38,
+                columnNumber: 13
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/components/Scheduling/StudentRow.js",
-        lineNumber: 20,
+        lineNumber: 27,
         columnNumber: 9
     }, this);
 }
-_s(StudentRow, "+fUufDX3DK0S3ZByWswN3ld3+xI=");
+_s(StudentRow, "SEslzvCbB8DNDDaKg9SXBWzaP94=");
 _c = StudentRow;
 exports.default = StudentRow;
 var _c;

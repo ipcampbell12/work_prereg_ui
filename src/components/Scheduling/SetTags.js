@@ -8,8 +8,9 @@ import Col from 'react-bootstrap/Col';
 
 function SetTags(props) {
   // Assuming tags always has at least 10 elements
-  const firstColumnTags = tags.slice(0, 5);
-  const secondColumnTags = tags.slice(5, 10);
+  const keyArr = Object.keys(tags)
+  const firstColumnTags = keyArr.slice(0, 5);
+  const secondColumnTags = keyArr.slice(5, 10);
 
   return (
     <Form.Group>
@@ -53,7 +54,7 @@ function SetTags(props) {
         }
         )}
       </div>
-      {tags.length > 0 && (
+      {keyArr.length > 0 && (
         <ButtonComponent
           toggleCurrent={props.toggleCurrent}
           toggleNext={props.toggleNext}

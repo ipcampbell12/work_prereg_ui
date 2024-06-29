@@ -23,7 +23,7 @@ const BoundarySchool = (props) => {
               <th>Last Name</th>
               <th>Grade</th>
               <th>Address</th>
-              <th></th>
+              <th>Copy</th>
               <th>School Select</th>
             </tr>
           </thead>

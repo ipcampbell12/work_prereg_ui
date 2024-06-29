@@ -36,18 +36,18 @@ export const languages = [
 ];
 
 
-export const tags = [
-    "504 Plan",
-    "Special Ed",
-    "Transition Meeting",
-    "Needs ELPA Screener",
-    "Out of State EL",
-    "In State EL",
-    "Overflow",
-    "Health concern",
-    "Gaps in schooling",
-    "Dual language assessment required"
-];
+export const tags = {
+    "504 Plan": "504",
+    "Special Ed": "IEP",
+    "Transition Meeting": "TM",
+    "Needs ELPA Screener": "ELPA",
+    "Out of State EL": "OSEL",
+    "In State EL": "ISEL",
+    "Overflow": "OF",
+    "Health concern": "ROI",
+    "Gaps in schooling": "SLIFE",
+    "Dual language assessment required": "DLA"
+};
 
 export const copyToClipboard = async (text) => {
     try {
