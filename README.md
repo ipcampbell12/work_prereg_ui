@@ -24,7 +24,7 @@ npm install -D @google/clasp
 
 ```
 
-5) You will usse "npm run" for all the clasp commands (make sure you do npm run glogin at some point too)
+5) You will usse "npm run" for all the clasp commands (make sure you do npm run glogin at some point too).
 6) Run npm run gcreate to create a new project
 ```
 npm run gcreate
@@ -57,7 +57,7 @@ function doGet() {
 
 ![alt text](/screenshots/image-2.png)
 
-14) Deploy as web app and do gpull to update appscript.json on local side
+14) Run the ``` npm run gwatch ``` command so that your code file is updated in the Apps Script environment. Deploy as web app and do gpull to update appscript.json on local side
 15) Install parcel package
 
 ```
