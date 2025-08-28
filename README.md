@@ -16,7 +16,7 @@ npm install -D @google/clasp
 ```
     "glogin": "clasp login",
     "glogout": "clasp logout",
-    "gcreate": "clasp create --title ''React Test Project --rootDir ./apps-script",
+    "gcreate": "clasp create --title 'React Test Project' --rootDir ./apps-script",
     "gpush": "clasp push",
     "gpull": "clasp pull",
     "gclone": "clasp clone <id> --rootDir ./apps-script",
