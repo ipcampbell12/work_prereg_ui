@@ -58,10 +58,12 @@ function doGet() {
 ![alt text](/screenshots/image-2.png)
 
 14) Run this command:
-``` npm run gwatch ```
+```
+npm run gwatch
+```
 That way your code file is updated in the Apps Script environment.
-15) Deploy as web app and do gpull to update appscript.json on local side
-16) Install parcel package
+16) Deploy as web app and do gpull to update appscript.json on local side
+17) Install parcel package
 
 ```
 npm install --save-dev parcel
