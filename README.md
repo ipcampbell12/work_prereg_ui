@@ -14,13 +14,18 @@ npm install -D @google/clasp
 
 4) Set up clasp commands in the scripts section of package.json
 ```
-    "glogin": "clasp login",
-    "glogout": "clasp logout",
-    "gcreate": "clasp create --title 'React Test Project' --rootDir ./apps-script",
-    "gpush": "clasp push",
-    "gpull": "clasp pull",
-    "gclone": "clasp clone <id> --rootDir ./apps-script",
-    "gwatch": "clasp push --watch"
+    "scripts": {
+  "glogin": "clasp login",
+  "glogout": "clasp logout",
+  "gcreate": "clasp create --title 'React Test Project' --rootDir ./apps-script",
+  "gpush": "clasp push",
+  "gpull": "clasp pull",
+  "gclone": "clasp clone <id> --rootDir ./apps-script",
+  "gwatch": "clasp push --watch",
+  "start": "parcel src/index.html --dist-dir ./dist",
+  "build": "parcel build src/index.html --dist-dir ./apps-script"
+}
+
 
 ```
 
