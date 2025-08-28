@@ -24,7 +24,7 @@ npm install -D @google/clasp
 
 ```
 
-5) You will usse "npm run" for all the clasp commands (make sure you do npm run glogin at some point too).
+5) You will use "npm run" for all the clasp commands (make sure you do npm run glogin at some point too).
 6) Run npm run gcreate to create a new project
 ```
 npm run gcreate
@@ -57,15 +57,18 @@ function doGet() {
 
 ![alt text](/screenshots/image-2.png)
 
-14) Run the ``` npm run gwatch ``` command so that your code file is updated in the Apps Script environment. Deploy as web app and do gpull to update appscript.json on local side
-15) Install parcel package
+14) Run this command:
+``` npm run gwatch ```
+That way your code file is updated in the Apps Script environment.
+15) Deploy as web app and do gpull to update appscript.json on local side
+16) Install parcel package
 
 ```
 npm install --save-dev parcel
 ```
 
-16) Add src file at root level of project and add an index.html file with a div with id of "app"
-17) In the src folder, add an index.js file with following code from parcel: 
+17) Add src file at root level of project and add an index.html file with a div with id of "app"
+18) In the src folder, add an index.js file with following code from parcel: 
 
 ```
 import { createRoot } from "react-dom/client";
@@ -75,7 +78,7 @@ const container = document.getElementById("app");
 const root = createRoot(container)
 root.render(<App />);
 ```
-18) In the src file, add an App.js file with following code: 
+19) In the src file, add an App.js file with following code: 
 
 ```
 export function App() {
