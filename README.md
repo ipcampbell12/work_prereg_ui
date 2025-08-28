@@ -109,12 +109,10 @@ export function App() {
 
 ![alt text](/screenshots/image.png)
 
-21) Add this code below your div with id of "app" in the index.js file to import your react code: 
+21) Add this code below your div with id of "app" in the index.html file in your src folder to import your react code: 
 
 ```
- <script type="module">
-        import value from "./index.js"
-    </script>
+  <script type="module" src="./index.js"></script>
 ```
 
 22) Add this command to the script section package.json; this is parcel can start your react application direct it to google apps script. This will be for the development version.
