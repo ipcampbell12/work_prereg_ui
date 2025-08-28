@@ -69,8 +69,22 @@ That way your code file is updated in the Apps Script environment.
 npm install --save-dev parcel
 ```
 
-17) Add src file at root level of project and add an index.html file with a div with id of "app"
-18) In the src folder, add an index.js file with following code from parcel: 
+17) Add src file at root level of project and add an index.html file with a div with id of "app". Here is the html you can use:
+```
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Pom Pom App</title>
+</head>
+
+<body>
+    <div id="app"></div>
+</body>
+
+</html>
+```
+19) In the src folder, add an index.js file with following code from parcel: 
 
 ```
 import { createRoot } from "react-dom/client";
